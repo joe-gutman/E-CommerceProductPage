@@ -1,0 +1,40 @@
+{
+  "name": "fec-saturn",
+  "version": "1.0.0",
+  "description": "E-commerce website",
+  "main": "client/src/index.js",
+  "scripts": {
+    "dev": "webpack --watch",
+    "build": "npx webpack",
+    "client-dev": "webpack --mode development --watch",
+    "server-dev": "npx nodemon server/index.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FEC-Saturn/FEC-Saturn.git"
+  },
+  "author": "Jack, Yichen, Joe, and Darien",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FEC-Saturn/FEC-Saturn/issues"
+  },
+  "homepage": "https://github.com/FEC-Saturn/FEC-Saturn#readme",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
+    "@babel/preset-react": "^7.22.5",
+    "babel-loader": "^9.1.2",
+    "html-webpack-plugin": "^5.5.3",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  }
+}
