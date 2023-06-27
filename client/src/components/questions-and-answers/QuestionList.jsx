@@ -1,12 +1,19 @@
-import React from 'react';
+import React { useState, useEffect } from 'react';
+import axios from 'axios';
 import QuestionListEntry from './QuestionListEntry.jsx';
 
 const QuestionList = () => {
+  const [questions, setQuestions] = useState([]);
+  useEffect(() => {
+    axios.get('/qa/questions');
+  }, [])
   return (
-    <>
+    <div>
       <div>Question List</div>
-      <QuestionListEntry />
-    </>
+      {questions.map((question) => {
+        return <QuestionListEntry question={question}/>
+      })}
+    </div>
   )
 };
 
