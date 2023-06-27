@@ -1,9 +1,12 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+require('dotenv').config();
 
+console.log()
 module.exports = {
   mode: "development",
-  entry: path.join(__dirname, "client/src", "index.jsx"),
+  entry: [path.join(__dirname, "client/src", "index.jsx"), "./client/src/styles.css"],
   output: {
     path: path.resolve(__dirname, "client/dist"),
   },
@@ -19,11 +22,21 @@ module.exports = {
           }
         }
       },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "client/src", "index.html"),
+    }),
+    new webpack.DefinePlugin({
+      "process.env": {
+        AUTH_SECRET: JSON.stringify(process.env.AUTH_SECRET),
+        CAMPUS: JSON.stringify(process.env.CAMPUS),
+      },
     }),
   ],
 }
