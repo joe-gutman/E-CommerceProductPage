@@ -10,10 +10,11 @@ const RelatedProductsList = () => {
     <div className="box">
 
       <section>
+      <RelatedCard />
+      </section>
 
       <RelatedCard />
-
-      </section>
+      <RelatedCard />
 
     </div>
 
