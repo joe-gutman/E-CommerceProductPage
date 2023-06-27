@@ -10,11 +10,8 @@ const axios = require('axios');
 const App = () => {
   const [products, setProducts] = useState([]);
   const [currentProduct, setCurrentProduct] = useState({});
-  const [productStyles, setProductStyles] = useState({});
-  const [relatedProducts, setRelatedProducts] = useState([]);
-  var endpoints = [
-    `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/${currentProduct.id}/styles`,
-    `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/${currentProduct.id}/related`,];
+  const [productStyles, setProductStyles] = useState({}); // product styles of current product
+  const [relatedProducts, setRelatedProducts] = useState([]); // related products of current products
 
   var axiosHeaders = {headers:{"Authorization" : process.env.AUTH_SECRET}};
 
