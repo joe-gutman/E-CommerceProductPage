@@ -57,14 +57,21 @@ const App = () => {
     });
   }, []);
 
-  return (
-    <div>
+
+  if(currentRelatedProducts.length === 0) {
+   return (
+   <div> Is loading... </div>
+   )
+  } else {
+    return (
+      <div>
       <Overview />
       <RatingsAndReviews />
       <QuestionsAndAnswers />
-      <RelatedItems />
-    </div>
-  );
+      <RelatedItems currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating} />
+      </div>
+    );
+  }
 }
 
 
