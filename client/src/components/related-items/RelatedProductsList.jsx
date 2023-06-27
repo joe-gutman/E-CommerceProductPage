@@ -2,18 +2,26 @@ import React, { useState } from 'react';
 import RelatedCard from './RelatedCard.jsx';
 
 
+
 const RelatedProductsList = () => {
 
-
   return (
-    <section>
+    <>
+    <div className="box">
 
-    <RelatedCard />
+      <section>
 
-    </section>
+      <RelatedCard />
+
+      </section>
+
+    </div>
+
+
+
+
+</>
   )
-
-
 }
 
 

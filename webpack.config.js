@@ -1,9 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+console.log()
 module.exports = {
   mode: "development",
-  entry: path.join(__dirname, "client/src", "index.jsx"),
+  entry: [path.join(__dirname, "client/src", "index.jsx"), "./client/src/styles.css"],
   output: {
     path: path.resolve(__dirname, "client/dist"),
   },
@@ -19,6 +20,10 @@ module.exports = {
           }
         }
       },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
     ],
   },
   plugins: [
