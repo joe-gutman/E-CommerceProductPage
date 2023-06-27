@@ -1,8 +1,10 @@
+const path = require('path');
+require('dotenv').config();
 const express = require('express');
 let app = express();
 
 app.use(express.static('client/dist'));
-
+app.use(express.json());
 
 // app.post('/repos', function (req, res) {
 // });
@@ -10,8 +12,8 @@ app.use(express.static('client/dist'));
 // app.get('/repos', function (req, res) {
 // });
 
-let port = 3000;
+let PORT = process.env.PORT;
 
-app.listen(port, function() {
-  console.log(`listening on port ${port}`);
+app.listen(PORT, function() {
+  console.log(`listening on port ${PORT}`);
 });
