@@ -8,26 +8,23 @@ const YourOutfitList = () => {
   return (
 
     <>
+    <div className="box">
     <section>
     <img
-          src="https://seekicon.com/free-icon-download/plus-circle-o_1.svg"
-          width="150"
-          height="150"
-          alt="header image"
-        />
-        <br></br>
+      src="https://seekicon.com/free-icon-download/plus-circle-o_1.svg"
+      width="150"
+      height="150"
+      alt="header image"
+    />
+    <br></br> <br></br>
 
-      Add to Outfit
-
+    Add to Outfit
     </section>
 
 
-    <section>
-
-      <OutfitCard />
-
-    </section>
-
+    <OutfitCard />
+    <OutfitCard />
+    </div>
     </>
   )
 
