@@ -37,7 +37,7 @@ const App = () => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/`, axiosHeaders)
     .then ((response) => {
       setProducts(response.data);
-      setCurrentProduct(response.data[0]);
+      setCurrentProduct(response.data[1]);
 
       var endpoints = [
         `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/${response.data[0].id}/styles`,
