@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import Overview from './components/Overview.jsx';
 import RatingsAndReviews from './components/RatingsAndReviews.jsx';
 import QuestionsAndAnswers from './components/QuestionsAndAnswers.jsx';
@@ -32,7 +32,7 @@ const App = () => {
 
   useEffect(() => {
     var axiosHeaders = {headers:{"Authorization" : process.env.AUTH_SECRET}};
-
+    console.log(`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/`)
     //get all products to get initial product ID for current product
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/`, axiosHeaders)
     .then ((response) => {
@@ -67,15 +67,20 @@ const App = () => {
       <div>
       <Overview />
       <RatingsAndReviews />
-      <QuestionsAndAnswers />
+      <QuestionsAndAnswers product_id={currentProduct.id}/>
       <RelatedItems currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating} />
       </div>
     );
   }
 }
 
+window.addEventListener("DOMContentLoaded", function (e) {
+  // const domNode = document.getElementById('root');
+  // const root = createRoot(domNode);
+  // root.render(<App />);
+  createRoot(document.getElementById('root')).render(<App />);
+});
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+
+export default getAvgRating;
+
