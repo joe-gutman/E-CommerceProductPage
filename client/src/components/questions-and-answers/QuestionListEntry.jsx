@@ -8,7 +8,7 @@ const QuestionListEntry = ({ currentProduct, question }) => {
     event.preventDefault();
     setIsOpen(!isOpen)
     if (event.target.className === 'submit-modal') {
-      console.log('Send a PUT request');
+      // console.log('Send a PUT request');
     }
   }
 

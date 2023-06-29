@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 
 const QuestionModal = ({ currentProduct, toggleModal }) => {
-  // const [questionInput, setQuestionInput]
+  const [questionInput, setQuestionInput] = useState({
+
+  });
   return (
     <>
       <div className='question-modal'>
@@ -13,11 +15,7 @@ const QuestionModal = ({ currentProduct, toggleModal }) => {
             <h1>Ask Your Question</h1>
             <h2>About the {currentProduct.name}</h2>
             <label>Your Question *</label>
-            {/* <input
-              type='text'
-              placeholder=''
-            /> */}
-            <textarea className='modal-form-input' rows='10' cols='50'>
+            <textarea className='modal-form-input' rows='10'>
             </textarea>
             <label>
               What is your nickname *

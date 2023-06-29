@@ -4,13 +4,13 @@ import QuestionListEntry from './QuestionListEntry.jsx';
 
 const QuestionList = ({ currentProduct }) => {
   const [questions, setQuestions] = useState([]);
-  console.log('product_id: ', currentProduct.id);
+  // console.log('product_id: ', currentProduct.id);
   var url = `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/qa/questions?product_id=${currentProduct.id}&count=20`;
   var headers = {"Authorization": process.env.AUTH_SECRET}
   useEffect(() => {
     axios.get(url, { headers })
       .then((response) => {
-        console.log('response: ', response.data.results);
+        // console.log('response: ', response.data.results);
         setQuestions(response.data.results);
       })
   }, [])

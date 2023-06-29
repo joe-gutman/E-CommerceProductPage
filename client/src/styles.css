@@ -99,22 +99,16 @@ body.active-modal {
   padding: 20px;
   border: 1px solid #888;
   /* height: 550px; */
-  width: 60%; /* Could be more or less, depending on screen size */
+  width: 40%; /* Could be more or less, depending on screen size */
   display: flex;
   flex-direction: column;
 }
 
 .submit-modal {
-    /* position: relative; */
-    /* padding: 5px 7px; */
-    bottom: 5%;
+  bottom: 5%;
 }
 
 .close-modal {
-  /* position: relative; */
-  /* padding: 5px 7px; */
-  /* left: 95%; */
-  width: 20px;
   margin-left: auto;
 }
 
@@ -123,5 +117,5 @@ label {
 }
 
 .modal-form-input {
-  width: 90%;
+  width: 95%;
 }
