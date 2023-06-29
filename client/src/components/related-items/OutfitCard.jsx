@@ -1,24 +1,26 @@
 import React from 'react';
 import ActionButtonOutfit from './ActionButtonOutfit.jsx'
 
-const RelatedCard = () => {
+const RelatedCard = ({index, product, id, name, category, price, avgRating, features, image}) => {
 
-
+  var width = 300;
   return (
     <>
-    <aside>
+    <div className = "card" style = {{width:`${width.toString()}px`}}>
         <ActionButtonOutfit /> <br></br>
         <img
-          src="https://pixy.org/src/118/1182186.jpg"
+          src={image}
           width="175"
           height="175"
           alt="header image"
         /> <br></br>
-         <small>Category</small> <br></br>
-        <span> Product Name </span> <br></br>
-        <small> $Price</small> <br></br>
-        <small>Star Rating</small> <br></br>
-    </aside>
+         <div className = 'card-details'>
+          <small className = 'card-text'>{category} </small>
+          <span className = 'card-text'> {name} </span>
+          <small className = 'card-text'> ${price} </small>
+          <small className = 'card-text'>{avgRating} *</small>
+        </div>
+    </div>
       </>
   )
 
