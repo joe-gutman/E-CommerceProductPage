@@ -7,6 +7,7 @@ const StarDisplay = (props) => {
     let s = props.size;
     let partial = props.rating - Math.floor(props.rating);
     let roundTo = props.roundTo || 4;
+    partial = Math.round(partial * roundTo) / roundTo;
     let fillMode = props.fillMode || 'linear';
 
     ctx.clearRect(0, 0, s * 5, s);
