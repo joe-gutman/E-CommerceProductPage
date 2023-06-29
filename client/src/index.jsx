@@ -7,7 +7,6 @@ import RelatedItems from './components/RelatedItems.jsx';
 
 const axios = require('axios');
 
-//---------------------------------------------------
 const getAvgRating = function (ratings) {
   let count = 0;
   let result = 0;
@@ -22,7 +21,6 @@ const getAvgRating = function (ratings) {
   }
   return result;
 }
-//---------------------------------------------------
 
 const App = () => {
   const [products, setProducts] = useState([]);
