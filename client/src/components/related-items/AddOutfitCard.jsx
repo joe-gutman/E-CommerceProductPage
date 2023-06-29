@@ -4,7 +4,6 @@ import React, {useState, useEffect} from 'react';
 const AddOutfitCard = ({sessionid, outfitProducts, setOutfitProducts, currentProduct}) => {
 
   const handleAdd = (e) => {
-    console.log('added');
     if (!outfitProducts.hasOwnProperty(sessionid)) {
       setOutfitProducts((prevOutfitProducts) => ({
         ...prevOutfitProducts,
@@ -23,11 +22,10 @@ const AddOutfitCard = ({sessionid, outfitProducts, setOutfitProducts, currentPro
       }
     }
   };
-  useEffect (() => {
-    console.log('added sucessfully', currentProduct, outfitProducts)
-  },[outfitProducts])
+  // useEffect (() => {
+  //   console.log('added sucessfully', currentProduct, outfitProducts)
+  // },[outfitProducts])
 
- // console.log('added', currentProduct, outfitProducts)
 
 
   return (

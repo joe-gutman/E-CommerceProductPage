@@ -19,7 +19,7 @@ const RelatedCard = ({index, product, id, name, category, price, avgRating, feat
           <div className = 'card-details'>
           <small className = 'card-text'>{category} </small>
           <span className = 'card-text'> {name} </span>
-          <small className = 'card-text'> ${price} </small>
+          <small className = 'card-gittext'> ${price} </small>
           <small className = 'card-text'>{avgRating} *</small>
           </div>
     </div>
