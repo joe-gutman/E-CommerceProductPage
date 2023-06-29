@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import StarDisplay from './shared-components/StarDisplay.jsx';
 import ReviewList from './ratings-and-reviews/ReviewList.jsx';
+import ProductFactors from './ratings-and-reviews/ProductFactors.jsx';
+import ReviewBreakdown from './ratings-and-reviews/ReviewBreakdown.jsx';
+import getAvgRating from '../index.jsx';
 
 const axios = require('axios');
 
@@ -16,6 +19,40 @@ const RatingsAndReviews = () => {
         rating: 5,
         summary: 'Review Title',
         recommend: true,
+        response: 'Response to the review',
+        body: 'Body of the review',
+        date: '2023-06-28',
+        reviewer_name: 'Reviewer',
+        helpfulness: 0,
+        photos: [
+          {
+            id: 0,
+            url: 'image url here'
+          }
+        ]
+      },
+      {
+        review_id: 1,
+        rating: 4,
+        summary: 'Review Title',
+        recommend: true,
+        response: 'Response to the review',
+        body: 'Body of the review',
+        date: '2023-06-28',
+        reviewer_name: 'Reviewer',
+        helpfulness: 0,
+        photos: [
+          {
+            id: 0,
+            url: 'image url here'
+          }
+        ]
+      },
+      {
+        review_id: 2,
+        rating: 4,
+        summary: 'Review Title',
+        recommend: false,
         response: 'Response to the review',
         body: 'Body of the review',
         date: '2023-06-28',
@@ -44,25 +81,23 @@ const RatingsAndReviews = () => {
   }
   for (let f = 0; f < reviewsFake.results.length; f++) {
     reviewMetaFake.ratings[reviewsFake.results[f].rating]++;
+    reviewMetaFake.recommended[reviewsFake.results[f].recommend ? 1 : 0]++;
   }
   for (let f = 1; f <= 5; f++) {
     reviewMetaFake.ratings[f] += '';
   }
-  console.log(reviewMetaFake.ratings);
+  //console.log(reviewMetaFake.ratings);
 
   return (<>
     <h3>Ratings And Reviews</h3>
     <div>
-      <h4>Review Breakdown</h4>
-      <div><StarDisplay name='sDisplay1' rating={3.6} size={40}/></div>
-      <div>review breakdown goes here</div>
-      <div>% recommendations goes here</div>
+      <ReviewBreakdown avg={getAvgRating(reviewMetaFake.ratings)} ratings={reviewMetaFake.ratings} rec={reviewMetaFake.recommended}/>
     </div>
     <div>
-      <h4>Reviews</h4>
+      <ReviewList reviews={reviewsFake}/>
     </div>
     <div>
-      <h4>Product Factors</h4>
+      <ProductFactors factors={reviewMetaFake.characteristics}/>
     </div>
   </>);
 }

@@ -51,7 +51,7 @@ const StarDisplay = (props) => {
 
     //Outlining code
     ctx.strokeStyle = props.outlineColor || 'black';
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 1;
     for (let f = 0; f < 5; f++) {
       ctx.beginPath();
       ctx.moveTo(((f + 0.5) * s), 5);
@@ -62,7 +62,7 @@ const StarDisplay = (props) => {
       }
       ctx.stroke();
     }
-  });
+  }, []);
 
   return (<canvas className="star-display" id={props.name} width={props.size * 5} height={props.size} />);
 }
