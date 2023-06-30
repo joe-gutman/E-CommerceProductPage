@@ -70,10 +70,6 @@
   height: 400px;
 }
 
-body.active-modal {
-    overflow-y: hidden;
-}
-
 .btn-modal {
     padding: 10px 20px;
     display: block;
@@ -101,10 +97,6 @@ body.active-modal {
   width: 40%; /* Could be more or less, depending on screen size */
   display: flex;
   flex-direction: column;
-}
-
-.submit-modal {
-  bottom: 5%;
 }
 
 .close-modal {
