@@ -10,7 +10,7 @@ const axios = require('axios');
 
 const RatingsAndReviews = () => {
   let reviewsFake = {
-    product: 0,
+    product: 1,
     page: 1,
     count: 2,
     results: [
@@ -68,7 +68,7 @@ const RatingsAndReviews = () => {
     ]
   };
   let reviewMetaFake = {
-    product_id: 0,
+    product_id: 1,
     ratings: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0},
     recommended: {0: 0, 1: 0},
     characteristics: {
