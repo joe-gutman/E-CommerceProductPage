@@ -7,6 +7,7 @@ const StarDisplay = (props) => {
     let s = props.size;
     let partial = props.rating - Math.floor(props.rating);
     let roundTo = props.roundTo || 4;
+    partial = Math.round(partial * roundTo) / roundTo;
     let fillMode = props.fillMode || 'linear';
 
     ctx.clearRect(0, 0, s * 5, s);
@@ -50,7 +51,7 @@ const StarDisplay = (props) => {
 
     //Outlining code
     ctx.strokeStyle = props.outlineColor || 'black';
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 1;
     for (let f = 0; f < 5; f++) {
       ctx.beginPath();
       ctx.moveTo(((f + 0.5) * s), 5);
@@ -61,7 +62,7 @@ const StarDisplay = (props) => {
       }
       ctx.stroke();
     }
-  });
+  }, []);
 
   return (<canvas className="star-display" id={props.name} width={props.size * 5} height={props.size} />);
 }
