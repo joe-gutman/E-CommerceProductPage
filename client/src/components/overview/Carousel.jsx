@@ -2,9 +2,10 @@ import React, { useState, useEffect} from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import UpArrow from '../../assets/icons8-arrow-up-black.png';
 import DownArrow from '../../assets/icons8-arrow-down-black.png';
+import PlaceholderImage from '../../assets/image-not-available.png'
 
-var Carousel = () => {
-  var [thumbnailImages, setThumbnailImages] = useState([...Array(5).keys()]);
+var Carousel = ({setCurrentImage}) => {
+  var [thumbnailImages, setThumbnailImages] = useState([...Array(15).keys()]);
   var [carouselHeight, setCarouselHeight] = useState(null);
   var [thumbnailImageHeight, setThumbnailImageHeight] = useState(null);
   var [thumbnailContainerHeight, setThumbnailContainerHeight] = useState(null);
@@ -14,7 +15,7 @@ var Carousel = () => {
   }));
 
   useEffect(() => {
-    // get thumbnail image height by dividing the image viewer height by the amount of thumbnails shown.
+    //using parent container's, 'image-view', height to dynamically set the carousel and thumnail image height.
     setThumbnailImageHeight(document.getElementById('image-view').offsetHeight/thumbnailViewCount);
     setThumbnailContainerHeight((document.getElementById('image-view').offsetHeight/thumbnailViewCount)*thumbnailImages.length);
     setCarouselHeight(document.getElementById('image-view').offsetHeight);
@@ -29,7 +30,6 @@ var Carousel = () => {
     if (event.target.id.includes('next')) {
       carouselPositionLimit = thumbnailContainerHeight - carouselHeight;
       newPosition = thumbnailContainerPosition + carouselHeight;
-      console.log(thumbnailContainerHeight);
 
       if (thumbnailContainerPosition < carouselPositionLimit) {
         api.start({
@@ -68,7 +68,7 @@ var Carousel = () => {
       <animated.div id="image-view-thumbnails-container" style={{...springs}}>
           {thumbnailImages.map((imageId) => (
             <div className="thumbnail-image" imageid={imageId} style={{height: `${thumbnailImageHeight}px`}}>
-              <img className="placeholder-thumbnail-image" src="https://digitalfinger.id/wp-content/uploads/2019/12/no-image-available-icon-6.png"></img>
+              <img className="placeholder-thumbnail-image" src={PlaceholderImage}></img>
             </div>
           ))}
       </animated.div>
