@@ -37,7 +37,8 @@ const YourOutfitList = ({getAvgRating, currentProduct, currentProductStyles, cur
     <>
     <div className = "wrapper" >
     <div className = 'box' >
-    <AddOutfitCard sessionid = {sessionid} outfitProducts = {outfitProducts} setOutfitProducts = {setOutfitProducts} currentProduct = {currentProduct} handleAdd = {handleAdd} />
+    <button id= "add-outfit-button" onClick = {handleAdd} > Add to Outfit </button>
+    {/* <AddOutfitCard sessionid = {sessionid} outfitProducts = {outfitProducts} setOutfitProducts = {setOutfitProducts} currentProduct = {currentProduct} handleAdd = {handleAdd} /> */}
 
     {Object.values(outfitProducts).map((product, index) => (
       <OutfitCard key={index} product={product[0]} id={product[0].id} name={product[0].name} category={product[0].category} price={product[0].default_price} image = {product[1].results[0].photos[0].url || "https://digitalfinger.id/wp-content/uploads/2019/12/no-image-available-icon-6.png"} avgRating = {product[2].avgRating} />

@@ -11,6 +11,10 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating}) => {
 
   const [movementIncrement, setMovementIncrement] = useState(0);
   const [cardContainerWidth, setCardContainerWidth] = useState(0);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [scrollPositionLimit, setScrollPositionLimit] = useState(0);
+  const [leftArrowDiv, setLeftArrowDiv] =useState(null)
+  const [rightArrowDiv, setRightArrowDiv] =useState(null)
 
   const [springs, api] = useSpring(() => ({
     from: { x: 0 },
@@ -36,71 +40,101 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating}) => {
       }
       setRelatedProducts(Object.values(relatedItemData));
     })
-
-    var boxWidth = document.getElementsByClassName("box")[0].offsetWidth;
-    var cardMargin = Number(getComputedStyle(document.getElementsByClassName("card")[0]).marginLeft.replace(/px$/,"")) + Number(getComputedStyle(document.getElementsByClassName("card")[0]).marginRight.replace(/px$/,""));
-    var cardWidth = cardMargin + document.getElementsByClassName("card")[0].offsetWidth;
-    setMovementIncrement((boxWidth) - (boxWidth%cardWidth));
-    setCardContainerWidth(cardWidth*productCount.length);
-
   }, [])
 
-  var position = 0;
+  useEffect ( () => {
+    resizeObserver.unobserve(document.getElementById("related-products-box"))
+    resizeObserver.observe(document.getElementById("related-products-box"))
+  }, [relatedProducts])
+
+  const resizeObserver = new ResizeObserver((entries) => {
+    for (const entry of entries) {
+      var boxWidth = document.getElementsByClassName("box")[0].offsetWidth;
+      var cardMargin = Number(getComputedStyle(document.getElementsByClassName("card")[0]).marginLeft.replace(/px$/,"")) + Number(getComputedStyle(document.getElementsByClassName("card")[0]).marginRight.replace(/px$/,""));
+      var cardWidth = cardMargin + document.getElementsByClassName("card")[0].offsetWidth;
+      setMovementIncrement((boxWidth) - (boxWidth%cardWidth));
+      setCardContainerWidth(cardWidth*productCount.length); // Container for all cards, and not viewer
+      setScrollPositionLimit(cardContainerWidth-movementIncrement);
+
+
+    }
+  })
+
+
 
 
   const handleArrow = (e) => {
 
     var newPosition;
     if (e.target.id === "left-arrow") {
-      newPosition = position + movementIncrement;
-      if (Math.abs(position) > 0) {
+      newPosition = scrollPosition + movementIncrement;
+      if (Math.abs(scrollPosition) > 0) {
         api.start({
           from: {
-            x: position,
+            x: scrollPosition,
           },
           to: {
             x: newPosition,
           },
         })
-        position += movementIncrement
+        setScrollPosition(scrollPosition + movementIncrement)
+
+
       }
     } else if (e.target.id === "right-arrow") {
-      newPosition = position - movementIncrement;
-      if (Math.abs(position) <  cardContainerWidth-movementIncrement) {
+      newPosition = scrollPosition - movementIncrement;
+      if (Math.abs(scrollPosition) <  scrollPositionLimit) {
         api.start({
           from: {
-            x: position,
+            x: scrollPosition,
           },
           to: {
             x: newPosition,
           },
         })
-        position -= movementIncrement
+        setScrollPosition(scrollPosition - movementIncrement)
+
       }
+
     }
 
+    // if (scrollPosition < 0) {
+    //   setLeftArrowDiv(() => <div className = "arrow" id= "left-arrow" onClick = {handleArrow}> ⬅️ </div>)
+    // } else {
+    //   setLeftArrowDiv(() => <></>)
+    // }
+    // console.log('leftarrdiv', leftArrowDiv)
+
+    console.log(Math.abs(scrollPosition));
+    console.log((cardContainerWidth-movementIncrement))
   }
 
-  var productCount = [...Array(16).keys()];
+
+  var productCount = [...Array(18).keys()];
 
   return (
     <>
     <div className = "wrapper" >
-      <div className="box">
-        <div className = "arrow" id= "left-arrow" onClick = {handleArrow}> ⬅️ </div>
-
+      <div className="box" id= "related-products-box" >
+        {/* {leftArrowDiv} */}
+        {scrollPosition < 0 ? (
+        <div className = "arrow" id= "left-arrow" onClick = {handleArrow}> ⬅️ </div> )
+          : (<></>)
+          }
           <animated.div className = "inner-box" style = {{...springs}}>
 
             {/* {relatedProducts.map((product, index) => (
               <RelatedCard key = {index} product = {product} id = {product.id} name = {product.name} category = {product.category} price = {product.default_price} avgRating = {product.avgRating} features = {product.features} image = {product.results[0].photos[0].url || "https://digitalfinger.id/wp-content/uploads/2019/12/no-image-available-icon-6.png"} />
-
             ))} */}
 
             {productCount.map(() => (
               <RelatedCard />
             ))}
           </animated.div>
-        <div className = "arrow" id= "right-arrow" onClick = {handleArrow}> ➡️ </div>
+          {Math.abs(scrollPosition) >= scrollPositionLimit ? (<></>)
+        : (
+          <div className = "arrow" id= "right-arrow" onClick = {handleArrow}> ➡️ </div> )
+         }
       </div>
     </div>
     </>

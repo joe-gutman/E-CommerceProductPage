@@ -134,6 +134,7 @@ label {
   overflow: hidden;
 }
 
+
 .inner-box {
   display: flex;
   flex-direction: row;
