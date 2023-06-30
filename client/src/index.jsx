@@ -37,7 +37,7 @@ const App = () => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/`, axiosHeaders)
     .then ((response) => {
       setProducts(response.data);
-      setCurrentProduct(response.data[1]);
+      setCurrentProduct(response.data[0]);
 
       var endpoints = [
         `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/${response.data[0].id}/styles`,
@@ -58,6 +58,7 @@ const App = () => {
   }, []);
 
 
+
   if(currentRelatedProducts.length === 0) {
    return (
    <div> Is loading... </div>
@@ -69,7 +70,7 @@ const App = () => {
       <RatingsAndReviews />
       <QuestionsAndAnswers currentProduct={currentProduct}/>
       <RelatedItems currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating}
-      currentProduct = {currentProduct} />
+      currentProduct = {currentProduct} currentProductStyles = {currentProductStyles} currentProductAvgRating = {currentProductAvgRating}/>
       </div>
     );
   }

@@ -1,9 +1,10 @@
 import React from 'react';
 import ActionButtonOutfit from './ActionButtonOutfit.jsx'
 
-const RelatedCard = ({index, product, id, name, category, price, avgRating, features, image}) => {
+const RelatedCard = ({index, product, id, name, category, price, avgRating,image}) => {
 
   var width = 300;
+
   return (
     <>
     <div className = "card" style = {{width:`${width.toString()}px`}}>
@@ -11,8 +12,8 @@ const RelatedCard = ({index, product, id, name, category, price, avgRating, feat
         <img
           src={image}
           width="175"
-          height="175"
-          alt="header image"
+          height="200"
+          alt="product image"
         /> <br></br>
          <div className = 'card-details'>
           <small className = 'card-text'>{category} </small>

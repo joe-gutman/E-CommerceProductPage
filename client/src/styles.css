@@ -154,6 +154,7 @@ label {
 
 .card {
   border: 2px solid rgb(189, 189, 189);
+  padding: 10px;
 }
 
 
@@ -164,6 +165,6 @@ label {
 }
 
 .card-text {
-  padding: 10px;
+  padding: 8px;
 }
 

@@ -75,15 +75,12 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating}) => {
             x: newPosition,
           },
         })
-        console.log('position', position)
         position -= movementIncrement
       }
     }
 
   }
 
-
-  // console.log('related', relatedProducts);
   var productCount = [...Array(16).keys()];
 
   return (

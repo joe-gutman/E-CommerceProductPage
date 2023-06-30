@@ -1,31 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 
-const AddOutfitCard = ({sessionid, outfitProducts, setOutfitProducts, currentProduct}) => {
-
-  const handleAdd = (e) => {
-    if (!outfitProducts.hasOwnProperty(sessionid)) {
-      setOutfitProducts((prevOutfitProducts) => ({
-        ...prevOutfitProducts,
-        [sessionid]: [currentProduct],
-      }));
-    } else {
-      const isProductUnique = !outfitProducts[sessionid].includes(currentProduct);
-      if (isProductUnique) {
-        setOutfitProducts((prevOutfitProducts) => ({
-          ...prevOutfitProducts,
-          [sessionid]: [
-            ...prevOutfitProducts[sessionid],
-            currentProduct,
-          ],
-        }));
-      }
-    }
-  };
-  // useEffect (() => {
-  //   console.log('added sucessfully', currentProduct, outfitProducts)
-  // },[outfitProducts])
-
+const AddOutfitCard = ({handleAdd}) => {
 
 
   return (
