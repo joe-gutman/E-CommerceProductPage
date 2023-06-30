@@ -2,21 +2,19 @@ import React, { useState } from 'react';
 import RelatedProductsList from './related-items/RelatedProductsList.jsx';
 import YourOutfitList from './related-items/YourOutfitList.jsx';
 
-const RelatedItems = ({currentRelatedProducts, getAvgRating}) => {
+const RelatedItems = ({currentRelatedProducts, getAvgRating, currentProduct}) => {
 
 
   return (
 
     <>
     <hr></hr>
-    <div>Related Products </div>
-    <br></br>
+    <div> <h3> Related Products </h3> </div>
     <RelatedProductsList currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating} />
 
     <hr></hr>
-    <div>Your Outfit </div>
-    <br></br>
-    <YourOutfitList />
+    <div><h3>Your Outfit </h3> </div>
+    <YourOutfitList getAvgRating = {getAvgRating} currentProduct = {currentProduct} />
 
     </>
 

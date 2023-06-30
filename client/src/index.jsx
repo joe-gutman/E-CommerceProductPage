@@ -67,8 +67,9 @@ const App = () => {
       <div>
       <Overview />
       <RatingsAndReviews />
-      <QuestionsAndAnswers product_id={currentProduct.id}/>
-      <RelatedItems currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating} />
+      <QuestionsAndAnswers currentProduct={currentProduct}/>
+      <RelatedItems currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating}
+      currentProduct = {currentProduct} />
       </div>
     );
   }

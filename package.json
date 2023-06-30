@@ -8,7 +8,8 @@
     "build": "npx webpack",
     "client-dev": "webpack --mode development --watch",
     "server-dev": "npx nodemon server/index.js",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint --fix --ext .js,.jsx"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "axios": "^1.4.0",
     "css-loader": "^6.8.1",
     "dotenv": "^16.3.1",
+    "eslint": "^8.43.0",
     "express": "^4.18.2",
     "nodemon": "^2.0.22",
     "react": "^18.2.0",
