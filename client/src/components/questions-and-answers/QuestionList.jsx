@@ -21,18 +21,30 @@ const QuestionList = ({ currentProduct }) => {
 
 
   return (
-    <div>
+    <div className='question-list'>
       <div>Question List</div>
-      {questions.length !== 0 && questions.slice(0, 2).map((question) => {
-        return <QuestionListEntry currentProduct={currentProduct} question={question} key={question.question_id}/>
-      })}
+      {
+        questions.length !== 0 && questions.slice(0, 2).map((question) => {
+          return (
+            <QuestionListEntry
+              currentProduct={currentProduct}
+              question={question}
+              key={question.question_id}
+            />
+          )
+        })
+      }
       <div className="add-question">
         <button onClick={() => setIsQuestionModalOpen(!isQuestionModalOpen)}>
           Add a question
         </button>
         {
           isQuestionModalOpen &&
-          <QuestionModal currentProduct={currentProduct} isQuestionModalOpen={isQuestionModalOpen} setIsQuestionModalOpen={setIsQuestionModalOpen}/>
+          <QuestionModal
+            currentProduct={currentProduct}
+            isQuestionModalOpen={isQuestionModalOpen}
+            setIsQuestionModalOpen={setIsQuestionModalOpen}
+          />
         }
       </div>
     </div>

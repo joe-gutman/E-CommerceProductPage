@@ -17,7 +17,7 @@ const QuestionModal = ({ currentProduct, isQuestionModalOpen, setIsQuestionModal
   function handleSubmit(event) {
     event.preventDefault();
     setIsQuestionModalOpen(!isQuestionModalOpen);
-    console.log('questionInput', questionInput);
+    // console.log('questionInput', questionInput);
     //TODO: send POST request
   }
 
