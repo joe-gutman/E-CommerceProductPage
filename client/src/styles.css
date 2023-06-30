@@ -81,7 +81,7 @@ body.active-modal {
     font-size: 18px;
 }
 
-.question-modal {
+.modal {
   position: fixed; /* Stay in place */
   box-sizing: border-box;
   z-index: 1; /* Sit on top */
@@ -93,12 +93,11 @@ body.active-modal {
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-.question-modal-content {
+.modal-content {
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  /* height: 550px; */
   width: 40%; /* Could be more or less, depending on screen size */
   display: flex;
   flex-direction: column;
