@@ -3,7 +3,9 @@ import React from 'react';
 const ActionButtonRelated = () => {
 
     return (
-      <button> Compare BUTTON </button>
+      <div className = "action-button">
+        <button> Compare BUTTON </button>
+      </div>
     )
 }
 

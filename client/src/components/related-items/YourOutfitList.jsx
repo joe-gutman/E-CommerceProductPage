@@ -1,58 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import OutfitCard from './OutfitCard.jsx';
-import AddOutfitCard from './AddOutfitCard.jsx';
-
+import NoImage from '../../assets/Image_not_available.png';
+import AddImage from '../../assets/AddIconBlack.png';
 
 const YourOutfitList = ({getAvgRating, currentProduct, currentProductStyles, currentProductAvgRating}) => {
 
-  var sessionid = JSON.stringify(document.cookie, undefined, "\t")
-  const [outfitProducts, setOutfitProducts] = useState({});
 
+  const initialOutfitList = JSON.parse(localStorage.getItem('outfitList')) || [];
+  const [outfitProducts, setOutfitProducts] = useState(initialOutfitList);
 
-  const handleAdd = (e) => {
-
-    if (!outfitProducts.hasOwnProperty(sessionid)) {
-      setOutfitProducts((prevOutfitProducts) => ({
-        ...prevOutfitProducts,
-        [sessionid]: [currentProduct, currentProductStyles, {avgRating: currentProductAvgRating}],
-      }));
-    } else {
-      const isProductUnique = !outfitProducts[sessionid].includes(currentProduct);
-      if (isProductUnique) {
-        setOutfitProducts((prevOutfitProducts) => ({
-          ...prevOutfitProducts,
-          [sessionid]: [
-            ...prevOutfitProducts[sessionid],
-            currentProduct, currentProductStyles, {avgRating:currentProductAvgRating},
-          ],
-        }));
-      }
+  const handleAdd = () => {
+    const isProductUnique = outfitProducts.every((product) => product[0].id !== currentProduct.id);
+    if (isProductUnique) {
+      const updatedOutfitProducts = [...outfitProducts, [currentProduct, currentProductStyles, { avgRating: currentProductAvgRating }]];
+      setOutfitProducts(updatedOutfitProducts);
+      localStorage.setItem('outfitList', JSON.stringify(updatedOutfitProducts));
     }
-
   };
 
+  const handleClear = () => {
+    setOutfitProducts([]);
+    localStorage.removeItem('outfitList');
+  };
+
+  const handleRemove = (id) => {
+    const updatedOutfitProducts = outfitProducts.filter((product, index) => product[0].id !== id);
+    setOutfitProducts(updatedOutfitProducts);
+    localStorage.setItem('outfitList', JSON.stringify(updatedOutfitProducts));
+  }
 
   return (
-
     <>
-    <div className = "wrapper" >
-    <div className = 'box' >
-    <button id= "add-outfit-button" onClick = {handleAdd} > Add to Outfit </button>
-    {/* <AddOutfitCard sessionid = {sessionid} outfitProducts = {outfitProducts} setOutfitProducts = {setOutfitProducts} currentProduct = {currentProduct} handleAdd = {handleAdd} /> */}
-
-    {Object.values(outfitProducts).map((product, index) => (
-      <OutfitCard key={index} product={product[0]} id={product[0].id} name={product[0].name} category={product[0].category} price={product[0].default_price} image = {product[1].results[0].photos[0].url || "https://digitalfinger.id/wp-content/uploads/2019/12/no-image-available-icon-6.png"} avgRating = {product[2].avgRating} />
-    ))}
-
-    </div>
-    </div>
+      <div className = "wrapper" >
+        <div className = 'box' id="outfit-box" >
+        <button id= "add-outfit-button" onClick = {handleAdd} >
+          <img id="add-outfit-button-image" src= {AddImage} width="100" height="100" alt="outfit image" />
+          <h3 id="add-outfit-button-text"> Add to Outfit </h3>
+        </button>
+          <div className = "inner-box" >
+            {Object.values(outfitProducts).map((product, index) => (
+              <OutfitCard key={index} product={product[0]} id={product[0].id} name={product[0].name} category={product[0].category} price={product[0].default_price} image = {product[1].results[0].photos[0].url || NoImage} avgRating = {product[2].avgRating} handleRemove = {handleRemove} />
+            ))}
+          </div>
+        </div>
+      </div>
     </>
   )
-
-
 }
-
-
-
 
 export default YourOutfitList;

@@ -1,9 +1,11 @@
 import React from 'react';
 
-const ActionButtonOutfit = () => {
+const ActionButtonOutfit = ({handleRemove, id}) => {
 
     return (
-      <button> X BUTTON </button>
+      <div className="action-button">
+        <button onClick = {() => {handleRemove(id)}} > Remove (X) </button>
+      </div>
     )
   }
 
