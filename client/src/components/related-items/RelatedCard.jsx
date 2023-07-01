@@ -12,8 +12,8 @@ const RelatedCard = ({index, product, id, name, category, price, avgRating, feat
           <ActionButtonRelated /> <br></br>
           <img
             src={image}
-            width="175"
-            height="200"
+            width="290"
+            height="375"
             alt="product image"
           /> <br></br>
           <div className = 'card-details'>

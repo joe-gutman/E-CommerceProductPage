@@ -123,7 +123,7 @@ label {
 .box {
   display: flex;
   flex-direction: row;
-  min-height: 400px;
+  min-height: 500px;
   border: 2px solid rgb(189, 189, 189);
   margin: 40px;
   overflow: hidden;
@@ -153,6 +153,7 @@ label {
 #add-outfit-button-text {
   width: 100%;
   text-align: center;
+  margin: 5px auto;
 }
 
 .arrow {
@@ -176,9 +177,8 @@ label {
 
 .card {
   border: 2px solid rgb(189, 189, 189);
-  padding: 10px;
+  padding: 5px;
   text-align: center;
-
 }
 
 .card-details {
@@ -188,9 +188,9 @@ label {
 }
 
 .action-button {
-  padding: 10px;
   cursor: pointer;
-  float: right;
+  text-align: right;
+
 }
 
 .card-text {

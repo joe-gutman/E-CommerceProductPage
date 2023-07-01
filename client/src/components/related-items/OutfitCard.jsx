@@ -9,7 +9,7 @@ const RelatedCard = ({index, product, id, name, category, price, avgRating,image
     <>
       <div className = "card" style = {{width:`${width.toString()}px`}}>
         <ActionButtonOutfit handleRemove = {handleRemove} id = {id} /> <br></br>
-          <img src={image} width="175" height="200" alt="product image"/> <br></br>
+          <img src={image} width="290" height="375" alt="product image"/> <br></br>
           <div className = 'card-details'>
             <small className = 'card-text'>{category} </small>
             <span className = 'card-text'> {name} </span>

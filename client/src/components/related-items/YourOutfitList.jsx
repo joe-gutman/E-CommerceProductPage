@@ -34,8 +34,8 @@ const YourOutfitList = ({getAvgRating, currentProduct, currentProductStyles, cur
       <div className = "wrapper" >
         <div className = 'box' id="outfit-box" >
         <button id= "add-outfit-button" onClick = {handleAdd} >
-          <img id="add-outfit-button-image" src= {AddImage} width="100" height="100" alt="outfit image" />
-          <h3 id="add-outfit-button-text"> Add to Outfit </h3>
+          <img id="add-outfit-button-image" src= {AddImage} width="60" height="60" alt="outfit image" />
+          <h4 id="add-outfit-button-text"> Add to Outfit </h4>
         </button>
           <div className = "inner-box" >
             {Object.values(outfitProducts).map((product, index) => (
