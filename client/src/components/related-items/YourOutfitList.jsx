@@ -6,6 +6,7 @@ import AddImage from '../../assets/AddIconBlack.png';
 import LeftArrow from '../../assets/icons8-arrow-left-black.png';
 import RightArrow from '../../assets/icons8-arrow-right-black.png';
 import { useSpring, animated } from '@react-spring/web'
+import ResizeObserver from 'resize-observer-polyfill';
 
 const YourOutfitList = ({getAvgRating, currentProduct, currentProductStyles, currentProductAvgRating}) => {
 

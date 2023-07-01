@@ -3,6 +3,8 @@ import RelatedCard from './RelatedCard.jsx';
 import NoImage from '../../assets/Image_not_available.png';
 import LeftArrow from '../../assets/icons8-arrow-left-black.png';
 import RightArrow from '../../assets/icons8-arrow-right-black.png';
+import ResizeObserver from 'resize-observer-polyfill';
+
 
 const axios = require('axios');
 import { useSpring, animated } from '@react-spring/web'
@@ -113,7 +115,7 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating, newRender}) 
             }
             <animated.div className = "inner-box" style = {{...springs}}>
               {relatedProducts.map((product, index) => (
-                <RelatedCard key = {index} product = {product} id = {product.id} name = {product.name} category = {product.category} price = {product.default_price} avgRating = {product.avgRating} features = {product.features} image = {product.results[0].photos[0].url || NoImage} newRender = {newRender} />
+                <RelatedCard key = {index} product = {product} id = {product.id} name = {product.name} category = {product.category} price = {product.default_price} avgRating = {product.avgRating} features = {product.features} image = {product.results[0].photos[0].url || NoImage}  />
               ))}
 
               {/* {productCount.map(() => (

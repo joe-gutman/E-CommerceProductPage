@@ -57,6 +57,7 @@ const App = () => {
     });
   }, []);
 
+
   if(currentRelatedProducts.length === 0) {
    return (
    <div> Is loading... </div>
