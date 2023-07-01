@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import RelatedCard from './RelatedCard.jsx';
+import NoImage from '../../assets/Image_not_available.png';
 import LeftArrow from '../../assets/icons8-arrow-left-black.png';
 import RightArrow from '../../assets/icons8-arrow-right-black.png';
-import NoImage from '../../assets/Image_not_available.png';
 
 const axios = require('axios');
 import { useSpring, animated } from '@react-spring/web'

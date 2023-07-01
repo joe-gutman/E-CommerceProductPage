@@ -58,6 +58,7 @@ const App = () => {
   }, []);
 
 
+console.log(currentProduct.id)
 
   if(currentRelatedProducts.length === 0) {
    return (

@@ -10,7 +10,7 @@ const RelatedCard = ({index, product, id, name, category, price, avgRating, feat
     <>
       <div className = "card" style = {{width:`${width.toString()}px`}} >
         <ActionButtonRelated /> <br></br>
-          <img src={image} width="290" height="375" alt="product image"/> <br></br>
+          <img src={image} width="300" height="375" alt="product image"/> <br></br>
           <div className = 'card-details'>
             <small className = 'card-text'>{category} </small>
             <span className = 'card-text'> {name} </span>
