@@ -9,18 +9,13 @@ const RelatedCard = ({index, product, id, name, category, price, avgRating, feat
   return (
     <>
       <div className = "card" style = {{width:`${width.toString()}px`}} >
-          <ActionButtonRelated /> <br></br>
-          <img
-            src={image}
-            width="290"
-            height="375"
-            alt="product image"
-          /> <br></br>
+        <ActionButtonRelated /> <br></br>
+          <img src={image} width="290" height="375" alt="product image"/> <br></br>
           <div className = 'card-details'>
-          <small className = 'card-text'>{category} </small>
-          <span className = 'card-text'> {name} </span>
-          <small className = 'card-text'> ${price} </small>
-          <small className = 'card-text'>{avgRating} *</small>
+            <small className = 'card-text'>{category} </small>
+            <span className = 'card-text'> {name} </span>
+            <small className = 'card-text'> ${price} </small>
+            <small className = 'card-text'>{avgRating} *</small>
           </div>
       </div>
     </>
