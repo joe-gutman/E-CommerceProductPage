@@ -57,8 +57,9 @@ const App = () => {
     });
   }, []);
 
-
-console.log(currentProduct.id)
+console.log('before', currentProduct)
+console.log('before', currentProductStyles)
+console.log('related', currentRelatedProducts)
 
   if(currentRelatedProducts.length === 0) {
    return (
@@ -71,7 +72,7 @@ console.log(currentProduct.id)
       <RatingsAndReviews />
       <QuestionsAndAnswers currentProduct={currentProduct}/>
       <RelatedItems currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating}
-      currentProduct = {currentProduct} currentProductStyles = {currentProductStyles} currentProductAvgRating = {currentProductAvgRating}/>
+      currentProduct = {currentProduct} currentProductStyles = {currentProductStyles} currentProductAvgRating = {currentProductAvgRating} />
       </div>
     );
   }
