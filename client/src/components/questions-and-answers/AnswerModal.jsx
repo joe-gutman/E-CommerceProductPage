@@ -1,45 +1,45 @@
 import React, { useState } from 'react';
 
-const QuestionModal = ({ currentProduct, isQuestionModalOpen, setIsQuestionModalOpen }) => {
-  const [questionInput, setQuestionInput] = useState({
-    'question': '',
+const AnswerModal = ({ currentProduct, question, isAnswerModalOpen, setIsAnswerModalOpen }) => {
+  const [answerInput, setAnswerInput] = useState({
+    'answer': '',
     'nickname': '',
     'email': ''
   });
 
   function handleChange(event) {
-    setQuestionInput({
-      ...questionInput,
+    setAnswerInput({
+      ...answerInput,
       [event.target.name]: event.target.value
     });
-  }
+  };
 
   function handleSubmit(event) {
     event.preventDefault();
-    setIsQuestionModalOpen(!isQuestionModalOpen);
-    // console.log('questionInput', questionInput);
+    setIsAnswerModalOpen(!isAnswerModalOpen);
+    // console.log('answerInput', answerInput);
     //TODO: send POST request
-  }
+  };
 
 
   return (
     <>
       <div className='modal'>
         <div className='modal-content'>
-          <button className='close-modal' onClick={() => setIsQuestionModalOpen(!isQuestionModalOpen)}>
+          <button className='close-modal' onClick={() => setIsAnswerModalOpen(!isAnswerModalOpen)}>
             X
           </button>
           <form>
-            <h1>Ask Your Question</h1>
-            <h2>About the {currentProduct.name}</h2>
+            <h1>Submit your Answer</h1>
+            <h2>{currentProduct.name}: {question.question_body}</h2>
 
             <label>
-              Your Question *
+              Your Answer *
               <textarea
                 className='modal-form-input'
-                name='question'
+                name='answer'
                 rows='10'
-                value={questionInput.question}
+                value={answerInput.answer}
                 onChange={handleChange}>
               </textarea>
             </label>
@@ -51,7 +51,7 @@ const QuestionModal = ({ currentProduct, isQuestionModalOpen, setIsQuestionModal
                 name='nickname'
                 type='text'
                 placeholder='Example: jack543!'
-                value={questionInput.nickname}
+                value={answerInput.nickname}
                 onChange={handleChange}
               />
             </label>
@@ -64,14 +64,17 @@ const QuestionModal = ({ currentProduct, isQuestionModalOpen, setIsQuestionModal
                 className='modal-form-input'
                 name='email'
                 type='text'
-                placeholder='Why did you like the product or not?'
-                value={questionInput.email}
+                placeholder='Example: jack@email.com'
+                value={answerInput.email}
                 onChange={handleChange}
               />
             </label>
 
             <p>For authentication reasons, you will not be emailed</p>
 
+            <button className='upload-photo'>
+              Upload Photos
+            </button>
             <button className='submit-modal' onClick={handleSubmit}>
               Submit
             </button>
@@ -82,4 +85,4 @@ const QuestionModal = ({ currentProduct, isQuestionModalOpen, setIsQuestionModal
   );
 };
 
-export default QuestionModal;
+export default AnswerModal;
