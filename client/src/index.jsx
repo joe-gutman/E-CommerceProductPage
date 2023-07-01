@@ -57,10 +57,6 @@ const App = () => {
     });
   }, []);
 
-console.log('before', currentProduct)
-console.log('before', currentProductStyles)
-console.log('related', currentRelatedProducts)
-
   if(currentRelatedProducts.length === 0) {
    return (
    <div> Is loading... </div>
