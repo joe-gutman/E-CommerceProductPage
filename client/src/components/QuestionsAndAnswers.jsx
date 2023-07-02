@@ -9,7 +9,7 @@ const QuestionsAndAnswers = ({ currentProduct }) => {
       <SearchBar />
       <QuestionList currentProduct={currentProduct} />
     </>
-  )
-}
+  );
+};
 
 export default QuestionsAndAnswers;

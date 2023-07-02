@@ -18,7 +18,7 @@ const QuestionListEntry = ({ currentProduct, question }) => {
         <div>Q: {question.question_body}</div>
         <span> Helpful?
           <button onClick={handleClick}>
-            Yes ({question.question_helpfulness})
+            <u>Yes</u> ({question.question_helpfulness})
           </button>
         </span>
         <span>

@@ -1,6 +1,8 @@
 import React from 'react';
 
 const AnswerListEntry = ({ answer }) => {
+  const [day, month, date, year] = new Date(answer.date).toDateString().split(' ');
+
 
   return (
     <>
@@ -8,13 +10,16 @@ const AnswerListEntry = ({ answer }) => {
         <div className='answer-list-entry-content'>
           A: {answer.body}
         </div>
+
         <div className='answer-list-entry-footer'>
-          by {answer.answerer_name} date {answer.date}
+          <span>
+            by {answer.answerer_name.toLowerCase() === 'seller' ? <b>Seller</b> : answer.answerer_name}, {`${month} ${date}, ${year}`}
+          </span>
           <span> Helpful?
-            <button>Yes {answer.helpfulness}</button>
+            <button><u>Yes</u> ({answer.helpfulness})</button>
           </span>
           <span>
-            <button>Report</button>
+            <button><u>Report</u></button>
           </span>
         </div>
       </div>

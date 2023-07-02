@@ -16,10 +16,29 @@ const AnswerModal = ({ currentProduct, question, isAnswerModalOpen, setIsAnswerM
 
   function handleSubmit(event) {
     event.preventDefault();
-    setIsAnswerModalOpen(!isAnswerModalOpen);
     // console.log('answerInput', answerInput);
     //TODO: send POST request
+    // console.log('chcek', checkValidInput());
+    var [isValid, message] = checkValidInput();
+    if (!isValid) {
+      alert('You must enter the following: \n' + message);
+      return;
+    }
+    setIsAnswerModalOpen(!isAnswerModalOpen);
   };
+
+  function checkValidInput() {
+    var isValid = true;
+    var message = '';
+
+    for (var key of Object.keys(answerInput)) {
+      if (answerInput[key] === '') {
+        isValid = false;
+        message += key + '\n';
+      }
+    }
+    return [isValid, message];
+  }
 
 
   return (

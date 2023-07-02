@@ -3,6 +3,7 @@ import { useSpring, animated } from '@react-spring/web';
 import UpArrow from '../../assets/icons8-arrow-up-black.png';
 import DownArrow from '../../assets/icons8-arrow-down-black.png';
 
+console.log('UpArrow', UpArrow)
 var Carousel = () => {
   var [thumbnailImages, setThumbnailImages] = useState([...Array(5).keys()]);
   var [carouselHeight, setCarouselHeight] = useState(null);

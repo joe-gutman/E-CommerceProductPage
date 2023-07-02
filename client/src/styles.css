@@ -110,6 +110,29 @@ label {
 .modal-form-input {
   width: 95%;
 }
+
+.question-list-entry {
+ padding: 10px;
+ margin-bottom: 5px;
+}
+
+.answer-list-entry {
+  padding-top: 5px;
+  margin-bottom: 3px;
+ }
+
+ .question-list-content {
+  max-height: 600px;
+  /* TODO */
+  /* overflow-y: scroll; */
+ }
+
+ .answer-list-content {
+  max-height: 200px;
+  /* TODO */
+  overflow-y: scroll;
+ }
+
 .wrapper {
   position: relative;
   width: 100%;

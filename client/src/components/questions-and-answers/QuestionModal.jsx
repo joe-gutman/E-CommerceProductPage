@@ -16,9 +16,27 @@ const QuestionModal = ({ currentProduct, isQuestionModalOpen, setIsQuestionModal
 
   function handleSubmit(event) {
     event.preventDefault();
+    var [isValid, message] = checkValidInput();
+    if (!isValid) {
+      alert('You must enter the following: \n' + message);
+      return;
+    }
     setIsQuestionModalOpen(!isQuestionModalOpen);
     // console.log('questionInput', questionInput);
     //TODO: send POST request
+  }
+
+  function checkValidInput() {
+    var isValid = true;
+    var message = '';
+
+    for (var key of Object.keys(questionInput)) {
+      if (questionInput[key] === '') {
+        isValid = false;
+        message += key + '\n';
+      }
+    }
+    return [isValid, message];
   }
 
 
