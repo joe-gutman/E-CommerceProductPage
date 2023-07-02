@@ -27,6 +27,11 @@ const QuestionList = ({ currentProduct }) => {
       });
   }, []);
 
+  function handleClick(event) {
+    event.preventDefault();
+    setIsQuestionModalOpen(!isQuestionModalOpen)
+  }
+
 
   return (
     <div className='question-list'>
@@ -58,7 +63,7 @@ const QuestionList = ({ currentProduct }) => {
       </div>
 
       <div className="add-question-btn">
-        <button onClick={() => setIsQuestionModalOpen(!isQuestionModalOpen)}>
+        <button onClick={handleClick}>
           ADD A QUESTION +
         </button>
         {

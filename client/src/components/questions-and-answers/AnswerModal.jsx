@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const AnswerModal = ({ currentProduct, question, isAnswerModalOpen, setIsAnswerModalOpen }) => {
   const [answerInput, setAnswerInput] = useState({
-    'answer': '',
-    'nickname': '',
-    'email': ''
+    'body': '',
+    'name': '',
+    'email': '',
+    'photos': []
   });
 
   function handleChange(event) {
@@ -16,15 +18,13 @@ const AnswerModal = ({ currentProduct, question, isAnswerModalOpen, setIsAnswerM
 
   function handleSubmit(event) {
     event.preventDefault();
-    // console.log('answerInput', answerInput);
-    //TODO: send POST request
-    // console.log('chcek', checkValidInput());
     var [isValid, message] = checkValidInput();
     if (!isValid) {
       alert('You must enter the following: \n' + message);
       return;
     }
     setIsAnswerModalOpen(!isAnswerModalOpen);
+    addAnswerToDb();
   };
 
   function checkValidInput() {
@@ -38,6 +38,17 @@ const AnswerModal = ({ currentProduct, question, isAnswerModalOpen, setIsAnswerM
       }
     }
     return [isValid, message];
+  }
+
+  function addAnswerToDb() {
+    var url = `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/qa/questions/${question.question_id}/answers`;
+    var headers = {"Authorization": process.env.AUTH_SECRET}
+
+    // console.log('question id: ', question.question_id);
+    axios.post(url, answerInput, { headers })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
 
@@ -56,8 +67,9 @@ const AnswerModal = ({ currentProduct, question, isAnswerModalOpen, setIsAnswerM
               Your Answer *
               <textarea
                 className='modal-form-input'
-                name='answer'
+                name='body'
                 rows='10'
+                maxlength='1000'
                 value={answerInput.answer}
                 onChange={handleChange}>
               </textarea>
@@ -67,8 +79,9 @@ const AnswerModal = ({ currentProduct, question, isAnswerModalOpen, setIsAnswerM
               What is your nickname *
               <input
                 className='modal-form-input'
-                name='nickname'
+                name='name'
                 type='text'
+                maxlength='60'
                 placeholder='Example: jack543!'
                 value={answerInput.nickname}
                 onChange={handleChange}
@@ -83,6 +96,7 @@ const AnswerModal = ({ currentProduct, question, isAnswerModalOpen, setIsAnswerM
                 className='modal-form-input'
                 name='email'
                 type='text'
+                maxlength='60'
                 placeholder='Example: jack@email.com'
                 value={answerInput.email}
                 onChange={handleChange}
