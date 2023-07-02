@@ -6,11 +6,11 @@ const RelatedItems = ({currentRelatedProducts, getAvgRating, currentProduct, cur
 
 
   return (
-
     <>
+
     <hr></hr>
     <div> <h3> Related Products </h3> </div>
-    <RelatedProductsList currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating} />
+    <RelatedProductsList currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating} currentProduct = {currentProduct} />
 
     <hr></hr>
     <div><h3>Your Outfit </h3> </div>

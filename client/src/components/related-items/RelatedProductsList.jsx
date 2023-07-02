@@ -10,7 +10,7 @@ const axios = require('axios');
 import { useSpring, animated } from '@react-spring/web'
 
 
-const RelatedProductsList = ({currentRelatedProducts, getAvgRating, newRender}) => {
+const RelatedProductsList = ({currentRelatedProducts, getAvgRating, currentProduct}) => {
 
   const [relatedProducts, setRelatedProducts] = useState([]);
 
@@ -103,7 +103,9 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating, newRender}) 
     console.log((cardContainerWidth-movementIncrement))
   }
 
+// console.log(currentProduct)
   // var productCount = [...Array(4).keys()];
+
 
   return (
     <>
@@ -115,7 +117,7 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating, newRender}) 
             }
             <animated.div className = "inner-box" style = {{...springs}}>
               {relatedProducts.map((product, index) => (
-                <RelatedCard key = {index} product = {product} id = {product.id} name = {product.name} category = {product.category} price = {product.default_price} avgRating = {product.avgRating} features = {product.features} image = {product.results[0].photos[0].url || NoImage}  />
+                <RelatedCard key = {index} product = {product} id = {product.id} name = {product.name} category = {product.category} price = {product.default_price} avgRating = {product.avgRating} features = {product.features} image = {product.results[0].photos[0].url || NoImage} currentProduct = {currentProduct} />
               ))}
 
               {/* {productCount.map(() => (
