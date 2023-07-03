@@ -12,12 +12,20 @@
   display: flex;
   flex-direction: row;
   height: 800px;
-  width: 100%;
+  width: auto;
 }
 
 #image-view-main-image {
+  display: flex;
   height: 100%;
   width: 75%;
+  overflow: hidden;
+  justify-content: center;
+}
+
+#main-product-image {
+  height: 100%;
+  cursor: zoom-in;
 }
 
 #image-view-carousel {
@@ -55,12 +63,81 @@
 }
 
 .thumbnail-image {
+  display: relative;
   width: 100%;
+  background-size: auto 100%;
+  background-position: center;
+  cursor: pointer;
+}
+
+.thumbnail-checkmark {
+  height: 25px;
+  width: 25px;
+  margin: 7px;
+  float: right;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+div[id*='thumbnail-checkmark-'] {
+  display: none;
 }
 
 .placeholder-thumbnail-image {
   height: 100%;
   width: 100%;
+}
+
+#expanded-view-focus {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  cursor: pointer;
+  z-index: 1000;
+}
+
+#expanded-product-image-container {
+  position: relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:90%;
+  height:90%;
+  margin: auto;
+  background-color: white;
+  cursor: default;
+}
+
+#expanded-product-image {
+  position: relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:90%;
+  height:90%;
+  margin: auto;
+  background-position: center;
+  background-size: auto 100%;
+  cursor: zoom-in;
+}
+
+#close-expanded-view-button {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  top: 0px;
+  right: 0px;
+  margin: 10px;
+  line-height: 100%;
+  cursor: pointer;
+  background-size: auto 100%;
 }
 
 .box {

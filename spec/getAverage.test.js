@@ -1,13 +1,55 @@
 import getAvgRating from '../client/src/index.jsx';
 
-var actualRating = getAvgRating({1: "1", 2: "1", 3: "1", 4: "1", 5: "1"});
-var expectedRating = 3;
-test(`average rating ${actualRating} to equal ${expectedRating}`, () => {
-  expect(actualRating).toBe(expectedRating);
-});
+describe('Test average product rating', () => {
+  describe('Should return a number', () => {
+    var expected = 1;
+    var actual = getAvgRating({1: "0", 2: "1", 3: "0", 4: "0", 5: "0"});
+    test(`average rating ${actual} should ${expected}`, () => {
+      expect(typeof actual).toBe('number');
+    })
+  });
 
-var actualRating = getAvgRating({1: "1", 2: "4", 3: "8", 4: "10", 5: "1"});
-var expectedRating = 3.25;
-test(`average rating ${actualRating} to equal ${expectedRating}`, () => {
-  expect(actualRating).toBe(expectedRating);
+  describe('When given no ratings, return 0', () => {
+    var expected = 0;
+    var actual = getAvgRating({1: "0", 2: "0", 3: "0", 4: "0", 5: "0"});
+    test(`average rating ${actual} to equal ${expected}`, () => {
+      expect(actual).toBe(expected);
+    })
+  });
+
+  describe('When given an empty object, return 0', () => {
+    var expected = 0;
+    var actual = getAvgRating({});
+    test(`average rating ${actual} to equal ${expected}`, () => {
+      expect(actual).toBe(expected);
+    })
+  });
+
+  describe('Average rating should calculate correctly', () => {
+    var expected = 3;
+    var actual = getAvgRating({1: "1", 2: "1", 3: "1", 4: "1", 5: "1"});
+    test(`average rating ${actual} to equal ${expected}`, () => {
+      expect(actual).toBe(expected);
+    })
+
+    expected = 3.25;
+    actual = getAvgRating({1: "1", 2: "4", 3: "8", 4: "10", 5: "1"});
+    test(`average rating ${actual} to equal ${expected}`, () => {
+      expect(actual).toBe(expected);
+    })
+  });
+
+  describe('Should return an average rating when not given any rating values 1-4, 1-6, etc', () => {
+    var expected = 3.5;
+    var actual = getAvgRating({1: "1", 2: "1", 3: "1", 4: "1", 5: "1", 6: "1"});
+    test(`average rating ${actual} to equal ${expected}`, () => {
+      expect(actual).toBe(expected);
+    })
+
+    expected = 3.25;
+    actual = getAvgRating({1: "1", 2: "4", 3: "8", 4: "10"});
+    test(`average rating ${actual} to equal ${expected}`, () => {
+      expect(actual).toBe(expected);
+    })
+  });
 });
