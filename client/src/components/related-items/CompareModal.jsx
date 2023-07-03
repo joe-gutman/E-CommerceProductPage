@@ -16,14 +16,12 @@ const CompareModal = ({ isOpen, onRequestClose, name, features, currentProduct, 
 
   return (
     <Modal isOpen={isOpen} onRequestClose={onRequestClose} ariaHideApp={false} style={{
-      overlay: {
-        backgroundColor: 'transparent', // Set overlay background color to a semi-transparent white
-      },
+      overlay: {backgroundColor: 'transparent',},
       content: {
         width: '800px',
         height: '350px',
         margin: 'auto',
-        background: 'white', // Set modal background to white
+        background: 'white',
       },
     }}>
       <h3>Comparing</h3>
@@ -40,23 +38,34 @@ const CompareModal = ({ isOpen, onRequestClose, name, features, currentProduct, 
           </thead>
           <tbody>
             {Array.from(uniqueCharacteristics).map((characteristic, index) => {
-  const feature = features.find((item) => item.feature === characteristic);
-  const currentFeature = currentFeatures.find((item) => item.feature === characteristic);
+              // Find the feature object that matches the current characteristic
+              const feature = features.find((item) => item.feature === characteristic);
 
-  return (
-    <tr key={index}>
-      <td className="checkmark">{feature ? <span>&#10004;</span> : ''}</td>
-      <td>
-        {feature ? (
-          feature.value ? `${feature.feature}: ${feature.value}` : feature.feature
-        ) : (
-          `${currentFeature.feature}: ${currentFeature.value}`
-        )}
-      </td>
-      <td className="checkmark">{currentFeature ? <span>&#10004;</span> : ''}</td>
-    </tr>
-  );
-})}
+              // Find the currentFeature object that matches the current characteristic
+              const currentFeature = currentFeatures.find((item) => item.feature === characteristic);
+
+              return (
+                <tr key={index}>
+                  <td className="checkmark">
+                    {/* Display a checkmark if the feature exists */}
+                    {feature ? <span>&#10004;</span> : ''}
+                  </td>
+                  <td>
+                    {/* Display the feature value or the currentFeature value */}
+                    {feature ? (
+                      feature.value ? `${feature.feature}: ${feature.value}` : feature.feature
+                    ) : (
+                      `${currentFeature.feature}: ${currentFeature.value}`
+                    )}
+                  </td>
+                  <td className="checkmark">
+                    {/* Display a checkmark if the currentFeature exists */}
+                    {currentFeature ? <span>&#10004;</span> : ''}
+                  </td>
+                </tr>
+              );
+            })
+          }
           </tbody>
         </table>
       </div>

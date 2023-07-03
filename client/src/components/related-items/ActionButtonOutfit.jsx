@@ -12,5 +12,4 @@ const ActionButtonOutfit = ({handleRemove, id}) => {
   }
 
 
-
 export default ActionButtonOutfit;

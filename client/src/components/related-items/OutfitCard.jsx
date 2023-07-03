@@ -22,6 +22,4 @@ const OutfitCard = ({index, product, id, name, category, price, avgRating,image,
 }
 
 
-
-
 export default OutfitCard;
