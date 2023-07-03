@@ -3,7 +3,7 @@ import CompareModal from './CompareModal.jsx';
 import StarButton from '../../assets/icons8-star-black.png';
 
 
-const ActionButtonRelated = ({name, features, currentProduct, currentFeatures}) => {
+const ActionButtonRelated = ({name, features, currentProduct, currentProductFeatures}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -20,7 +20,7 @@ const ActionButtonRelated = ({name, features, currentProduct, currentFeatures}) 
       <div className = "action-button">
         <button onClick = {openModal} > <img src = {StarButton} width="15" height="15" /> </button>
 
-        <CompareModal isOpen = {isModalOpen} onRequestClose = {closeModal} name = {name} features = {features} currentProduct = {currentProduct} currentFeatures = {currentFeatures}/>
+        <CompareModal isOpen = {isModalOpen} onRequestClose = {closeModal} name = {name} features = {features} currentProduct = {currentProduct} currentProductFeatures = {currentProductFeatures}/>
       </div>
     )
 }

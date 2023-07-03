@@ -1,10 +1,10 @@
 import React from 'react';
 import Modal from 'react-modal';
 
-const CompareModal = ({ isOpen, onRequestClose, name, features, currentProduct, currentFeatures }) => {
+const CompareModal = ({ isOpen, onRequestClose, name, features, currentProduct, currentProductFeatures }) => {
 
-  // Combine the features and currentFeatures into a single array
-  const combinedFeatures = [...features, ...currentFeatures];
+  // Combine the features and currentProductFeatures into a single array
+  const combinedFeatures = [...features, ...currentProductFeatures];
 
   // Create a Set to store unique characteristics
   const uniqueCharacteristics = new Set();
@@ -38,11 +38,11 @@ const CompareModal = ({ isOpen, onRequestClose, name, features, currentProduct, 
           </thead>
           <tbody>
             {Array.from(uniqueCharacteristics).map((characteristic, index) => {
-              // Find the feature object that matches the current characteristic
+              // Find the selected product feature object that matches the current characteristic
               const feature = features.find((item) => item.feature === characteristic);
 
-              // Find the currentFeature object that matches the current characteristic
-              const currentFeature = currentFeatures.find((item) => item.feature === characteristic);
+              // Find the currentProductFeature object that matches the current characteristic
+              const currentProductFeature = currentProductFeatures.find((item) => item.feature === characteristic);
 
               return (
                 <tr key={index}>
@@ -51,16 +51,16 @@ const CompareModal = ({ isOpen, onRequestClose, name, features, currentProduct, 
                     {feature ? <span>&#10004;</span> : ''}
                   </td>
                   <td>
-                    {/* Display the feature value or the currentFeature value */}
+                    {/* Display the feature value or the currentProductFeature value */}
                     {feature ? (
                       feature.value ? `${feature.feature}: ${feature.value}` : feature.feature
                     ) : (
-                      `${currentFeature.feature}: ${currentFeature.value}`
+                      `${currentProductFeature.feature}: ${currentProductFeature.value}`
                     )}
                   </td>
                   <td className="checkmark">
-                    {/* Display a checkmark if the currentFeature exists */}
-                    {currentFeature ? <span>&#10004;</span> : ''}
+                    {/* Display a checkmark if the currentProductFeature exists */}
+                    {currentProductFeature ? <span>&#10004;</span> : ''}
                   </td>
                 </tr>
               );
