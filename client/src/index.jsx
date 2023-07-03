@@ -40,9 +40,9 @@ const App = () => {
       setCurrentProduct(response.data[1]);
 
       var endpoints = [
-        `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/${response.data[0].id}/styles`,
-        `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/reviews/meta?product_id=${response.data[0].id}`,
-        `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/${response.data[0].id}/related`,
+        `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/${response.data[1].id}/styles`,
+        `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/reviews/meta?product_id=${response.data[1].id}`,
+        `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/${response.data[1].id}/related`,
       ];
 
       return axios.all(endpoints.map((endpoint) => axios.get(endpoint, axiosHeaders)));
