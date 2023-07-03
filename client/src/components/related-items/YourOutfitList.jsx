@@ -8,7 +8,7 @@ import RightArrow from '../../assets/icons8-arrow-right-black.png';
 import { useSpring, animated } from '@react-spring/web'
 import ResizeObserver from 'resize-observer-polyfill';
 
-const YourOutfitList = ({getAvgRating, currentProduct, currentProductStyles, currentProductAvgRating}) => {
+const YourOutfitList = ({getAvgRating, currentProduct, currentProductStyles, currentProductAvgRating, handleProductCardClick}) => {
 
 
   const initialOutfitList = JSON.parse(localStorage.getItem('outfitList')) || [];
@@ -121,7 +121,7 @@ const YourOutfitList = ({getAvgRating, currentProduct, currentProductStyles, cur
             }
             <animated.div className = "inner-box" style = {{...springs}}>
             {Object.values(outfitProducts).map((product, index) => (
-              <OutfitCard key={index} product={product[0]} id={product[0].id} name={product[0].name} category={product[0].category} price={product[0].default_price} image = {product[1].results[0].photos[0].url || NoImage} avgRating = {product[2].avgRating} handleRemove = {handleRemove} />
+              <OutfitCard key={index} product={product[0]} id={product[0].id} name={product[0].name} category={product[0].category} price={product[0].default_price} image = {product[1].results[0].photos[0].url || NoImage} avgRating = {product[2].avgRating} handleRemove = {handleRemove} handleProductCardClick = {handleProductCardClick}/>
             ))}
             </animated.div>
             {Math.abs(scrollPosition) >= scrollPositionLimit ? (<></>) : (<div className = "arrow" id= "right-arrow" onClick = {handleArrow} style={{backgroundImage:`url(${RightArrow})`}}> </div> )

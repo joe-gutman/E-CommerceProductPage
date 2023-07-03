@@ -10,7 +10,7 @@ const axios = require('axios');
 import { useSpring, animated } from '@react-spring/web'
 
 
-const RelatedProductsList = ({currentRelatedProducts, getAvgRating, currentProduct}) => {
+const RelatedProductsList = ({currentRelatedProducts, getAvgRating, currentProduct, handleProductCardClick }) => {
 
   const [relatedProducts, setRelatedProducts] = useState([]);
 
@@ -117,7 +117,7 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating, currentProdu
             }
             <animated.div className = "inner-box" style = {{...springs}}>
               {relatedProducts.map((product, index) => (
-                <RelatedCard key = {index} product = {product} id = {product.id} name = {product.name} category = {product.category} price = {product.default_price} avgRating = {product.avgRating} features = {product.features} image = {product.results[0].photos[0].url || NoImage} currentProduct = {currentProduct} />
+                <RelatedCard key = {index} product = {product} id = {product.id} name = {product.name} category = {product.category} price = {product.default_price} avgRating = {product.avgRating} features = {product.features} image = {product.results[0].photos[0].url || NoImage} currentProduct = {currentProduct} handleProductCardClick={handleProductCardClick} />
               ))}
 
               {/* {productCount.map(() => (

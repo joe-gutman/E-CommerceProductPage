@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import ActionButtonRelated from './ActionButtonRelated.jsx'
 const axios = require('axios');
 
-const RelatedCard = ({index, product, id, name, category, price, avgRating, features, image, currentProduct}) => {
+const RelatedCard = ({index, product, id, name, category, price, avgRating, features, image, currentProduct, handleProductCardClick }) => {
 
   const [currentFeatures, setCurrentFeatures] = useState([]);
 
@@ -19,7 +19,7 @@ const RelatedCard = ({index, product, id, name, category, price, avgRating, feat
 
   return (
     <>
-      <div className = "card" style = {{width:`${width.toString()}px`}} >
+      <div className = "card" onClick = {() => { handleProductCardClick(id)}} style = {{width:`${width.toString()}px`}} >
         <ActionButtonRelated name = {name} features = {features} currentProduct = {currentProduct} currentFeatures = {currentFeatures} /> <br></br>
           <img src={image} width="300" height="375" alt="product image"/> <br></br>
           <div className = 'card-details'>

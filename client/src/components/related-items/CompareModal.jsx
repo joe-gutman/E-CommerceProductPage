@@ -1,55 +1,7 @@
-// import React, { useState} from 'react';
-// import Modal from 'react-modal';
-
-// const CompareModal = ({isOpen, onRequestClose, name, features, currentProduct, currentFeatures}) => {
-//   console.log(currentFeatures)
-
-
-//   return (
-
-//     <Modal  isOpen = {isOpen} onRequestClose = {onRequestClose} ariaHideApp={false} style={{
-//       content: {
-//         width: '800px',
-//         height: '300px',
-//         margin: 'auto',
-//       },
-//     }}>
-
-//       <h3> Comparing </h3>
-
-//       <h4 id= "selected-product-name"> {name} </h4>
-//       <h4 id= "current-product-name">{currentProduct.name} </h4>
-
-//       <div className = "comparison-modal">
-
-//         {features.map((item, index) => (
-//           <div key={index}>
-//            {item.value} </div>
-//         ))}
-
-//         {currentFeatures.map((item1, index1) => (
-//           <div key ={index1}>
-//             {item1.value} </div>
-//         ))}
-
-//       </div>
-
-
-
-//     </Modal>
-//   )
-
-// }
-
-
-
-// export default CompareModal;
-
 import React from 'react';
 import Modal from 'react-modal';
 
 const CompareModal = ({ isOpen, onRequestClose, name, features, currentProduct, currentFeatures }) => {
-  console.log(currentFeatures);
 
   // Combine the features and currentFeatures into a single array
   const combinedFeatures = [...features, ...currentFeatures];
@@ -82,7 +34,7 @@ const CompareModal = ({ isOpen, onRequestClose, name, features, currentProduct, 
           <thead>
             <tr>
               <th>{name}</th>
-              <th>Characteristic</th>
+              <th></th>
               <th>{currentProduct.name}</th>
             </tr>
           </thead>
