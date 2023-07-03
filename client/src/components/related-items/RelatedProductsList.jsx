@@ -41,7 +41,7 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating, currentProdu
       }
       setRelatedProducts(Object.values(relatedItemData));
     })
-  }, [])
+  }, [currentProduct])
 
   useEffect ( () => {
     resizeObserver.unobserve(document.getElementById("related-products-box"))

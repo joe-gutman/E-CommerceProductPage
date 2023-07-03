@@ -95,6 +95,7 @@ const App = () => {
       });
   };
 
+  console.log(currentRelatedProducts)
 
   if(currentRelatedProducts.length === 0) {
    return (

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import RelatedProductsList from './related-items/RelatedProductsList.jsx';
 import YourOutfitList from './related-items/YourOutfitList.jsx';
 
