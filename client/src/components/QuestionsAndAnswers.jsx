@@ -5,7 +5,7 @@ import QuestionList from './questions-and-answers/QuestionList.jsx';
 const QuestionsAndAnswers = ({ currentProduct }) => {
   return (
     <>
-      <div>QuestionsAndAnswers</div>
+      <h1>QUESTIONS & ANSWERS</h1>
       <SearchBar />
       <QuestionList currentProduct={currentProduct} />
     </>

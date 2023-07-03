@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import OutfitCard from './OutfitCard.jsx';
-import NoImage from '../../assets/Image_not_available.png';
+import NoImage from '../../assets/image-not-available.png';
 import AddImage from '../../assets/AddIconBlack.png';
 
 import LeftArrow from '../../assets/icons8-arrow-left-black.png';

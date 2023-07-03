@@ -1,33 +1,44 @@
-import React, { useState } from 'react';
-import QuestionModal from './QuestionModal.jsx';
+import React, { useState, useEffect } from 'react';
+import AnswerModal from './AnswerModal.jsx';
+import AnswerList from './AnswerList.jsx';
+import axios from 'axios';
 
 const QuestionListEntry = ({ currentProduct, question }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isAnswerModalOpen, setIsAnswerModalOpen] = useState(false);
 
-  function toggleModal(event) {
-    event.preventDefault();
-    setIsOpen(!isOpen)
-    if (event.target.className === 'submit-modal') {
-      // console.log('Send a PUT request');
-    }
+  function handleClick() {
+    // console.log('helpful');
+    // TODO: PUT request
   }
+
 
   return (
     <>
-      <div>Q: {question.question_body}</div>
-      <span> Helpful?
-        <button>
-          Yes ({question.question_helpfulness})
-        </button>
-      </span>
-      <span>
-        <button onClick={toggleModal}>
-          Add Answer
-        </button>
-        {isOpen && <QuestionModal currentProduct={currentProduct} toggleModal={toggleModal}/>}
-      </span>
+      <div className='question-list-entry'>
+        <div>Q: {question.question_body}</div>
+        <span> Helpful?
+          <button onClick={handleClick}>
+            Yes ({question.question_helpfulness})
+          </button>
+        </span>
+        <span>
+          <button onClick={() => setIsAnswerModalOpen(!isAnswerModalOpen)}>
+            Add Answer
+          </button>
+        </span>
+        {
+          isAnswerModalOpen &&
+          <AnswerModal
+            currentProduct={currentProduct}
+            question={question}
+            isAnswerModalOpen={isAnswerModalOpen}
+            setIsAnswerModalOpen={setIsAnswerModalOpen}
+          />
+        }
+        <AnswerList question={question}/>
+      </div>
     </>
-  )
+  );
 };
 
 export default QuestionListEntry;

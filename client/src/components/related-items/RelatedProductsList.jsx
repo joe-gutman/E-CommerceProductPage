@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import RelatedCard from './RelatedCard.jsx';
-import NoImage from '../../assets/Image_not_available.png';
+import NoImage from '../../assets/image-not-available.png';
 import LeftArrow from '../../assets/icons8-arrow-left-black.png';
 import RightArrow from '../../assets/icons8-arrow-right-black.png';
 import ResizeObserver from 'resize-observer-polyfill';
