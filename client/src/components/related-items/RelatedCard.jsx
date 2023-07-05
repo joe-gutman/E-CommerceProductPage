@@ -20,9 +20,9 @@ const RelatedCard = ({index, product, id, name, category, price, avgRating, feat
 
   return (
     <>
-      <div className = "card" onClick = {() => { handleProductCardClick(id)}} style = {{width:`${width.toString()}px`}} >
+      <div className = "card" style = {{width:`${width.toString()}px`}} >
         <ActionButtonRelated name = {name} features = {features} currentProduct = {currentProduct} currentProductFeatures = {currentProductFeatures} /> <br></br>
-          <img src={image} width="300" height="375" alt="product image"/> <br></br>
+          <img src={image} width="300" height="375" alt="product image" onClick = {() => { handleProductCardClick(id)}}/> <br></br>
           <div className = 'card-details'>
             <small className = 'card-text'>{category} </small>
             <span className = 'card-text'> {name} </span>
