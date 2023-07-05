@@ -1,5 +1,6 @@
 import React from 'react';
 import ActionButtonOutfit from './ActionButtonOutfit.jsx'
+import StarDisplay from '../shared-components/StarDisplay.jsx';
 
 const OutfitCard = ({index, product, id, name, category, price, avgRating,image, handleRemove, handleProductCardClick}) => {
 
@@ -14,6 +15,7 @@ const OutfitCard = ({index, product, id, name, category, price, avgRating,image,
             <small className = 'card-text'>{category} </small>
             <span className = 'card-text'> {name} </span>
             <small className = 'card-text'> ${price} </small>
+            <StarDisplay className = 'card-text' name = {name} id = {id} rating={avgRating} size={50}/>
             <small className = 'card-text'>{avgRating} *</small>
           </div>
       </div>

@@ -62,7 +62,7 @@ const StarDisplay = (props) => {
       }
       ctx.stroke();
     }
-  }, []);
+  }, [props]);
 
   return (<canvas className="star-display" id={props.name} width={props.size * 5} height={props.size} />);
 }

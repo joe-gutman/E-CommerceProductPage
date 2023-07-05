@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import ActionButtonRelated from './ActionButtonRelated.jsx'
 const axios = require('axios');
+import StarDisplay from '../shared-components/StarDisplay.jsx';
 
 const RelatedCard = ({index, product, id, name, category, price, avgRating, features, image, currentProduct, handleProductCardClick }) => {
 
@@ -26,6 +27,7 @@ const RelatedCard = ({index, product, id, name, category, price, avgRating, feat
             <small className = 'card-text'>{category} </small>
             <span className = 'card-text'> {name} </span>
             <small className = 'card-text'> ${price} </small>
+            <StarDisplay className = 'card-text' name = {name} id = {id} rating={avgRating} size={50}/>
             <small className = 'card-text'>{avgRating} *</small>
           </div>
       </div>

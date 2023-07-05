@@ -54,8 +54,8 @@ const CompareModal = ({ isOpen, onRequestClose, name, features, currentProduct, 
                     {/* Display the feature value or the currentProductFeature value */}
                     {feature ? (
                       feature.value ? `${feature.feature}: ${feature.value}` : feature.feature
-                    ) : (
-                      `${currentProductFeature.feature}: ${currentProductFeature.value}`
+                    ) : ((currentProductFeature.value) ?
+                      `${currentProductFeature.feature}: ${currentProductFeature.value}` : currentProductFeature.feature
                     )}
                   </td>
                   <td className="checkmark">
