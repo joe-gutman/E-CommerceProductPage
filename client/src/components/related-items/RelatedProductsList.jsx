@@ -43,6 +43,17 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating, currentProdu
     })
   }, [currentProduct])
 
+  const [currentProductFeatures, setCurrentProductFeatures] = useState([]);
+
+  useEffect (() => {
+    const currentId = currentProduct.id
+    var axiosHeaders = {headers:{"Authorization" : process.env.AUTH_SECRET}};
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/${currentId}`, axiosHeaders)
+    .then((results) => {
+      setCurrentProductFeatures(results.data.features);
+    })
+    }, [currentProduct])
+
   useEffect ( () => {
     resizeObserver.unobserve(document.getElementById("related-products-box"))
     resizeObserver.observe(document.getElementById("related-products-box"))
@@ -117,7 +128,7 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating, currentProdu
             }
             <animated.div className = "inner-box" style = {{...springs}}>
               {relatedProducts.map((product, index) => (
-                <RelatedCard key = {index} product = {product} id = {product.id} name = {product.name} category = {product.category} price = {product.default_price} avgRating = {product.avgRating} features = {product.features} image = {product.results[0].photos[0].url || NoImage} currentProduct = {currentProduct} handleProductCardClick={handleProductCardClick} />
+                <RelatedCard key = {index} product = {product} id = {product.id} name = {product.name} category = {product.category} price = {product.default_price} avgRating = {product.avgRating} features = {product.features} image = {product.results[0].photos[0].url || NoImage} currentProduct = {currentProduct} handleProductCardClick={handleProductCardClick} currentProductFeatures = {currentProductFeatures} setCurrentProductFeatures = {setCurrentProductFeatures}/>
               ))}
 
               {/* {productCount.map(() => (

@@ -263,6 +263,7 @@ label {
   display: flex;
   flex-direction: column;
   padding: 10px;
+  cursor: pointer;
 }
 
 .action-button {
@@ -273,6 +274,10 @@ label {
 
 .card-text {
   padding: 8px;
+}
+
+.product-image {
+  cursor: pointer;
 }
 
 .comparison-modal {

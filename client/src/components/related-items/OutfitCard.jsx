@@ -10,8 +10,8 @@ const OutfitCard = ({index, product, id, name, category, price, avgRating,image,
     <>
       <div className = "card" style = {{width:`${width.toString()}px`}}>
         <ActionButtonOutfit handleRemove = {handleRemove} id = {id} /> <br></br>
-          <img src={image} width="300" height="375" alt="product image" onClick = { () => {handleProductCardClick(id)}} /> <br></br>
-          <div className = 'card-details'>
+          <img src={image} width="300" height="375" alt="product image" className = "product-image" onClick = { () => {handleProductCardClick(id)}} /> <br></br>
+          <div className = 'card-details' onClick = { () => {handleProductCardClick(id)}} >
             <small className = 'card-text'>{category} </small>
             <span className = 'card-text'> {name} </span>
             <small className = 'card-text'> ${price} </small>
