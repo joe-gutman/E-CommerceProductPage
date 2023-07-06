@@ -108,9 +108,9 @@ const App = () => {
 
 /////COMMENT WHEN TESTING ******
   if(currentRelatedProducts.length === 0) {
-   return (
-   <div> Is loading... </div>
-   )
+    return (
+      <div> Is loading... </div>
+    )
   } else {
     return (
       <div role = "product-page">
