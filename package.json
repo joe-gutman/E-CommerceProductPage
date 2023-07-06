@@ -25,6 +25,7 @@
     "@babel/plugin-syntax-jsx": "^7.22.5",
     "@react-spring/web": "^9.7.3",
     "axios": "^1.4.0",
+    "canvas": "^2.11.2",
     "css-loader": "^6.8.1",
     "dotenv": "^16.3.1",
     "eslint": "^8.43.0",

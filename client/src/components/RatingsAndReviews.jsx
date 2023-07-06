@@ -4,7 +4,8 @@ import StarDisplay from './shared-components/StarDisplay.jsx';
 import ReviewList from './ratings-and-reviews/ReviewList.jsx';
 import ProductFactors from './ratings-and-reviews/ProductFactors.jsx';
 import ReviewBreakdown from './ratings-and-reviews/ReviewBreakdown.jsx';
-import getAvgRating from '../index.jsx';
+import ReviewModal from './ratings-and-reviews/ReviewModal.jsx';
+import { getAvgRating } from '../index.jsx';
 
 const axios = require('axios');
 
@@ -72,13 +73,13 @@ const RatingsAndReviews = () => {
     ratings: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0},
     recommended: {0: 0, 1: 0},
     characteristics: {
-      Size: {id: 14, value: '0.00000'},
-      Width: {id: 15, value: '0.00000'},
-      Comfort: {id: 16, value: '0.00000'},
-      Quality: {id: 17, value: '0.00000'},
-      Length: {id: 18, value: '0.00000'}
+      Size: {id: 14, value: '3.00000'},
+      Width: {id: 15, value: '3.00000'},
+      Comfort: {id: 16, value: '3.00000'},
+      Quality: {id: 17, value: '3.00000'},
+      Length: {id: 18, value: '3.00000'}
     }
-  }
+  };
   for (let f = 0; f < reviewsFake.results.length; f++) {
     reviewMetaFake.ratings[reviewsFake.results[f].rating]++;
     reviewMetaFake.recommended[reviewsFake.results[f].recommend ? 1 : 0]++;
@@ -87,19 +88,35 @@ const RatingsAndReviews = () => {
     reviewMetaFake.ratings[f] += '';
   }
   //console.log(reviewMetaFake.ratings);
+  const [reviews, setReviews] = useState(reviewsFake);
+  const [reviewMeta, setReviewMeta] = useState(reviewMetaFake);
+  const [modalOpen, setModalOpen] = useState(false);
 
-  return (<>
+  return (<div id='ratings-and-reviews' role='review-section'>
     <h3>Ratings And Reviews</h3>
-    <div>
-      <ReviewBreakdown avg={getAvgRating(reviewMetaFake.ratings)} ratings={reviewMetaFake.ratings} rec={reviewMetaFake.recommended}/>
+
+    <ReviewBreakdown
+      avg={getAvgRating(reviewMeta.ratings)}
+      ratings={reviewMeta.ratings}
+      rec={reviewMeta.recommended} />
+
+    <ReviewList reviews={reviews} />
+
+    <div className="add-review" role='add-review'>
+      <button onClick={() => setModalOpen(!modalOpen)}>
+        Leave a review!
+      </button>
+      {
+        modalOpen &&
+        <ReviewModal
+          modalOpen={modalOpen}
+          setModalOpen={setModalOpen}
+        />
+      }
     </div>
-    <div>
-      <ReviewList reviews={reviewsFake}/>
-    </div>
-    <div>
-      <ProductFactors factors={reviewMetaFake.characteristics}/>
-    </div>
-  </>);
+
+    <ProductFactors factors={reviewMeta.characteristics} />
+  </div>);
 }
 
 export default RatingsAndReviews;

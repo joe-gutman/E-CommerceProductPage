@@ -1,4 +1,4 @@
-import getAvgRating from '../client/src/index.jsx';
+import { getAvgRating } from '../client/src/index.jsx';
 
 describe('Test average product rating', () => {
   describe('Should return a number', () => {

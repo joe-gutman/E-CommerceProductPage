@@ -29,15 +29,15 @@ const ReviewBreakdown = (props) => {
     ctx.stroke();
   }, []);
 
-  return (<>
+  return (<div role='review-breakdown'>
   <h4>Review Breakdown</h4>
-  <div><StarDisplay name='breakdown-star-display' size={50} rating={props.avg}/></div>
+  <div><StarDisplay name='breakdown-star-display' size={50} rating={props.avg} roundTo={10} fillMode='radial'/></div>
   <div>{props.avg}</div>
   <div>
     <canvas id='breakdown-ratings-chart' width='250' height='250'></canvas>
   </div>
   <div>{Math.round(100 * props.rec[1] / (props.rec[0] + props.rec[1]))}% of customers recommend this product.</div>
-  </>);
+  </div>);
 }
 
 export default ReviewBreakdown;

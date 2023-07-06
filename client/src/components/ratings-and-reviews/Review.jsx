@@ -3,7 +3,7 @@ import StarDisplay from '../shared-components/StarDisplay.jsx';
 
 const Review = (props) => {
 
-  return (<div className='review'>
+  return (<div className='review' role='review'>
     <div><StarDisplay name={'review' + props.review.review_id + '-star-display'} size={40} rating={props.review.rating}/></div>
     <div>{props.review.summary}</div>
     <div>{props.review.body}</div>
