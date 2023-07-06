@@ -134,3 +134,4 @@ export default App;
 export {getAvgRating, RelatedItems};
 
 
+//delete comment
