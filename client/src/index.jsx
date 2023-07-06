@@ -84,6 +84,5 @@ window.addEventListener("DOMContentLoaded", function (e) {
 
 
 export default App;
-export {getAvgRating};
-export {Overview};
+export {getAvgRating, Overview, RatingsAndReviews, RelatedItems, QuestionsAndAnswers};
 
