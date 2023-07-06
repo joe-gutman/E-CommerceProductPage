@@ -4,7 +4,7 @@ import StarDisplay from './shared-components/StarDisplay.jsx';
 import ReviewList from './ratings-and-reviews/ReviewList.jsx';
 import ProductFactors from './ratings-and-reviews/ProductFactors.jsx';
 import ReviewBreakdown from './ratings-and-reviews/ReviewBreakdown.jsx';
-import getAvgRating from '../index.jsx';
+import {getAvgRating} from '../index.jsx';
 
 const axios = require('axios');
 
@@ -103,3 +103,4 @@ const RatingsAndReviews = () => {
 }
 
 export default RatingsAndReviews;
+//delete comment
