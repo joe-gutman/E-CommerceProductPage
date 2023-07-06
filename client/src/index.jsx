@@ -95,16 +95,18 @@ const App = () => {
       });
   };
 
+////UNCOMMENT WHEN TESTING****
   // return (
   //   <div role = "product-page">
   //   <Overview />
-  //   {/* <RatingsAndReviews /> */}
+  //   <RatingsAndReviews />
   //   <QuestionsAndAnswers currentProduct={currentProduct}/>
   //   <RelatedItems currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating}
   //   currentProduct = {currentProduct} currentProductStyles = {currentProductStyles} currentProductAvgRating = {currentProductAvgRating} handleProductCardClick={handleProductCardClick}  />
   //   </div>
   // );
 
+/////COMMENT WHEN TESTING ******
   if(currentRelatedProducts.length === 0) {
    return (
    <div> Is loading... </div>
