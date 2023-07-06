@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const AnswerModal = ({ currentProduct, question, isAnswerModalOpen, setIsAnswerModalOpen }) => {
+const AnswerModal = ({ currentProduct, question, isAnswerModalOpen, setIsAnswerModalOpen, getAnswers }) => {
   const [answerInput, setAnswerInput] = useState({
     'body': '',
     'name': '',
@@ -24,7 +24,14 @@ const AnswerModal = ({ currentProduct, question, isAnswerModalOpen, setIsAnswerM
       return;
     }
     setIsAnswerModalOpen(!isAnswerModalOpen);
-    addAnswerToDb();
+    addAnswerToDb()
+      .then(() => {
+        console.log('get answers added to db');
+        getAnswers();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   function checkValidInput() {
@@ -42,19 +49,17 @@ const AnswerModal = ({ currentProduct, question, isAnswerModalOpen, setIsAnswerM
 
   function addAnswerToDb() {
     var url = `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/qa/questions/${question.question_id}/answers`;
-    var headers = {"Authorization": process.env.AUTH_SECRET}
+    var headers = { 'Authorization' : process.env.AUTH_SECRET, 'withCredentials': true };
 
-    // console.log('question id: ', question.question_id);
-    axios.post(url, answerInput, { headers })
-      .catch((error) => {
-        console.log(error);
-      });
+    // console.log('question id: ',  question.question_id);
+
+    return axios.post(url, answerInput, { 'headers': headers });
   }
 
 
   return (
     <>
-      <div className='modal'>
+      <div className='question-and-answer-modal'>
         <div className='modal-content'>
           <button className='close-modal' onClick={() => setIsAnswerModalOpen(!isAnswerModalOpen)}>
             X
@@ -69,7 +74,7 @@ const AnswerModal = ({ currentProduct, question, isAnswerModalOpen, setIsAnswerM
                 className='modal-form-input'
                 name='body'
                 rows='10'
-                maxlength='1000'
+                maxLength='1000'
                 value={answerInput.answer}
                 onChange={handleChange}>
               </textarea>
@@ -81,7 +86,7 @@ const AnswerModal = ({ currentProduct, question, isAnswerModalOpen, setIsAnswerM
                 className='modal-form-input'
                 name='name'
                 type='text'
-                maxlength='60'
+                maxLength='60'
                 placeholder='Example: jack543!'
                 value={answerInput.nickname}
                 onChange={handleChange}
@@ -96,7 +101,7 @@ const AnswerModal = ({ currentProduct, question, isAnswerModalOpen, setIsAnswerM
                 className='modal-form-input'
                 name='email'
                 type='text'
-                maxlength='60'
+                maxLength='60'
                 placeholder='Example: jack@email.com'
                 value={answerInput.email}
                 onChange={handleChange}
@@ -105,10 +110,10 @@ const AnswerModal = ({ currentProduct, question, isAnswerModalOpen, setIsAnswerM
 
             <p>For authentication reasons, you will not be emailed</p>
 
-            <button className='upload-photo'>
+            <button className='upload-photo-btn'>
               Upload Photos
             </button>
-            <button className='submit-modal' onClick={handleSubmit}>
+            <button className='submit-modal-btn' onClick={handleSubmit}>
               Submit
             </button>
           </form>

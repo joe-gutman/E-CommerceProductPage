@@ -59,9 +59,9 @@ const App = () => {
 
 
   if(currentRelatedProducts.length === 0) {
-   return (
-   <div> Is loading... </div>
-   )
+    return (
+      <div> Is loading... </div>
+    )
   } else {
     return (
       <div>
@@ -84,4 +84,5 @@ window.addEventListener("DOMContentLoaded", function (e) {
 
 
 export default getAvgRating;
+// export { getAvgRating };
 

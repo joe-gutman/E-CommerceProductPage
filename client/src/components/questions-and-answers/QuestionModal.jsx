@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const QuestionModal = ({ currentProduct, isQuestionModalOpen, setIsQuestionModalOpen }) => {
+const QuestionModal = ({ currentProduct, isQuestionModalOpen, setIsQuestionModalOpen, getQuestions }) => {
   const [questionInput, setQuestionInput] = useState({
     'product_id': currentProduct.id,
     'body': '',
@@ -24,7 +24,14 @@ const QuestionModal = ({ currentProduct, isQuestionModalOpen, setIsQuestionModal
       return;
     }
     setIsQuestionModalOpen(!isQuestionModalOpen);
-    addQuestionToDb();
+    addQuestionToDb()
+      .then(() => {
+        console.log('get Questions after adding to DB');
+        getQuestions();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   function checkValidInput() {
@@ -44,16 +51,14 @@ const QuestionModal = ({ currentProduct, isQuestionModalOpen, setIsQuestionModal
     var url = `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/qa/questions`;
     var headers = {"Authorization": process.env.AUTH_SECRET}
 
-    axios.post(url, questionInput, { headers })
-      .catch((error) => {
-        console.log(error);
-      });
+    console.log('add question to DB')
+    return axios.post(url, questionInput, { headers })
   }
 
 
   return (
     <>
-      <div className='modal'>
+      <div className='question-and-answer-modal'>
         <div className='modal-content'>
           <button className='close-modal' onClick={() => setIsQuestionModalOpen(!isQuestionModalOpen)}>
             X
@@ -68,7 +73,7 @@ const QuestionModal = ({ currentProduct, isQuestionModalOpen, setIsQuestionModal
                 className='modal-form-input'
                 name='body'
                 rows='10'
-                maxlength='1000'
+                maxLength='1000'
                 value={questionInput.question}
                 onChange={handleChange}>
               </textarea>
@@ -80,7 +85,7 @@ const QuestionModal = ({ currentProduct, isQuestionModalOpen, setIsQuestionModal
                 className='modal-form-input'
                 name='name'
                 type='text'
-                maxlength='60'
+                maxLength='60'
                 placeholder='Example: jack543!'
                 value={questionInput.nickname}
                 onChange={handleChange}
@@ -95,7 +100,7 @@ const QuestionModal = ({ currentProduct, isQuestionModalOpen, setIsQuestionModal
                 className='modal-form-input'
                 name='email'
                 type='text'
-                maxlength='60'
+                maxLength='60'
                 placeholder='Why did you like the product or not?'
                 value={questionInput.email}
                 onChange={handleChange}

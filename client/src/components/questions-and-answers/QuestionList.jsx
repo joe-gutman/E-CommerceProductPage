@@ -6,78 +6,100 @@ import QuestionModal from './QuestionModal.jsx';
 const QuestionList = ({ currentProduct, query }) => {
   const [questions, setQuestions] = useState([]);
   const [isQuestionModalOpen, setIsQuestionModalOpen] = useState(false);
-  const [currentNumberOfQuestions, setCurrentNumberOfQuestions] = useState(2);
+  const [currentNumberOfQuestions, setCurrentNumberOfQuestions] = useState(2);  // display 2 questions on page
+  const [userData, setUserData] = useState([]);
 
   const filteredQuestions = query.length < 3 ? questions : questions.filter((question) => {
     return question.question_body.toLowerCase().includes(query.toLowerCase());
-  })
+  });
 
-  var url = `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/qa/questions?product_id=${40347}&count=20`;
-  var headers = {"Authorization": process.env.AUTH_SECRET};
+  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/qa/questions?product_id=${currentProduct.id}&count=100`;
+  const headers = {"Authorization": process.env.AUTH_SECRET};
 
   useEffect(() => {
+    getQuestionData();
+  }, [currentProduct]);
+
+  function getQuestionData() {
+    getUserData();
+    // get the questions from the DB to update # of clicks / order of data displayed
+    getQuestions();
+  };
+
+  // get the array of question ids that the user finds `helpful` (this data is saved in localStorage)
+  function getUserData() {
+    var userData = JSON.parse(localStorage.getItem(`Q&A_${document.cookie}`)) || {answer: [], question: []};
+    setUserData(userData);
+  };
+
+  // get the questions from the DB
+  // the questions are already sorted by # of clicks, time created when retrieved
+  function getQuestions() {
     axios.get(url, { headers })
       .then((response) => {
-        // console.log('response: ', response.data.results);
-        // var questionArray = response.data.results;
-        // var sortedQuestionArray = questionArray.sort((a, b) => {
-        //   a.helpfulness - b.helpfulness;
-        // })
-        // console.log('data:' , questionArray);
-        // console.log('sorted: ', sortedQuestionArray);
         setQuestions(response.data.results);
       });
-  }, []);
+  };
 
   function handleClick(event) {
     event.preventDefault();
-    setIsQuestionModalOpen(!isQuestionModalOpen)
-  }
+    setIsQuestionModalOpen(!isQuestionModalOpen);
+  };
 
 
   return (
-    <div className='question-list'>
-      <div
-        className='question-list-content'
-        style={currentNumberOfQuestions > 4 ? {overflowY: 'scroll'} : null}>
-        {
-          filteredQuestions.length !== 0 &&
-          filteredQuestions.slice(0, currentNumberOfQuestions).map((question) => {
-            return (
-              <QuestionListEntry
-              currentProduct={currentProduct}
-              question={question}
-              key={question.question_id}
-              />
+    <>
+      <div className='question-list'>
+        <div className='question-list-content'>
+          {
+            filteredQuestions.length !== 0 &&
+            filteredQuestions.slice(0, currentNumberOfQuestions).map((question) => {
+              return (
+                <QuestionListEntry
+                  key={question.question_id}
+                  currentProduct={currentProduct}
+                  question={question}
+                  userData={userData}
+                  getQuestionData={getQuestionData}
+                  getUserData={getUserData}
+                />
               )
             })
           }
-      </div>
+        </div>
 
-      <div className='load-more-questions-btn'>
-        {
-          query.length < 3 && questions.length > 2 &&
-          currentNumberOfQuestions < questions.length &&
-          <button onClick={() => setCurrentNumberOfQuestions(currentNumberOfQuestions + 2)}>
-            MORE ANSWERED QUESTIONS
-          </button>
-        }
-      </div>
+        <div className='question-list-buttons'>
+          <span>
+            {
+              query.length < 3 && questions.length > 2 &&
+              currentNumberOfQuestions < questions.length &&
+              <button
+                className='bold-font button load-more-questions-btn'
+                onClick={() => setCurrentNumberOfQuestions(currentNumberOfQuestions + 2)}>
+                MORE ANSWERED QUESTIONS
+              </button>
+            }
+          </span>
+          <span>
+            <button className='bold-font button add-question-btn' onClick={handleClick}>
+              ADD A QUESTION +
+            </button>
+          </span>
 
-      <div className="add-question-btn">
-        <button onClick={handleClick}>
-          ADD A QUESTION +
-        </button>
-        {
-          isQuestionModalOpen &&
-          <QuestionModal
-            currentProduct={currentProduct}
-            isQuestionModalOpen={isQuestionModalOpen}
-            setIsQuestionModalOpen={setIsQuestionModalOpen}
-          />
-        }
+          <div className='add-question-modal'>
+            {
+              isQuestionModalOpen &&
+              <QuestionModal
+                currentProduct={currentProduct}
+                isQuestionModalOpen={isQuestionModalOpen}
+                setIsQuestionModalOpen={setIsQuestionModalOpen}
+                getQuestions={getQuestions}
+              />
+            }
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
