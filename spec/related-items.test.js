@@ -3,7 +3,7 @@ import { render, within, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import App, {RelatedItems, getAvgRating} from '../client/src/index.jsx';
 import RelatedProductsList from '../client/src/components/related-items/RelatedProductsList.jsx';
-import ActionButtonRelated from '../client/src/components/related-items/ActionButtonRelated.jsx'
+// import ActionButtonRelated from '../client/src/components/related-items/ActionButtonRelated.jsx'
 require('dotenv').config();
 
 
@@ -1444,13 +1444,11 @@ var expectElementByRole = (testMessage, role) => {
       const { getByRole } = render(<RelatedItems currentRelatedProducts = {currentRelatedProducts} currentProduct = {currentProduct} getAvgRating = {getAvgRating} />);
 
       await waitFor(() => {
-
         try{
           expect(getByRole(role)).toBeTruthy();
         } catch {
           throw Error(`Expected component with role= '${role}' to exist`)
         }
-
       })
   })
 
@@ -1458,42 +1456,22 @@ var expectElementByRole = (testMessage, role) => {
 
 describe("Elements should exist for rendering list views with products", () => {
 
-  expectElementByRole('Users should have way to see displayed related product info',  'related-product-info')
+  expectElementByRole('Users should have way to see displayed related product info and list for outfits they created', "should-show-related-products-and-outfit-list")
 
   expectElementByRole('Users should have way to learn about related products that may interest them', 'show-related-products')
-
-  var currentRelatedProducts = [
-    40346,
-    40350,
-    40349,
-    40348
-  ]
-
-    expectElementByRole("Users should have way to see details of related products-3", "show-details-of-related-product-3")
-
-     expectElementByRole("user-should-be-able-compare-products", "user-should-be-able-compare-products-3")
-}
-
-)
+})
 
 
-// test('renders component with async data and finds element by role', async () => {
-//   // Render your component
-//   const currentRelatedProducts = await fetchCurrentRelatedIds();
-//   // const relatedProducts = await fetchRelatedProducts();
-//   const currentProduct = await fetchCurrentProduct();
+describe("Related products should render in section for related products and allow comparisons", () => {
 
-//   const { getByRole } = render(<RelatedProductsList currentRelatedProducts = {currentRelatedProducts} currentProduct = {currentProduct} getAvgRating = {getAvgRating} />);
+    var currentRelatedProducts = [
+      40346,
+      40350,
+      40349,
+      40348
+    ]
+      expectElementByRole("Users should have way to see details of related products-3", "show-details-of-related-product-3")
 
+       expectElementByRole("user should be able to compare current product against related products", "Users-should-be-able-compare-products-3")
+  })
 
-//   // Wait for the async data to be fetched
-//   await waitFor(() => {
-//     currentRelatedProducts.map((relatedProduct, index) => {
-//       var element = getByRole(`show-details-of-related-product-${index}`);
-//       expect(element).toBeInTheDocument();
-//   })
-//     // Perform assertions after the data is available
-
-//     // Additional assertions...
-//   });
-// });
