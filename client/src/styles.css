@@ -152,11 +152,15 @@ div[id*='thumbnail-checkmark-'] {
   background-size:200%;
 }
 
-.box {
+/*.box {
   display: flex;
   justify-content: flex;
   align-items: center;
   height: 400px;
+} */
+
+body.active-modal {
+    overflow-y: hidden;
 }
 
 .btn-modal {
@@ -199,6 +203,8 @@ label {
 .modal-form-input {
   width: 95%;
 }
+
+
 .wrapper {
   position: relative;
   width: 100%;
@@ -207,10 +213,9 @@ label {
 .box {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  height: 400px;
+  min-height: 500px;
   border: 2px solid rgb(189, 189, 189);
-  margin: 25px;
+  margin: 40px;
   overflow: hidden;
 }
 
@@ -222,6 +227,12 @@ label {
 .arrow {
   position: absolute;
   cursor: pointer;
+  height: 100%;
+  align-content: center;
+  width: 40px;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position-y: center;
 }
 
 #left-arrow {
@@ -234,16 +245,56 @@ label {
 
 .card {
   border: 2px solid rgb(189, 189, 189);
+  padding: 5px;
+  text-align: center;
 }
-
 
 .card-details {
   display: flex;
   flex-direction: column;
   padding: 10px;
+  cursor: pointer;
+}
+
+.action-button {
+  cursor: pointer;
+  text-align: right;
+
 }
 
 .card-text {
-  padding: 10px;
+  padding: 8px;
 }
 
+.product-image {
+  cursor: pointer;
+}
+
+.comparison-modal {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+
+table {
+  margin-top: 10px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th{
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f2f2f2;
+}
+
+td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+
+.checkmark {
+  text-align: center;
+}

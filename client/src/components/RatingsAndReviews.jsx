@@ -103,3 +103,4 @@ const RatingsAndReviews = () => {
 }
 
 export default RatingsAndReviews;
+//delete comment

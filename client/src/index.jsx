@@ -57,22 +57,69 @@ const App = () => {
     });
   }, []);
 
+  const handleProductCardClick = (productId) => {
+    var axiosHeaders = { headers: { "Authorization": process.env.AUTH_SECRET } };
 
-  return (
-    <div role="product-page">
-    <Overview />
-    <RatingsAndReviews />
-    <QuestionsAndAnswers currentProduct={currentProduct}/>
-    <RelatedItems currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating}
-    currentProduct = {currentProduct} />
-    </div>
-  );
-  // if(currentRelatedProducts.length === 0) {
-  //  return (
-  //  <div> Is loading... </div>
-  //  )
-  // } else {
-  // }
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/?count=50`, axiosHeaders)
+      .then((response) => {
+
+        const selectedProduct = response.data.find((product) => product.id === productId);
+        setCurrentProduct(selectedProduct);
+          var styleEndpoint = `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/${productId}/styles`;
+          var reviewsEndpoint = `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/reviews/meta?product_id=${productId}`;
+          var relatedEndpoint = `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/${productId}/related`;
+
+          return axios.all([
+            axios.get(styleEndpoint, axiosHeaders),
+            axios.get(reviewsEndpoint, axiosHeaders),
+            axios.get(relatedEndpoint, axiosHeaders)
+          ]);
+      })
+      .then((responses) => {
+        const stylesResponse = responses[0];
+        const reviewsResponse = responses[1];
+        const relatedResponse = responses[2];
+
+        const styles = stylesResponse.data;
+        const reviews = reviewsResponse.data;
+        const related = relatedResponse.data;
+
+        setCurrentProductStyles(styles);
+        setCurrentRelatedProducts(related);
+        setCurrentAvgRating(getAvgRating(reviews.ratings));
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        throw error;
+      });
+  };
+
+////UNCOMMENT WHEN TESTING****
+  // return (
+  //   <div role = "product-page">
+  //   <Overview />
+  //   <RatingsAndReviews />
+  //   <QuestionsAndAnswers currentProduct={currentProduct}/>
+  //   <RelatedItems currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating}
+  //   currentProduct = {currentProduct} currentProductStyles = {currentProductStyles} currentProductAvgRating = {currentProductAvgRating} handleProductCardClick={handleProductCardClick}  />
+  //   </div>
+  // );
+
+  if(currentRelatedProducts.length === 0) {
+   return (
+   <div> Is loading... </div>
+   )
+  } else {
+    return (
+      <div>
+      <Overview />
+      <RatingsAndReviews />
+      <QuestionsAndAnswers currentProduct={currentProduct}/>
+      <RelatedItems currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating}
+      currentProduct = {currentProduct} />
+      </div>
+    );
+  }
 }
 
 window.addEventListener("DOMContentLoaded", function (e) {
@@ -85,4 +132,3 @@ window.addEventListener("DOMContentLoaded", function (e) {
 
 export default App;
 export {getAvgRating, Overview, RatingsAndReviews, RelatedItems, QuestionsAndAnswers};
-
