@@ -133,7 +133,4 @@ window.addEventListener("DOMContentLoaded", function (e) {
 
 
 export default App;
-export {getAvgRating, RelatedItems};
-
-
-//delete comment
+export {getAvgRating, Overview, RatingsAndReviews, RelatedItems, QuestionsAndAnswers};
