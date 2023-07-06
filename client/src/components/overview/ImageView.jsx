@@ -7,7 +7,7 @@ var ImageView = ({currentProductImage, setCurrentProductImage, thumbnailImages, 
 
   return (
     <div id="image-view" role="product-photos">
-      <Carousel setCurrentProductImage={setCurrentProductImage} currentProductImage={currentProductImage} thumbnailImages={thumbnailImages}/>
+      <Carousel currentProductImage={currentProductImage} setCurrentProductImage={setCurrentProductImage} thumbnailImages={thumbnailImages}/>
       <MainImage currentProductImage={currentProductImage} zoomIn={zoomIn} />
     </div>
   )

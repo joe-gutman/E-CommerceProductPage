@@ -58,21 +58,21 @@ const App = () => {
   }, []);
 
 
-  if(currentRelatedProducts.length === 0) {
-   return (
-   <div> Is loading... </div>
-   )
-  } else {
-    return (
-      <div>
-      <Overview />
-      <RatingsAndReviews />
-      <QuestionsAndAnswers currentProduct={currentProduct}/>
-      <RelatedItems currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating}
-      currentProduct = {currentProduct} />
-      </div>
-    );
-  }
+  return (
+    <div role="product-page">
+    <Overview />
+    <RatingsAndReviews />
+    <QuestionsAndAnswers currentProduct={currentProduct}/>
+    <RelatedItems currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating}
+    currentProduct = {currentProduct} />
+    </div>
+  );
+  // if(currentRelatedProducts.length === 0) {
+  //  return (
+  //  <div> Is loading... </div>
+  //  )
+  // } else {
+  // }
 }
 
 window.addEventListener("DOMContentLoaded", function (e) {
@@ -83,5 +83,7 @@ window.addEventListener("DOMContentLoaded", function (e) {
 });
 
 
-export default getAvgRating;
+export default App;
+export {getAvgRating};
+export {Overview};
 

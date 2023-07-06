@@ -91,7 +91,7 @@ const RatingsAndReviews = () => {
   return (<>
     <h3>Ratings And Reviews</h3>
     <div>
-      <ReviewBreakdown avg={getAvgRating(reviewMetaFake.ratings)} ratings={reviewMetaFake.ratings} rec={reviewMetaFake.recommended}/>
+      <ReviewBreakdown avg={3} ratings={reviewMetaFake.ratings} rec={reviewMetaFake.recommended}/>
     </div>
     <div>
       <ReviewList reviews={reviewsFake}/>

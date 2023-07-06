@@ -1,16 +1,7 @@
-import 'jest-expect-message';
 import React from 'react';
-import Overview from '../client/src/components/Overview.jsx';
-import {render, within} from '@testing-library/react'
+import App, {Overview } from '../client/src/index.jsx';
+import {render, within} from '@testing-library/react';
 require('dotenv').config();
-
-
-var isTruthy = (received) => {
-  const pass = received === true || (typeof received === 'object' && received !== null);
-  if (pass) {
-    return true;
-  }
-};
 
 const { getByRole }  = render(<Overview />);
 const { getByRole: getChildByRole } = within(getByRole('product-information'));
@@ -18,7 +9,7 @@ const { getByRole: getChildByRole } = within(getByRole('product-information'));
 var expectElementByRole = (testMessage, role) => {
   test(testMessage, () => {
     try{
-      isTruthy(within(getChildByRole(role)));
+      expect(within(getChildByRole(role))).toBeTruthy();
     } catch {
       throw Error(`Expected component with role='${role}' to exist`)
     }
@@ -32,7 +23,8 @@ describe('Elements should exist for viewing product images', () => {
   expectElementByRole('Carousel should exist for selecting a product image to view', 'select-product-photos');
   expectElementByRole('Product photo view should exist to view a selected product photo', 'view-selected-product-photo');
   expectElementByRole('Current Product Photo should exist to view a selected product photo', 'current-product-photo');
-  expectElementByRole('Expanded Image View should exist for zooming in on a currently select product photo', 'zoom-current-product-photo');
+  expectElementByRole('Expanded Image View should exist for showing a larger view ', 'expand-current-product-photo');
+  expectElementByRole('Zoom Image View should exist for zooming in on a currently select product photo', 'expand-current-product-photo');
 });
 
 /* ------------------------- Selecting Product Test ------------------------- */

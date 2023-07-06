@@ -65,7 +65,7 @@
 .thumbnail-image {
   display: relative;
   width: 100%;
-  background-size: auto 100%;
+  background-size: cover;
   background-position: center;
   cursor: pointer;
 }
@@ -103,7 +103,7 @@ div[id*='thumbnail-checkmark-'] {
   z-index: 1000;
 }
 
-#expanded-product-image-container {
+#expanded-image-container {
   position: relative;
   display:flex;
   justify-content:center;
@@ -115,7 +115,7 @@ div[id*='thumbnail-checkmark-'] {
   cursor: default;
 }
 
-#expanded-product-image {
+#expanded-image {
   position: relative;
   display:flex;
   justify-content:center;
@@ -124,7 +124,7 @@ div[id*='thumbnail-checkmark-'] {
   height:90%;
   margin: auto;
   background-position: center;
-  background-size: auto 100%;
+  background-size: cover;
   cursor: zoom-in;
 }
 
@@ -138,6 +138,18 @@ div[id*='thumbnail-checkmark-'] {
   line-height: 100%;
   cursor: pointer;
   background-size: auto 100%;
+}
+
+#magnifier {
+  position: absolute;
+  border-radius: 100%;
+  background-color: red;
+  background-repeat: no-repeat;
+}
+
+#zoomed-image {
+  position: absolute;
+  background-size:200%;
 }
 
 .box {

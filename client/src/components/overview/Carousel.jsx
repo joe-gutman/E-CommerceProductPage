@@ -6,7 +6,6 @@ import PlaceholderImage from '../../assets/image-not-available.png'
 import Checkmark from '../../assets/icons8-checkmark.png'
 
 var Carousel = ({currentProductImage, setCurrentProductImage, thumbnailImages}) => {
-  var [thumbnailImages, setThumbnailImages] = useState([...Array(14).keys()]);
   var [carouselHeight, setCarouselHeight] = useState(null);
   var [thumbnailImageHeight, setThumbnailImageHeight] = useState(null);
   var [thumbnailContainerHeight, setThumbnailContainerHeight] = useState(null);
