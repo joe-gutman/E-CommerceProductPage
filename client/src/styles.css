@@ -140,13 +140,6 @@ div[id*='thumbnail-checkmark-'] {
   background-size: auto 100%;
 }
 
-/* .box {
-  display: flex;
-  justify-content: flex;
-  align-items: center;
-  height: 400px;
-} */
-
 body.active-modal {
     overflow-y: hidden;
 }
