@@ -121,7 +121,7 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating, currentProdu
   return (
     <>
       <div className = "wrapper" >
-        <div className="box" id= "related-products-box" >
+        <div className="box" id= "related-products-box" role = "show-related-products">
           {scrollPosition < 0 ? (
           <div className = "arrow" id= "left-arrow" onClick = {handleArrow} style={{backgroundImage:`url(${LeftArrow})`}}>  </div> )
             : (<></>)

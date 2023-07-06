@@ -95,6 +95,15 @@ const App = () => {
       });
   };
 
+  // return (
+  //   <div role = "product-page">
+  //   <Overview />
+  //   {/* <RatingsAndReviews /> */}
+  //   <QuestionsAndAnswers currentProduct={currentProduct}/>
+  //   <RelatedItems currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating}
+  //   currentProduct = {currentProduct} currentProductStyles = {currentProductStyles} currentProductAvgRating = {currentProductAvgRating} handleProductCardClick={handleProductCardClick}  />
+  //   </div>
+  // );
 
   if(currentRelatedProducts.length === 0) {
    return (
@@ -102,15 +111,15 @@ const App = () => {
    )
   } else {
     return (
-      <div>
+      <div role = "product-page">
       <Overview />
-      <RatingsAndReviews />
-      <QuestionsAndAnswers currentProduct={currentProduct}/>
-      <RelatedItems currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating}
-      currentProduct = {currentProduct} currentProductStyles = {currentProductStyles} currentProductAvgRating = {currentProductAvgRating} handleProductCardClick={handleProductCardClick}  />
-      </div>
-    );
-  }
+       <RatingsAndReviews />
+       <QuestionsAndAnswers currentProduct={currentProduct}/>
+       <RelatedItems currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating}
+       currentProduct = {currentProduct} currentProductStyles = {currentProductStyles} currentProductAvgRating = {currentProductAvgRating} handleProductCardClick={handleProductCardClick}  />
+       </div>
+     );
+   }
 }
 
 window.addEventListener("DOMContentLoaded", function (e) {
@@ -121,5 +130,7 @@ window.addEventListener("DOMContentLoaded", function (e) {
 });
 
 
-export default getAvgRating;
+export default App;
+export {getAvgRating, RelatedItems};
+
 
