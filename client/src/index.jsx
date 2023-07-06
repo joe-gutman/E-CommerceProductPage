@@ -108,9 +108,9 @@ const App = () => {
 
 /////COMMENT WHEN TESTING ******
   if(currentRelatedProducts.length === 0) {
-   return (
-   <div> Is loading... </div>
-   )
+    return (
+      <div> Is loading... </div>
+    )
   } else {
     return (
       <div role = "product-page">
@@ -133,7 +133,4 @@ window.addEventListener("DOMContentLoaded", function (e) {
 
 
 export default App;
-export {getAvgRating, RelatedItems};
-
-
-//delete comment
+export {getAvgRating, Overview, RatingsAndReviews, RelatedItems, QuestionsAndAnswers};
