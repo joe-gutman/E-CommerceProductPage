@@ -119,6 +119,10 @@ const App = () => {
   /////COMMENT WHEN TESTING **
   if(currentRelatedProducts.length === 0) {
     return (
+      <div> Is loading... </div>
+    )
+  } else {
+    return (
     <div> Is loading... </div>
     )
   } else {
