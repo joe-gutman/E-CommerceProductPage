@@ -10,7 +10,8 @@ import { getAvgRating } from '../index.jsx';
 const axios = require('axios');
 
 const RatingsAndReviews = () => {
-  let reviewsFake = {
+  // The following data is FAKE and intended to be structurally similar to what you'd receive from a GET request
+  let reviewsFake = { // You'd get something like this from making a GET request to "/reviews/"
     product: 1,
     page: 1,
     count: 2,
@@ -68,7 +69,7 @@ const RatingsAndReviews = () => {
       }
     ]
   };
-  let reviewMetaFake = {
+  let reviewMetaFake = { // You'd get something like this from making a GET request to "/reviews/meta"
     product_id: 1,
     ratings: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0},
     recommended: {0: 0, 1: 0},
@@ -80,14 +81,14 @@ const RatingsAndReviews = () => {
       Length: {id: 18, value: '3.00000'}
     }
   };
-  for (let f = 0; f < reviewsFake.results.length; f++) {
-    reviewMetaFake.ratings[reviewsFake.results[f].rating]++;
+  for (let f = 0; f < reviewsFake.results.length; f++) { // These next 2 for loops just compile the ratings from each individual
+    reviewMetaFake.ratings[reviewsFake.results[f].rating]++; // fake review into the fake "meta" data.
     reviewMetaFake.recommended[reviewsFake.results[f].recommend ? 1 : 0]++;
   }
   for (let f = 1; f <= 5; f++) {
     reviewMetaFake.ratings[f] += '';
   }
-  //console.log(reviewMetaFake.ratings);
+
   const [reviews, setReviews] = useState(reviewsFake);
   const [reviewMeta, setReviewMeta] = useState(reviewMetaFake);
   const [modalOpen, setModalOpen] = useState(false);
