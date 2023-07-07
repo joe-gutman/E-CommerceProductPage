@@ -11,7 +11,7 @@ const getAvgRating = function (ratings) {
   let count = 0;
   let result = 0;
   for (let f = 1; f <= 5; f++) {
-    let rating = Number(ratings[f])
+    let rating = Number(ratings[f]) || 0;
     count += rating;
     result += rating * f;
   }
