@@ -1,7 +1,11 @@
 require('dotenv').config();
+import React, { useState } from 'react';
+import { render, screen } from '@testing-library/react';
+// import App from '../client/src/index.jsx';
+import QuestionModal from '../client/src/components/questions-and-answers/QuestionModal.jsx';
+import AnswerModal from '../client/src/components/questions-and-answers/AnswerModal.jsx';
+import QuestionList from '../client/src/components/questions-and-answers/QuestionList.jsx';
 
-import { render, within } from '@testing-library/react';
-import App from '../client/src/index.jsx';
 
 
 describe("Render data for Questions and Answers", () => {
@@ -38,29 +42,55 @@ describe("Render data for Questions and Answers", () => {
   });
 });
 
+describe("Popup windows for questions and answers exist", () => {
+  test('Popup window for Adding Question exists', () => {
+    function WrapperCompent() {
+      const [isModalOpen, setIsModalOpen] = useState(true);
+      const currentProduct = {id: 1, name: 'test object'}
 
-const { getByRole } = render(<App />);
-const { getByRole: getChildByRole } = within(getByRole('main-questions-and-answers'));
-// describe()
+      return <QuestionModal isQuestionModalOpen={isModalOpen} setIsQuestionModalOpen={setIsModalOpen} currentProduct={currentProduct}/>
+    }
+    render(<WrapperCompent />)
+    expect(document.querySelector('#question-modal')).not.toBeNull();
+  });
 
+  test('Popup window for Adding Answer exists', () => {
+    function WrapperCompent() {
+      const [isModalOpen, setIsModalOpen] = useState(true);
+      const currentProduct = {id: 1, name: 'test object'}
+      const question = {question_body: 'test question body'}
 
-test('renders component with async data and finds element by role', async () => {
-  // Render your component
-  const currentRelatedProducts = await fetchCurrentRelatedIds();
-  // const relatedProducts = await fetchRelatedProducts();
-  const currentProduct = await fetchCurrentProduct();
-
-  const { getByRole } = render(<RelatedProductsList currentRelatedProducts = {currentRelatedProducts} currentProduct = {currentProduct} getAvgRating = {getAvgRating} />);
-
-
-  // Wait for the async data to be fetched
-  await waitFor(() => {
-    currentRelatedProducts.map((relatedProduct, index) => {
-      var element = getByRole(show-details-of-related-product-${index});
-      expect(element).toBeInTheDocument();
-  })
-    // Perform assertions after the data is available
-
-    // Additional assertions...
+      return <AnswerModal currentProduct={currentProduct} question={question} isAnswerModalOpen={isModalOpen} setIsAnswerModalOpen={setIsModalOpen}/>
+    }
+    render(<WrapperCompent />)
+    expect(document.querySelector('#answer-modal')).not.toBeNull();
   });
 });
+
+describe("All popup windows should be closed by default", () => {
+  test('Popup window for Adding Question is closed by default', () => {
+    const currentProduct = {id: 1, name: 'test object'}
+    render(<QuestionList currentProduct={currentProduct} query=''/>)
+    expect(document.querySelector('#question-modal')).toBeNull();
+  });
+
+  test('Popup window for Adding Question is closed by default', () => {
+    const currentProduct = {id: 1, name: 'test object'}
+    render(<QuestionList currentProduct={currentProduct} query=''/>)
+    expect(document.querySelector('#question-modal')).toBeNull();
+  });
+});
+
+
+
+// test('Popup window for Adding Question is closed when isQuestionModalOpen is false', () => {
+//   function WrapperCompent() {
+//     const [isModalOpen, setIsModalOpen] = useState(false);
+//     const currentProduct = {id: 1, name: 'test object'}
+
+//     return <QuestionModal isQuestionModalOpen={isModalOpen} setIsQuestionModalOpen={setIsModalOpen} currentProduct={currentProduct}/>
+//   }
+//   render(<WrapperCompent />)
+//   expect(document.querySelector('#question-modal')).toBeNull();
+// });
+

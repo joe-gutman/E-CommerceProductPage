@@ -26,7 +26,7 @@ const QuestionModal = ({ currentProduct, isQuestionModalOpen, setIsQuestionModal
     setIsQuestionModalOpen(!isQuestionModalOpen);
     addQuestionToDb()
       .then(() => {
-        console.log('get Questions after adding to DB');
+        // console.log('get Questions after adding to DB');
         getQuestions();
       })
       .catch((error) => {
@@ -58,7 +58,7 @@ const QuestionModal = ({ currentProduct, isQuestionModalOpen, setIsQuestionModal
 
   return (
     <>
-      <div className='question-and-answer-modal'>
+      <div id='question-modal' className='question-and-answer-modal' role='open-question-and-answer-modal'>
         <div className='modal-content'>
           <button className='close-modal' onClick={() => setIsQuestionModalOpen(!isQuestionModalOpen)}>
             X

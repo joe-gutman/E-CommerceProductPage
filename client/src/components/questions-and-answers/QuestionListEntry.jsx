@@ -9,7 +9,6 @@ const QuestionListEntry = ({ currentProduct, question, userData, getQuestionData
 
   const clickedHelpfulQuestionIds = userData.question;
   const isHelpfulClicked = clickedHelpfulQuestionIds.includes(question.question_id);
-
   const url = `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/qa/questions/${question.question_id}`;
   const headers = {"Authorization": process.env.AUTH_SECRET};
 
@@ -23,15 +22,22 @@ const QuestionListEntry = ({ currentProduct, question, userData, getQuestionData
   function getAnswers() {
     axios.get(url + '/answers?page=1&count=65', { headers })
       .then((response) => {
-      // console.log('response: ', response.data.results);
-      // var questionArray = response.data.results;
-      // var sortedQuestionArray = questionArray.sort((a, b) => {
-      //   a.helpfulness - b.helpfulness;
-      // })
-      // console.log('data:' , questionArray);
-      // console.log('sorted: ', sortedQuestionArray);
-        // console.log('GET answer response: ', response.data.results);
-        setAnswers(response.data.results);
+        // sort the answers: any answers from the seller should appear at the top of the list
+        var answerArray = response.data.results;
+        var sellerArray = [];
+        var nonSellerArray = [];
+        if (answerArray.length !== 0) {
+          answerArray.map((answer) => {
+            var name = answer.answerer_name.toLowerCase();
+            if (name.includes('seller')) {
+              sellerArray.push(answer);
+            } else {
+              nonSellerArray.push(answer);
+            };
+          });
+        };
+        var sortedAnswerArray = sellerArray.concat(nonSellerArray);
+        setAnswers(sortedAnswerArray);
       })
       .catch((error) => {
         console.log(error);
