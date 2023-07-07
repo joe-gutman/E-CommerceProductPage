@@ -114,11 +114,11 @@ const App = () => {
   } else {
     return (
       <div role = "product-page">
-      <Overview />
-       <RatingsAndReviews />
-       <QuestionsAndAnswers currentProduct={currentProduct}/>
-       <RelatedItems currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating}
-       currentProduct = {currentProduct} currentProductStyles = {currentProductStyles} currentProductAvgRating = {currentProductAvgRating} handleProductCardClick={handleProductCardClick}  />
+        <Overview />
+        <RelatedItems currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating}
+        currentProduct = {currentProduct} currentProductStyles = {currentProductStyles} currentProductAvgRating = {currentProductAvgRating} handleProductCardClick={handleProductCardClick}  />
+        <QuestionsAndAnswers currentProduct={currentProduct}/>
+        <RatingsAndReviews />
        </div>
      );
    }
