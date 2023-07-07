@@ -84,7 +84,7 @@ const App = () => {
         const styles = stylesResponse.data;
         const reviews = reviewsResponse.data;
         const related = relatedResponse.data;
-
+        // console.log(productId, ' related: ', related);
         setCurrentProductStyles(styles);
         setCurrentRelatedProducts(related);
         setCurrentAvgRating(getAvgRating(reviews.ratings));

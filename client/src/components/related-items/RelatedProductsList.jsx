@@ -30,6 +30,7 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating, currentProdu
 
     var endpoints = [];
     currentRelatedProducts.map((relatedId) => {
+      console.log('related id:', relatedId);
       endpoints.push(`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/${relatedId}`,`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/${relatedId}/styles`, `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/reviews/meta?product_id=${relatedId}`);
     });
 
