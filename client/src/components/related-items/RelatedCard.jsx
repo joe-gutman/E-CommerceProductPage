@@ -4,17 +4,7 @@ const axios = require('axios');
 import StarDisplay from '../shared-components/StarDisplay.jsx';
 
 const RelatedCard = ({index, product, id, name, category, price, avgRating, features, image, currentProduct, handleProductCardClick, currentProductFeatures, setCurrentProductFeatures }) => {
-
-  // const [currentProductFeatures, setCurrentProductFeatures] = useState([]);
-
-  // useEffect (() => {
-  //   const currentId = currentProduct.id
-  //   var axiosHeaders = {headers:{"Authorization" : process.env.AUTH_SECRET}};
-  //   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/${currentId}`, axiosHeaders)
-  //   .then((results) => {
-  //     setCurrentProductFeatures(results.data.features);
-  //   })
-  //   }, [])
+  const isSalePrice = product.results[0].sale_price !== null;
 
   var width = 300;
 
@@ -26,8 +16,20 @@ const RelatedCard = ({index, product, id, name, category, price, avgRating, feat
           <div className = 'card-details' onClick = {() => { handleProductCardClick(id)}}>
             <small className = 'card-text'>{category} </small>
             <span className = 'card-text'> {name} </span>
-            <small className = 'card-text'> ${price} </small>
-            <StarDisplay className = 'card-text' name = {name} id = {id} rating={avgRating} size={50}/>
+
+            {isSalePrice ? (
+              <>
+              <small className = {`card-text original-price`}> ${price} </small>
+              <small className = {`card-text sale-price-red-text`}> ${product.results[0].sale_price} </small>
+              </>
+            ) : (
+              <>
+
+              <small className = "card-text default-price" > ${price} </small>
+              </>
+            )}
+
+            <StarDisplay className = 'card-text'  name = {name} id = {id} rating={avgRating} size={50}/>
             <small className = 'card-text'>{avgRating} *</small>
           </div>
       </div>

@@ -25,6 +25,7 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating, currentProdu
     from: { x: 0 },
   }))
 
+
   useEffect ( () => {
     var axiosHeaders = {headers:{"Authorization" : process.env.AUTH_SECRET}};
 
@@ -43,6 +44,7 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating, currentProdu
     })
   }, [currentProduct])
 
+
   const [currentProductFeatures, setCurrentProductFeatures] = useState([]);
 
   useEffect (() => {
@@ -54,14 +56,17 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating, currentProdu
     })
     }, [currentProduct])
 
+
   useEffect ( () => {
     resizeObserver.unobserve(document.getElementById("related-products-box"))
     resizeObserver.observe(document.getElementById("related-products-box"))
   }, [relatedProducts])
 
+
   useEffect(() => {
     setScrollPositionLimit(cardContainerWidth - movementIncrement);
   }, [cardContainerWidth, movementIncrement]);
+
 
   const resizeObserver = new ResizeObserver((entries) => {
     for (const entry of entries) {
@@ -71,8 +76,7 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating, currentProdu
         var cardMargin = Number(getComputedStyle(document.getElementsByClassName("card")[0]).marginLeft.replace(/px$/,"")) + Number(getComputedStyle(document.getElementsByClassName("card")[0]).marginRight.replace(/px$/,""));
         var cardWidth = cardMargin + document.getElementsByClassName("card")[0].offsetWidth;
         setMovementIncrement((boxWidth) - (boxWidth%cardWidth));
-        setCardContainerWidth(cardWidth*relatedProducts.length); // Container for all cards, and not viewer
-        // setScrollPositionLimit(cardContainerWidth-movementIncrement);
+        setCardContainerWidth(cardWidth*relatedProducts.length); // Change relatedProducts to productCount for testing, Container for all cards, and not viewer
       }
     }
   })
@@ -110,13 +114,13 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating, currentProdu
       }
     }
 
-    console.log('postion',Math.abs(scrollPosition));
-    console.log((cardContainerWidth-movementIncrement))
+    // console.log('postion',Math.abs(scrollPosition));
+    // console.log((cardContainerWidth-movementIncrement))
   }
 
+//uncommment for testing rendering
 // console.log(currentProduct)
   // var productCount = [...Array(4).keys()];
-
 
   return (
     <>
@@ -131,9 +135,10 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating, currentProdu
                 <RelatedCard key = {index} index = {index} product = {product} id = {product.id} name = {product.name} category = {product.category} price = {product.default_price} avgRating = {product.avgRating} features = {product.features} image = {product.results[0].photos[0].url || NoImage} currentProduct = {currentProduct} handleProductCardClick={handleProductCardClick} currentProductFeatures = {currentProductFeatures} setCurrentProductFeatures = {setCurrentProductFeatures}/>
               ))}
 
-              {/* {productCount.map(() => (
-                <RelatedCard />
-              ))} */}
+              {/* //uncommment for testing rendering
+                {productCount.map(() => (
+                  <RelatedCard />
+                ))} */}
             </animated.div>
             {Math.abs(scrollPosition) >= scrollPositionLimit ? (<></>)
           : (
@@ -144,8 +149,6 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating, currentProdu
     </>
   )
 }
-
-
 
 
 export default RelatedProductsList;

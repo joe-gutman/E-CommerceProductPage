@@ -29,12 +29,11 @@ const App = () => {
   const [currentRelatedProducts, setCurrentRelatedProducts] = useState([]); // related products of current product
   const [currentProductAvgRating, setCurrentAvgRating] = useState(0); // average rating of current product
 
-
   useEffect(() => {
     var axiosHeaders = {headers:{"Authorization" : process.env.AUTH_SECRET}};
     console.log(`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/`)
     //get all products to get initial product ID for current product
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/`, axiosHeaders)
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/?count=20000`, axiosHeaders)
     .then ((response) => {
       setProducts(response.data);
       setCurrentProduct(response.data[1]);
@@ -61,7 +60,7 @@ const App = () => {
   const handleProductCardClick = (productId) => {
     var axiosHeaders = { headers: { "Authorization": process.env.AUTH_SECRET } };
 
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/?count=50`, axiosHeaders)
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/?count=20000`, axiosHeaders)
       .then((response) => {
 
         const selectedProduct = response.data.find((product) => product.id === productId);
@@ -88,12 +87,14 @@ const App = () => {
         setCurrentProductStyles(styles);
         setCurrentRelatedProducts(related);
         setCurrentAvgRating(getAvgRating(reviews.ratings));
+
       })
       .catch((error) => {
         console.error('Error:', error);
         throw error;
       });
   };
+
 
 ////UNCOMMENT WHEN TESTING****
   // return (
