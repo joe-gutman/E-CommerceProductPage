@@ -1422,6 +1422,7 @@ const fetchCurrentProduct = async () => {
   return currentProduct;
 }
 
+
 // var expectElementByRole = (testMessage, role, getByRole) => {
 
 //     try{
@@ -1440,6 +1441,7 @@ var expectElementByRole = (testMessage, role) => {
       const currentRelatedProducts = await fetchCurrentRelatedIds();
       const relatedProducts = await fetchRelatedProducts();
       const currentProduct = await fetchCurrentProduct();
+
 
       const { getByRole } = render(<RelatedItems currentRelatedProducts = {currentRelatedProducts} currentProduct = {currentProduct} getAvgRating = {getAvgRating} />);
 
@@ -1472,6 +1474,17 @@ describe("Related products should render in section for related products and all
     ]
       expectElementByRole("Users should have way to see details of related products-3", "show-details-of-related-product-3")
 
-       expectElementByRole("user should be able to compare current product against related products", "Users-should-be-able-compare-products-3")
+       expectElementByRole("user should be able to compare current product against related products", "Users-should-be-able-click-compare-products-3")
   })
 
+
+  describe("User outfit list should render in section for adding products to outfit list for easy access", () => {
+
+
+      expectElementByRole("Users should have way to access products added to outfit list", "show-outfit-products")
+
+      expectElementByRole("Users should have way to add product to outfit products", "allow-add-outfit-product")
+
+    //   expectElementByRole("Users should have way to add product to outfit products", "show-details-of-outfit-products-0")
+
+  })

@@ -241,9 +241,9 @@ const YourOutfitList = ({ getAvgRating, currentProduct, currentProductStyles, cu
     return (
     <>
       <div className = "wrapper" >
-        <div className = 'box' id="outfit-box" >
+        <div className = 'box' id="outfit-box" role = "show-outfit-products">
 
-        <button id= "add-outfit-button" onClick = {handleAdd} >
+        <button id= "add-outfit-button" onClick = {handleAdd} role = "allow-add-outfit-product">
           <img id="add-outfit-button-image" src= {AddImage} width="60" height="60" alt="outfit image" />
           <h4 id="add-outfit-button-text"> Add to Outfit </h4>
         </button>
@@ -254,7 +254,7 @@ const YourOutfitList = ({ getAvgRating, currentProduct, currentProductStyles, cu
             }
             <animated.div className = "inner-box" style = {{...springs}}>
             {Object.values(outfitProducts).map((product, index) => (
-              <OutfitCard key={index} product={product[0]} id={product[0].id} name={product[0].name} category={product[0].category} price={product[0].default_price} image = {product[1].results[0].photos[0].url || NoImage} avgRating = {product[2].avgRating} handleRemove = {handleRemove} handleProductCardClick = {handleProductCardClick}/>
+              <OutfitCard key={index} index = {index} product={product[0]} id={product[0].id} name={product[0].name} category={product[0].category} price={product[0].default_price} image = {product[1].results[0].photos[0].url || NoImage} avgRating = {product[2].avgRating} handleRemove = {handleRemove} handleProductCardClick = {handleProductCardClick}/>
             ))}
             </animated.div>
             {Math.abs(scrollPosition) >= scrollPositionLimit ? (<></>) : (<div className = "arrow" id= "right-arrow" onClick = {handleArrow} style={{backgroundImage:`url(${RightArrow})`}}> </div> )

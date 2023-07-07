@@ -357,9 +357,13 @@ label {
   cursor: pointer;
 }
 
-.action-button {
-  cursor: pointer;
+.action-button-div {
   text-align: right;
+
+}
+
+.action-button-click{
+  cursor: pointer;
 
 }
 

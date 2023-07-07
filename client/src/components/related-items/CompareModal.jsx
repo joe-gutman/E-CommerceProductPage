@@ -78,7 +78,7 @@
 import React, { useEffect } from 'react';
 import Modal from 'react-modal';
 
-const CompareModal = ({ isOpen, onRequestClose, name, features, currentProduct, currentProductFeatures }) => {
+const CompareModal = ({ isOpen, onRequestClose, name, features, currentProduct, currentProductFeatures, index }) => {
   // Combine the features and currentProductFeatures into a single array
   var combinedFeatures = [...features, ...currentProductFeatures];
 
@@ -114,7 +114,7 @@ const CompareModal = ({ isOpen, onRequestClose, name, features, currentProduct, 
     >
       <h3>Comparing</h3>
 
-      <div className="comparison-modal">
+      <div className="comparison-modal" >
         <table>
           <thead>
             <tr>
