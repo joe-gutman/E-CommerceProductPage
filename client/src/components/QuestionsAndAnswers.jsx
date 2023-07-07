@@ -5,7 +5,7 @@ import QuestionList from './questions-and-answers/QuestionList.jsx';
 const QuestionsAndAnswers = ({ currentProduct }) => {
   const [query, setQuery] = useState('');
   return (
-    <div role='main-questions-and-answers'>
+    <div className='main-questions-and-answers'>
       <div className='title'>QUESTIONS & ANSWERS</div>
       <SearchBar query={query} setQuery={setQuery} />
       <QuestionList currentProduct={currentProduct} query={query} />

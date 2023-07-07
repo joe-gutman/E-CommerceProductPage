@@ -50,16 +50,13 @@ const AnswerModal = ({ currentProduct, question, isAnswerModalOpen, setIsAnswerM
   function addAnswerToDb() {
     var url = `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/qa/questions/${question.question_id}/answers`;
     var headers = { 'Authorization' : process.env.AUTH_SECRET, 'withCredentials': true };
-
-    // console.log('question id: ',  question.question_id);
-
     return axios.post(url, answerInput, { 'headers': headers });
   }
 
 
   return (
     <>
-      <div className='question-and-answer-modal'>
+      <div id='answer-modal' className='question-and-answer-modal'>
         <div className='modal-content'>
           <button className='close-modal' onClick={() => setIsAnswerModalOpen(!isAnswerModalOpen)}>
             X

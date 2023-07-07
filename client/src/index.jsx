@@ -83,7 +83,7 @@ const App = () => {
         const styles = stylesResponse.data;
         const reviews = reviewsResponse.data;
         const related = relatedResponse.data;
-
+        // console.log(productId, ' related: ', related);
         setCurrentProductStyles(styles);
         setCurrentRelatedProducts(related);
         setCurrentAvgRating(getAvgRating(reviews.ratings));
@@ -115,11 +115,11 @@ const App = () => {
   } else {
     return (
       <div role = "product-page">
-      <Overview />
-       <RatingsAndReviews />
-       <QuestionsAndAnswers currentProduct={currentProduct}/>
-       <RelatedItems currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating}
-       currentProduct = {currentProduct} currentProductStyles = {currentProductStyles} currentProductAvgRating = {currentProductAvgRating} handleProductCardClick={handleProductCardClick}  />
+        <Overview />
+        <RelatedItems currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating}
+        currentProduct = {currentProduct} currentProductStyles = {currentProductStyles} currentProductAvgRating = {currentProductAvgRating} handleProductCardClick={handleProductCardClick}  />
+        <QuestionsAndAnswers currentProduct={currentProduct}/>
+        <RatingsAndReviews />
        </div>
      );
    }

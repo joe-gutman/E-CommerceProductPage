@@ -57,7 +57,7 @@ const AnswerListEntry = ({ answer, userData, getAnswerData }) => {
             <div className='smaller-font answer-list-entry-footer'>
               <span>
                 by {answer.answerer_name.toLowerCase() === 'seller' ?
-                <b>Seller</b> : answer.answerer_name}, {`${month} ${date}, ${year}`}
+                <b>Seller</b> : answer.answerer_name[0].toUpperCase() + answer.answerer_name.slice(1)}, {`${month} ${date}, ${year}`}
               </span>
               <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
               <span> Helpful?

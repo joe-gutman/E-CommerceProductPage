@@ -144,6 +144,10 @@ body.active-modal {
     overflow-y: hidden;
 }
 
+.main-questions-and-answers {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
 
 .btn-modal {
   padding: 10px 20px;
@@ -169,7 +173,7 @@ body.active-modal {
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 40%; /* Could be more or less, depending on screen size */
+  width: 30%; /* Could be more or less, depending on screen size */
   display: flex;
   flex-direction: column;
 }
@@ -228,10 +232,11 @@ label {
 .question-list-content {
   max-height: 600px;
   overflow-y: scroll;
+  padding: 10px;
 }
 
 .answer-list-content {
-  max-height: 200px;
+  max-height: 300px;
   overflow-y: scroll;
 }
 
