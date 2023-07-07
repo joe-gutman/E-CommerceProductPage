@@ -23,7 +23,7 @@ describe('Elements should exist for viewing product images', () => {
   expectElementByRole('Carousel should exist for selecting a product image to view', 'select-product-photos');
   expectElementByRole('Product photo view should exist to view a selected product photo', 'view-selected-product-photo');
   expectElementByRole('Current Product Photo should exist to view a selected product photo', 'current-product-photo');
-  expectElementByRole('Expanded Image View should exist for showing a larger view ', 'expand-current-product-photo');
+  expectElementByRole('Expanded Image View should exist for showing a larger view ', 'zoom-current-product-photo');
   expectElementByRole('Zoom Image View should exist for zooming in on a currently select product photo', 'expand-current-product-photo');
 });
 

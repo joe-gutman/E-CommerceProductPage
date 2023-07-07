@@ -9,7 +9,6 @@ var Magnifier = () => {
       setCursorPosition({ top: e.screenY, left: e.screenX });
   }
 
-  console.log(cursorPosition);
   return (
     <div onMouseMove={onMouseMove} >
       <div id="magnifier" style={{position: 'absolute', ...cursorPosition }} />
@@ -17,11 +16,12 @@ var Magnifier = () => {
   )
 }
 
-var ExpandedImageView = ({currentProductImage, thumbnailImages, close}) => {
+var ExpandedImageView = ({currentProductImage, productPhotos, close}) => {
   const [isZoomed, setIsZoomed] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [expandedImageSize, setExpandedImageSize] = useState({ height: 200, width: 200});
   const [magnifierPos, setMagnifierPos] = useState({ top: 0, left: 0});
+  const [zoomedImagePos, setzoomedImagePos] = useState({ top: 0, left: 0});
   const [magnifierSize, setMagnifierSize] = useState({ height: 200, width: 200});
   const [cursorPosition, setCursorPosition] = useState({ top: 0, left: 0 })
   var image = PlaceholderImage;
@@ -31,7 +31,6 @@ var ExpandedImageView = ({currentProductImage, thumbnailImages, close}) => {
     var imageHeight = document.getElementById('expanded-image').offsetHeight;
     var imageWidth = document.getElementById('expanded-image').offsetWidth;
     setExpandedImageSize({ height: imageHeight, width: imageWidth});
-    console.log(`[ ${imageHeight}, ${imageWidth}]`);
   }, [magnifierPos])
 
   useEffect(() => {
@@ -60,24 +59,31 @@ var ExpandedImageView = ({currentProductImage, thumbnailImages, close}) => {
 
   var handleMouseMove = (e) => {
     //get magnifier size
+    var image = document.getElementById('zoomed-image');
+    var container = document.getElementById('expanded-image');
     var magnifier = document.getElementById('magnifier');
-    var rect = document.getElementById('expanded-image').getBoundingClientRect();
-    var offsetTop = rect.top;
-    var offsetLeft = rect.left;
-    setMagnifierPos({ top: e.clientY, left: e.clientX});
+    var mousePosX = e.clientX;
+    var mousePosY = e.clientY;
+    var containerPos = container.getBoundingClientRect();
 
-    if ((e.clientY < rect.top ) ||
-        (e.clientX < rect.left) ||
-        (e.clientY > rect.bottom) ||
-        (e.clientX > rect.right)) {
+    var imagePosX = -(((mousePosX - containerPos.left) * .5) * 2);
+    var imagePosY = -(((mousePosY - containerPos.top) * .5) * 2);
+    setMagnifierPos({ top: e.clientY, left: e.clientX});
+    setzoomedImagePos({top: imagePosY , left: imagePosX});
+
+    if ((e.clientY < containerPos.top ) ||
+        (e.clientX < containerPos.left) ||
+        (e.clientY > containerPos.bottom) ||
+        (e.clientX > containerPos.right)) {
+        setIsZoomed(false);
     }
   }
 
   var placeholderURL = "https://images.unsplash.com/photo-1686119249382-c1157a607aa1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80";
   return ReactDOM.createPortal(
-    <div id="expanded-view-focus" role="zoom-current-product-photo" onClick={closeExpandedView}>
+    <div id="expanded-view-focus" role='zoom-current-product-photo' onClick={closeExpandedView} >
       <div id="expanded-image-container">
-        <div id="expanded-image" style={{backgroundImage: `url(${placeholderURL})`}}
+        <div id="expanded-image" style={{backgroundImage: `url(${currentProductImage})`}}
         onClick={handleMouseClick}
         onMouseEnter={() => { if(isClicked) {setIsZoomed(true)}}}
         onMouseLeave={() => { if(isZoomed) {setIsZoomed(false)}}}
@@ -93,12 +99,11 @@ var ExpandedImageView = ({currentProductImage, thumbnailImages, close}) => {
             backgroundImage: `url(${placeholderURL})`,
             backgroundPosition: `-${magnifierPos.left}px -${magnifierPos.top}px`}}>
               </div></> */}
-          {(isZoomed) ? ( <div id='zoomed-image' style={{
-            height: `${expandedImageSize.height}px`,
-            width: `${expandedImageSize.width}px`,
-            backgroundImage: `url(${placeholderURL})`,
-            backgroundPosition: `-${magnifierPos.left}px -${magnifierPos.top}px`}}>
-              </div>
+          {(isZoomed) ? ( <img id='zoomed-image' src={`${currentProductImage}`} style={{
+            height: `${(expandedImageSize.height * 2)}px`,
+            width: `${(expandedImageSize.width * 2)}px`,
+            top: `${zoomedImagePos.top}px`,
+            left:`${zoomedImagePos.left}px` }}/>
             ):(<></>)}
         </div>
         <div id="close-expanded-view-button" onClick={closeExpandedView} style={{backgroundImage: `url(${CloseButton})`}}></div>

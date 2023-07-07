@@ -37,12 +37,13 @@ const App = () => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/`, axiosHeaders)
     .then ((response) => {
       setProducts(response.data);
-      setCurrentProduct(response.data[1]);
+      setCurrentProduct(response.data[0]);
 
+      // recommened reviews + not recommended reviews (1 request to reviews API)
       var endpoints = [
-        `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/${response.data[1].id}/styles`,
-        `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/reviews/meta?product_id=${response.data[1].id}`,
-        `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/${response.data[1].id}/related`,
+        `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/${response.data[0].id}/styles`,
+        `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/reviews/meta?product_id=${response.data[0].id}`,
+        `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/${response.data[0].id}/related`,
       ];
 
       return axios.all(endpoints.map((endpoint) => axios.get(endpoint, axiosHeaders)));
@@ -108,14 +109,14 @@ const App = () => {
   /////COMMENT WHEN TESTING **
   if(currentRelatedProducts.length === 0) {
     return (
-      <div> Is loading... </div>
+      <div id="loading-text"> LOADING... </div>
     )
   } else {
    return (
      <div role = "product-page">
-     <Overview />
+      <Overview currentProduct={currentProduct} currentProductStyles={currentProductStyles}/>
       <RatingsAndReviews />
-      <QuestionsAndAnswers currentProduct={currentProduct}/>
+      <QuestionsAndAnswers currentProduct={currentProduct} getAvgRating={getAvgRating}/>
       <RelatedItems currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating}
       currentProduct = {currentProduct} currentProductStyles = {currentProductStyles} currentProductAvgRating = {currentProductAvgRating} handleProductCardClick={handleProductCardClick}  />
       </div>
