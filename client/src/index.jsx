@@ -94,17 +94,6 @@ const App = () => {
       });
   };
 
-////UNCOMMENT WHEN TESTING****
-  // return (
-  //   <div role = "product-page">
-  //   <Overview />
-  //   <RatingsAndReviews />
-  //   <QuestionsAndAnswers currentProduct={currentProduct}/>
-  //   <RelatedItems currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating}
-  //   currentProduct = {currentProduct} currentProductStyles = {currentProductStyles} currentProductAvgRating = {currentProductAvgRating} handleProductCardClick={handleProductCardClick}  />
-  //   </div>
-  // );
-
   ////UNCOMMENT WHEN TESTING
   // return (
   //   <div role = "product-page">
@@ -120,10 +109,6 @@ const App = () => {
   if(currentRelatedProducts.length === 0) {
     return (
       <div> Is loading... </div>
-    )
-  } else {
-    return (
-    <div> Is loading... </div>
     )
   } else {
    return (
