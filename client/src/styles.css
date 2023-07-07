@@ -357,14 +357,19 @@ label {
   cursor: pointer;
 }
 
-.action-button {
-  cursor: pointer;
+.action-button-div {
   text-align: right;
+
+}
+
+.action-button-click{
+  cursor: pointer;
 
 }
 
 .card-text {
   padding: 8px;
+  font-weight: bold;
 }
 
 .product-image {
@@ -423,3 +428,15 @@ td {
   text-align: center;
 }
 
+.sale-price-red-text {
+  color: red;
+  font-weight: bold;
+}
+
+.original-price-strike {
+  text-decoration: line-through;
+}
+
+.default-price{
+  padding: 23px;
+}
