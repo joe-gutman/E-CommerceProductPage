@@ -17,11 +17,13 @@ const ActionButtonRelated = ({name,index, features, currentProduct, currentProdu
   // console.log(features)
 
     return (
+
       <div className = "action-button-div" role = {`Users-should-be-able-click-compare-products-${index}`}>
         <button className = "action-button-click" onClick = {openModal} > <img src = {StarButton} width="15" height="15" /> </button>
 
         <CompareModal isOpen = {isModalOpen} onRequestClose = {closeModal} name = {name} features = {features} currentProduct = {currentProduct} currentProductFeatures = {currentProductFeatures} index = {index} />
       </div>
+
     )
 }
 
