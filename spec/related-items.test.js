@@ -1489,8 +1489,6 @@ describe("Related products should render in section for related products and all
 
       expectElementByRole("Users should have way to access products added to outfit list", "show-outfit-products")
 
-    //   expectElementByRole("Users should have way to remove product to outfit products", "user-remove-outfit-product")
-
 
     //   var outfitProducts = [
     //     [
@@ -4149,3 +4147,4 @@ describe('RelatedCard should render product details in list for user accessibili
     });
 
   });
+
