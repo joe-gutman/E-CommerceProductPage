@@ -8,11 +8,11 @@ import { getAvgRating } from '../../index.jsx';
 const axios = require('axios');
 
 var ProductInformation = ({currentProduct, currentProductStyles, currentStyle, setCurrentStyle}) => {
-  var [productTitle, setProductTitle] = useState(null);
-  var [productCategory, setProductCategory] = useState(null);
-  var [productPrice, setProductPrice] = useState(null);
-  var [productSalePrice, setProductSalePrice] = useState(null);
-  var [productDescription, setProductDescription] = useState(null);
+  var [productTitle, setProductTitle] = useState(currentProduct.name);
+  var [productCategory, setProductCategory] = useState(currentProduct.category);
+  var [productPrice, setProductPrice] = useState(currentProduct.default_price);
+  var [productSalePrice, setProductSalePrice] = useState(0);
+  var [productDescription, setProductDescription] = useState(currentProduct.description);
   var [currentAvgRating, setCurrentAvgRating] = useState(null);
   var [amountOfReviews, setAmountOfReviews] = useState(null);
 
@@ -21,7 +21,6 @@ var ProductInformation = ({currentProduct, currentProductStyles, currentStyle, s
     setProductTitle(currentProduct.name);
     setProductCategory(currentProduct.category);
     setProductPrice(currentProduct.default_price);
-    setProductSalePrice(currentProduct.sale_price);
     setProductDescription(currentProduct.description);
 
     if (currentProductStyles.results) {
@@ -32,12 +31,18 @@ var ProductInformation = ({currentProduct, currentProductStyles, currentStyle, s
 
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/reviews/meta?product_id=${currentProduct.id}`, axiosHeaders)
       .then((response) => {
-        console.log(response);
         setCurrentAvgRating(getAvgRating(response.data.ratings));
         setAmountOfReviews(Number(response.data.recommended.true) + Number(response.data.recommended.false));
       });
-
   }, [currentProduct])
+
+  useEffect(() => {
+    if(currentStyle !== null) {
+      setProductSalePrice(currentStyle.sale_price);
+    }
+    // console.log('sale price:', currentStyle.sale_price)
+    console.log('style:',currentStyle);
+  }, [currentStyle]);
 
   return (
     <div id="product-information">

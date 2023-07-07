@@ -115,7 +115,17 @@ const App = () => {
    return (
      <div role = "product-page">
       <Overview currentProduct={currentProduct} currentProductStyles={currentProductStyles}/>
+      <br></br>
+      <br></br>
+      <hr></hr>
+      <br></br>
+      <br></br>
       <RatingsAndReviews />
+      <br></br>
+      <br></br>
+      <hr></hr>
+      <br></br>
+      <br></br>
       <QuestionsAndAnswers currentProduct={currentProduct} getAvgRating={getAvgRating}/>
       <RelatedItems currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating}
       currentProduct = {currentProduct} currentProductStyles = {currentProductStyles} currentProductAvgRating = {currentProductAvgRating} handleProductCardClick={handleProductCardClick}  />

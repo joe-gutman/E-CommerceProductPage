@@ -18,7 +18,7 @@ const Overview = ({currentProduct, currentProductStyles}) => {
   }, [currentProductStyles]);
 
   useEffect(() => {
-    console.log(currentStyle);
+    // console.log(currentStyle);
     if(currentStyle !== null)  {
       var thumbnailURLs = currentStyle.photos.map((photo, index) => {
         return photo;

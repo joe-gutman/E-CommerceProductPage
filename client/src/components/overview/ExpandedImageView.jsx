@@ -46,7 +46,6 @@ var ExpandedImageView = ({currentProductImage, productPhotos, close}) => {
   }
 
   var handleMouseClick = (e) => {
-    console.log(isClicked);
     if(!isClicked) {
       // getElementById(e.target.id).
       setIsZoomed(true);

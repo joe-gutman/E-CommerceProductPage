@@ -4,11 +4,6 @@ import MainImage from './MainImage.jsx';
 
 var ImageView = ({currentProductImage, setCurrentProductImage, productPhotos, thumbnailImages, zoomIn}) => {
 
-  useEffect(() => {
-    console.log('image view:', thumbnailImages);
-  }, [thumbnailImages]);
-
-
   return (
     <div id="image-view" role="product-photos">
       <Carousel thumbnailImages={thumbnailImages} currentProductImage={currentProductImage} setCurrentProductImage={setCurrentProductImage}/>
