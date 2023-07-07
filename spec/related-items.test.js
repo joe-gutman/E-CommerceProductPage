@@ -4140,7 +4140,7 @@ describe('RelatedCard should render product details in list for user accessibili
 
 
   describe('ActionButtonRelated', () => {
-    it('should have isModalOpen set to false initially', () => {
+    it('Modal should have isModalOpen set to false initially', () => {
       const { container } = render(<ActionButtonRelated />);
       expect(container.querySelector('.action-button-div')).toBeInTheDocument();
       expect(container.querySelector('.action-button-click')).toBeInTheDocument();

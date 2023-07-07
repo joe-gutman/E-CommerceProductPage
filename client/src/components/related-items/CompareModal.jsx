@@ -43,7 +43,7 @@ const CompareModal = ({ isOpen, onRequestClose, name, features = [], currentProd
             <tr>
               <th>{name}</th>
               <th></th>
-              <th>{currentProduct.name}</th>
+              <th> {currentProduct.name} </th>
             </tr>
           </thead>
           <tbody>

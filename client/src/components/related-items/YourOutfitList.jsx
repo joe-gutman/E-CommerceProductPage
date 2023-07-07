@@ -32,10 +32,11 @@ const YourOutfitList = ({ getAvgRating, currentProduct, currentProductStyles, cu
     }
   };
 
-  // const handleClear = () => {
-  //   setOutfitProducts([]);
-  //   localStorage.removeItem(`outfitList_${sessionid}`);
-  // };
+  //substitute this for clickHandler for add to clear all outfits saved for testing
+    // const handleClear = () => {
+    //   setOutfitProducts([]);
+    //   localStorage.removeItem(`outfitList_${sessionid}`);
+    // };
 
   const handleRemove = (id) => {
     const updatedOutfitProducts = outfitProducts.filter((product, index) => product[0].id !== id);
@@ -101,7 +102,6 @@ const YourOutfitList = ({ getAvgRating, currentProduct, currentProductStyles, cu
     }
   }
 
-
     return (
     <>
       <div className = "wrapper" >
@@ -118,7 +118,7 @@ const YourOutfitList = ({ getAvgRating, currentProduct, currentProductStyles, cu
             }
             <animated.div className = "inner-box" role = "show-details-of-outfit-products" style = {{...springs}}>
             {Object.values(outfitProducts).map((product, index) => (
-              <OutfitCard key={index} index = {index} product={product[0]} id={product[0].id} name={product[0].name} category={product[0].category} price={product[0].default_price} image = {product[1].results[0].photos[0].url || NoImage} avgRating = {product[2].avgRating} handleRemove = {handleRemove} handleProductCardClick = {handleProductCardClick} data-testid="outfit-card"/>
+              <OutfitCard key={index} index = {index} salePrice = {product[1].results[0].sale_price} product={product[0]} id={product[0].id} name={product[0].name} category={product[0].category} price={product[0].default_price} image = {product[1].results[0].photos[0].url || NoImage} avgRating = {product[2].avgRating} handleRemove = {handleRemove} handleProductCardClick = {handleProductCardClick} data-testid="outfit-card"/>
             ))}
             </animated.div>
             {Math.abs(scrollPosition) >= scrollPositionLimit ? (<></>) : (<div className = "arrow" id= "right-arrow" onClick = {handleArrow} style={{backgroundImage:`url(${RightArrow})`}}> </div> )

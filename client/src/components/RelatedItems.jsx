@@ -4,7 +4,6 @@ import YourOutfitList from './related-items/YourOutfitList.jsx';
 
 const RelatedItems = ({currentRelatedProducts, getAvgRating, currentProduct, currentProductStyles, currentProductAvgRating, handleProductCardClick }) => {
 
-
   return (
     <div role = "should-show-related-products-and-outfit-list">
 
@@ -17,10 +16,7 @@ const RelatedItems = ({currentRelatedProducts, getAvgRating, currentProduct, cur
     <YourOutfitList getAvgRating = {getAvgRating} currentProduct = {currentProduct} currentProductStyles = {currentProductStyles} currentProductAvgRating = {currentProductAvgRating} handleProductCardClick={handleProductCardClick}  />
 
     </div>
-
-
   )
-
 
 }
 
