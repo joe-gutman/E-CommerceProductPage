@@ -18,8 +18,8 @@ After running it this way the first time, only the last two steps should be nece
 Overview: (Joe Gutman)
 
 Related Products & Outfit Creation: (Darien Poon)
-- TODO: Handle when related items is empty.
-- TODO: Should re-render after new item is selected, currently needs 2 clicks.
+- TODO: Needs to reset position when clicking on new item and it's related item list is empty. Need to scroll left at this time to go back to "main scroll page".
+- TODO: Resize Stars in product card to be smaller
 
 Questions and Answers: (Yichen Lin)
 - TODO: An user should be able to attach photos when adding an answer
