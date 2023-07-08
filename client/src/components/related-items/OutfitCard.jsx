@@ -7,7 +7,6 @@ const OutfitCard = ({index, product, id, name, category, price, avgRating,image,
 
   var width = 300;
 
-
   return (
     <>
       <div className = "card" role = {"show-details-of-outfit-products"} style = {{width:`${width.toString()}px`}}>
@@ -23,7 +22,6 @@ const OutfitCard = ({index, product, id, name, category, price, avgRating,image,
               </>
             ) : (
               <>
-
               <small className = "card-text default-price" > ${price} </small>
               </>
             )}
