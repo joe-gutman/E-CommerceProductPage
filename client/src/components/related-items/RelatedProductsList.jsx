@@ -28,7 +28,6 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating, currentProdu
 
   useEffect ( () => {
     var axiosHeaders = {headers:{"Authorization" : process.env.AUTH_SECRET}};
-
     var endpoints = [];
     currentRelatedProducts.map((relatedId) => {
       endpoints.push(`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/${relatedId}`,`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/${relatedId}/styles`, `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/reviews/meta?product_id=${relatedId}`);
@@ -42,7 +41,7 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating, currentProdu
       }
       setRelatedProducts(Object.values(relatedItemData));
     })
-  }, [currentProduct])
+  }, [currentRelatedProducts])
 
 
   const [currentProductFeatures, setCurrentProductFeatures] = useState([]);
@@ -65,7 +64,7 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating, currentProdu
 
   useEffect(() => {
     setScrollPositionLimit(cardContainerWidth - movementIncrement);
-  }, [cardContainerWidth, movementIncrement]);
+  }, [cardContainerWidth, movementIncrement, relatedProducts]);
 
 
   const resizeObserver = new ResizeObserver((entries) => {
@@ -83,7 +82,6 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating, currentProdu
 
 
   const handleArrow = (e) => {
-
     var newPosition;
     if (e.target.id === "left-arrow") {
       newPosition = scrollPosition + movementIncrement;
@@ -122,32 +120,53 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating, currentProdu
 // console.log(currentProduct)
   // var productCount = [...Array(4).keys()];
 
+
   return (
     <>
-      <div className = "wrapper" >
-        <div className="box" id= "related-products-box" role = "show-related-products">
+      <div className="wrapper">
+        <div className="box" id="related-products-box" role="show-related-products">
           {scrollPosition < 0 ? (
-          <div className = "arrow" id= "left-arrow" onClick = {handleArrow} style={{backgroundImage:`url(${LeftArrow})`}}>  </div> )
-            : (<></>)
-            }
-            <animated.div className = "inner-box" style = {{...springs}}>
-              {relatedProducts.map((product, index) => (
-                <RelatedCard key = {index} index = {index} product = {product} id = {product.id} name = {product.name} category = {product.category} price = {product.default_price} avgRating = {product.avgRating} features = {product.features} image = {product.results[0].photos[0].url || NoImage} currentProduct = {currentProduct} handleProductCardClick={handleProductCardClick} currentProductFeatures = {currentProductFeatures} setCurrentProductFeatures = {setCurrentProductFeatures}/>
-              ))}
+            <div className="arrow" id="left-arrow" onClick={handleArrow} style={{ backgroundImage: `url(${LeftArrow})` }}></div>
+          ) : (
+            <></>
+          )}
 
-              {/* //uncommment for testing rendering
-                {productCount.map(() => (
-                  <RelatedCard />
-                ))} */}
-            </animated.div>
-            {Math.abs(scrollPosition) >= scrollPositionLimit ? (<></>)
-          : (
-            <div className = "arrow" id= "right-arrow" onClick = {handleArrow} style={{backgroundImage:`url(${RightArrow})`}}> </div> )
-          }
+          <animated.div className="inner-box" style={{ ...springs }}>
+            {relatedProducts.length > 0 ? (
+              relatedProducts.map((product, index) => (
+                <RelatedCard
+                  key={index}
+                  index={index}
+                  product={product}
+                  id={product.id}
+                  name={product.name}
+                  category={product.category}
+                  price={product.default_price}
+                  avgRating={product.avgRating}
+                  features={product.features}
+                  image={product.results[0].photos[0].url || NoImage}
+                  currentProduct={currentProduct}
+                  handleProductCardClick={handleProductCardClick}
+                  currentProductFeatures={currentProductFeatures}
+                  setCurrentProductFeatures={setCurrentProductFeatures}
+                  setScrollPosition= {setScrollPosition}
+                />
+              ))
+            ) : (
+              <> </>
+            )}
+          </animated.div>
+
+          {Math.abs(scrollPosition) >= scrollPositionLimit ? (
+            <></>
+          ) : (
+            <div className="arrow" id="right-arrow" onClick={handleArrow} style={{ backgroundImage: `url(${RightArrow})` }}></div>
+          )}
         </div>
       </div>
     </>
-  )
+  );
+
 }
 
 

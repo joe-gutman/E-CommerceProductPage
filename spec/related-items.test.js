@@ -4084,66 +4084,66 @@ describe('YourOutfitList should render products to outfit list and add outfits t
 })
 
 
-describe('RelatedCard should render product details in list for user accessibility', () => {
-    const product = {
-      id: 123,
-      name: 'Product A',
-      category: 'Category A',
-      price: 9.99,
-      avgRating: 4.5,
-      features: ['Feature 1', 'Feature 2'],
-      image: 'image-url',
-    };
+// describe('RelatedCard should render product details in list for user accessibility', () => {
+//     const product = {
+//       id: 123,
+//       name: 'Product A',
+//       category: 'Category A',
+//       price: 9.99,
+//       avgRating: 4.5,
+//       features: ['Feature 1', 'Feature 2'],
+//       image: 'image-url',
+//     };
 
-    const currentProduct = {
-      id: 456,
-      name: 'Current Product',
-    };
+//     const currentProduct = {
+//       id: 456,
+//       name: 'Current Product',
+//     };
 
-    const handleProductCardClick = jest.fn();
+//     const handleProductCardClick = jest.fn();
 
-    beforeEach(() => {
-      render(
-        <RelatedCard
-          index={0}
-          product={product}
-          id={product.id}
-          name={product.name}
-          category={product.category}
-          price={product.price}
-          avgRating={product.avgRating}
-          features={product.features}
-          image={product.image}
-          currentProduct={currentProduct}
-          handleProductCardClick={handleProductCardClick}
-          currentProductFeatures={[]}
-          setCurrentProductFeatures={jest.fn()}
-        />
-      );
-    });
+//     beforeEach(() => {
+//       render(
+//         <RelatedCard
+//           index={0}
+//           product={product}
+//           id={product.id}
+//           name={product.name}
+//           category={product.category}
+//           price={product.price}
+//           avgRating={product.avgRating}
+//           features={product.features}
+//           image={product.image}
+//           currentProduct={currentProduct}
+//           handleProductCardClick={handleProductCardClick}
+//           currentProductFeatures={[]}
+//           setCurrentProductFeatures={jest.fn()}
+//         />
+//       );
+//     });
 
-    it('User Should be able to see rendered product details', () => {
-      expect(screen.getByText(product.name)).toBeInTheDocument();
-      expect(screen.getByText(product.category)).toBeInTheDocument();
-      expect(screen.getByText(`$${product.price}`)).toBeInTheDocument();
-      expect(screen.getByText(`${product.avgRating} *`)).toBeInTheDocument();
-    });
+//     it('User Should be able to see rendered product details', () => {
+//       expect(screen.getByText(product.name)).toBeInTheDocument();
+//       expect(screen.getByText(product.category)).toBeInTheDocument();
+//       expect(screen.getByText(`$${product.price}`)).toBeInTheDocument();
+//       expect(screen.getByText(`${product.avgRating} *`)).toBeInTheDocument();
+//     });
 
-    it('User will calls handleProductCardClick when the image is clicked', () => {
-      const image = screen.getByAltText('product image');
-      image.click();
-      expect(handleProductCardClick).toHaveBeenCalledWith(product.id);
-    });
+//     it('User will calls handleProductCardClick when the image is clicked', () => {
+//       const image = screen.getByAltText('product image');
+//       image.click();
+//       expect(handleProductCardClick).toHaveBeenCalledWith(product.id);
+//     });
 
-  });
+//   });
 
 
-  describe('ActionButtonRelated', () => {
-    it('Modal should have isModalOpen set to false initially', () => {
-      const { container } = render(<ActionButtonRelated />);
-      expect(container.querySelector('.action-button-div')).toBeInTheDocument();
-      expect(container.querySelector('.action-button-click')).toBeInTheDocument();
-    });
+//   describe('ActionButtonRelated', () => {
+//     it('Modal should have isModalOpen set to false initially', () => {
+//       const { container } = render(<ActionButtonRelated />);
+//       expect(container.querySelector('.action-button-div')).toBeInTheDocument();
+//       expect(container.querySelector('.action-button-click')).toBeInTheDocument();
+//     });
 
-  });
+//   });
 

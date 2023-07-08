@@ -13,6 +13,9 @@ const ReviewBreakdown = (props) => {
 
     ctx.fillStyle = 'black';
     ctx.strokeStyle = 'black';
+    ctx.font = '16px serif';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
     ctx.lineWidth = 1;
 
     for (let f = 1; f <= 5; f++) {
@@ -30,13 +33,17 @@ const ReviewBreakdown = (props) => {
   }, []);
 
   return (<div role='review-breakdown'>
-  <h4>Review Breakdown</h4>
+
   <div><StarDisplay name='breakdown-star-display' size={50} rating={props.avg} roundTo={10} fillMode='radial'/></div>
   <div>{props.avg}</div>
+  <br></br>
   <div>
     <canvas id='breakdown-ratings-chart' width='250' height='250'></canvas>
   </div>
+  <br></br>
   <div>{Math.round(100 * props.rec[1] / (props.rec[0] + props.rec[1]))}% of customers recommend this product.</div>
+  <br></br>
+  <hr></hr>
   </div>);
 }
 

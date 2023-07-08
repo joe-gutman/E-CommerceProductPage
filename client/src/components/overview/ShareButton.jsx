@@ -19,13 +19,13 @@ var ShareButtons = () => {
   return (
     <>
       <a href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>
-        <img className="share-button" id="facebook-share" src={FacebookIcon}/>
+        <img className="share-button" id="facebook-share" alt = "share on facebook" src={FacebookIcon}/>
       </a>
       <a href={`https://twitter.com/intent/tweet?text=${window.location.href}`}>
-        <img className="share-button" id="twitter-share" src={TwitterIcon}/>
+        <img className="share-button" id="twitter-share" src={TwitterIcon} alt = "share on twitter"/>
       </a>
       <a href={`https://pinterest.com/pin/create/button/?url=${window.location.href}`}>
-        <img className="share-button" id="pinterest-share" src={PinterestIcon}/>
+        <img className="share-button" id="pinterest-share" alt = "share on pinterest" src={PinterestIcon}/>
       </a>
     </>
   )

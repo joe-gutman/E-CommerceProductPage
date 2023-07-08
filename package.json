@@ -7,6 +7,7 @@
     "dev": "webpack --watch",
     "build": "npx webpack",
     "client-dev": "webpack --mode development --watch",
+    "client-prod": "webpack --mode production --watch",
     "server-dev": "npx nodemon server/index.js",
     "test": "jest",
     "lint": "eslint --fix --ext .js,.jsx"

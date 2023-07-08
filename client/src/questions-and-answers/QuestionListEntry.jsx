@@ -87,7 +87,7 @@ const QuestionListEntry = ({ currentProduct, question, userData, getQuestionData
         </div>
 
         <div className='inline smaller-font question-list-entry-sidebar'>
-          <span> Helpful?
+          <span> Helpful? &nbsp;
             <button
               className='button smaller-font question-helpful-btn'
               onClick={handleHelpfulClick}

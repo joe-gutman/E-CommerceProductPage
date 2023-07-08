@@ -1,17 +1,30 @@
 #root {
-  max-width: 1100px;
+  max-width: 1330px;
   margin: 50px auto;
   padding: 10px 0 10px 0;
 }
+
+#site-header{
+  max-width: 1500px;
+  border-radius: 7px;
+  box-shadow: 1px 1px 1px 1px rgb(197, 197, 197);
+  color: rgb(93, 92, 92);
+}
+
 
 /* * {
   border: 1px solid black;
 } */
 
+
+
+/* OVERVIEW SECTION VVVVVVV */
+
 #overview {
   display: flex;
   flex-direction: row;
-  height: 600px
+  height: 800px;
+  overflow: visible;
 }
 
 #product-information {
@@ -291,7 +304,12 @@ body.active-modal {
   margin-top: 30px;
   margin-bottom: 30px;
 }
+/* OVERVIEW SECTION ^^^^^^ */
 
+
+
+
+/* QUESTIONS AND ANSWERS VVVV */
 .btn-modal {
   padding: 10px 20px;
   display: block;
@@ -362,6 +380,9 @@ label {
   padding: 1px;
 }
 
+.answer-list{
+  margin-bottom: 20px;
+}
 .answer-list-entry {
   padding-top: 5px;
   margin-bottom: 3px;
@@ -387,15 +408,20 @@ label {
   display: inline-block;
   background-color: transparent;
   text-align: center;
-  border: none;
+  border: 2px solid rgb(189, 189, 189);
+  border-radius: 7px;
+  box-shadow: 1px 1px 1px 1px rgb(197, 197, 197);
+  color: rgb(93, 92, 92);
 }
 
 .load-more-questions-btn, .add-question-btn {
   height: 50px;
-  border: 1px solid;
   padding-left: 15px;
   padding-right: 15px;
   margin-right: 10px;
+  border: 2px solid rgb(189, 189, 189);
+  box-shadow: 5px 5px 1px 1px rgb(197, 197, 197);
+  border-radius: 7px;
 }
 
 .question-list-entry-content {
@@ -426,12 +452,20 @@ label {
 }
 
 .smaller-font {
-  font-size: 12px;
+  padding: 5px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .bold-font {
   font-weight: bold;
 }
+/* QUESTIONS AND ANSWERS* ^^^^^^ /
+
+
+
+
+/* Related Items & Outfit Creation VVVV */
 .wrapper {
   position: relative;
   width: 100%;
@@ -439,12 +473,18 @@ label {
 
 .box {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   min-height: 500px;
   border: 2px solid rgb(189, 189, 189);
   margin: 40px;
   overflow: hidden;
+  box-shadow: 10px 5px 8px 5px rgb(197, 197, 197);
+  border-radius: 7px;
 }
+
+/* .card-stars {
+  width: 25px;
+} */
 
 .inner-box {
   display: flex;
@@ -468,6 +508,10 @@ label {
 
 #right-arrow {
   right:0px;
+}
+
+.sub-titles{
+  color: rgb(93, 92, 92);
 }
 
 .card {
@@ -521,30 +565,6 @@ th{
   background-color: #f2f2f2;
 }
 
-/* Ratings and Reviews vvv */
-.review-list-content {
-  max-height: 600px;
-  overflow-y: scroll;
-}
-
-.review {
-  padding: 5px;
-  outline: 1px solid black;
-}
-
-.review-modal {
-  position: fixed;
-  box-sizing: border-box;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.4);
-}
-/* Ratings and Reviews ^^^ */
-
 td {
   padding: 10px;
   border: 1px solid #ccc;
@@ -576,6 +596,7 @@ td {
   cursor: pointer;
   flex-direction: column;
   justify-content: center;
+  box-shadow: 10px 5px 8px 5px rgb(197, 197, 197);
 }
 
 #add-outfit-button-text {
@@ -583,3 +604,110 @@ td {
   text-align: center;
   margin: 5px auto;
 }
+/* Related Items & Outfit Creation ^^^^^  */
+
+
+
+/* Ratings and Reviews vvv */
+.review-list-content {
+  max-height: 600px;
+  overflow-y: scroll;
+  margin-bottom: 10px;
+}
+
+.review {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 5px;
+  outline: 1px solid rgb(189, 189, 189);
+  box-shadow: 2px 2px 1px 1px rgb(197, 197, 197);
+  border-radius: 7px;
+
+}
+
+.review-modal {
+  position: fixed;
+  box-sizing: border-box;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+#add-review-btn, #load-more-reviews-btn {
+  height: 50px;
+  border: 2px solid rgb(189, 189, 189);
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-right: 10px;
+  box-shadow: 5px 5px 1px 1px rgb(197, 197, 197);
+  border-radius: 7px;
+}
+
+.add-review, .load-more-reviews{
+  display: inline-block;
+}
+
+.reviewer {
+  padding-left: 8px;
+}
+
+.review-title {
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.review-content {
+  padding: 15px;
+  border: 2px solid rgb(189, 189, 189);
+  box-shadow: 5px 5px 1px 1px rgb(197, 197, 197);
+  border-radius: 7px;
+}
+
+.review-entry-content {
+  margin-left: 10px;
+  font-weight: 500;
+}
+
+#add-helpfulness-btn {
+  border: 0.5px solid;
+}
+
+.review-footer {
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.review-body{
+  padding: 5px;
+  margin-bottom: 20px;
+  outline: 1px solid rgb(189, 189, 189);
+  box-shadow: 2px 2px 1px 1px rgb(197, 197, 197);
+  border-radius: 7px;
+
+}
+
+.product-factors{
+  padding: 15px;
+  border: 2px solid rgb(189, 189, 189);
+  border-radius: 7px;
+  box-shadow: 2px 2px 1px 1px rgb(197, 197, 197);
+}
+
+#product-characteristics {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px 15px 15px 15px;
+  border: 2px solid rgb(189, 189, 189);
+  box-shadow: 2px 2px 1px 1px rgb(197, 197, 197);
+  border-radius: 7px;
+}
+/* Ratings and Reviews ^^^ */
+

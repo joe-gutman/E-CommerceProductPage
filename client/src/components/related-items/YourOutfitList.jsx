@@ -109,7 +109,7 @@ const YourOutfitList = ({ getAvgRating, currentProduct, currentProductStyles, cu
 
         <button id= "add-outfit-button" onClick = {handleAdd} role = "allow-add-outfit-product" data-testid="add-button">
           <img id="add-outfit-button-image" src= {AddImage} width="60" height="60" alt="outfit image" />
-          <h4 id="add-outfit-button-text"> Add to Outfit </h4>
+          <h3 id="add-outfit-button-text"> Add to Outfit </h3>
         </button>
 
         {scrollPosition < 0 ? (
