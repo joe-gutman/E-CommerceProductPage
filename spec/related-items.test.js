@@ -1458,7 +1458,6 @@ var expectElementByRole = (testMessage, role) => {
         }
       })
   })
-
 }
 
 describe("Elements should exist for rendering list views with products", () => {

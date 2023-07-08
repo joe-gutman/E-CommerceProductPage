@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import ShareButtons from './ShareButton.jsx';
 import BuyProduct from './BuyProduct.jsx';
 import SelectStyle from './SelectStyle.jsx';
-import StarDisplay from '../shared-components/StarDisplay.jsx';
+// import StarDisplay from '../shared-components/StarDisplay.jsx';
 import { getAvgRating } from '../../index.jsx';
 
 const axios = require('axios');
@@ -51,7 +51,7 @@ var ProductInformation = ({currentProduct, currentProductStyles, currentStyle, s
           <h2 id="product-name" role="product-name">{productTitle}</h2>
           <span id="product-category-rating">
             <h4 id="product-category"  role="product-category">Category:{productCategory}</h4>
-            <StarDisplay name="product-stars" size={25} rating={currentAvgRating}/>
+            {/* <StarDisplay name="product-stars" size={25} rating={currentAvgRating}/> */}
             <h4 id="amount-of-reviews">{amountOfReviews}</h4>
           </span>
         </span>

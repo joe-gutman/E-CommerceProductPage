@@ -7,7 +7,7 @@ import PlaceholderImage from '../assets/image-not-available.png';
 const Overview = ({currentProduct, currentProductStyles}) => {
   var [currentProductImage, setCurrentProductImage] = useState(PlaceholderImage);
   var [thumbnailImages, setThumbnailImages] = useState([...Array(14).keys()]);
-  var [zoomIn, setZoomIn] = useState(false);
+  var [zoomIn, setZoomIn] = React.useState(false);
   var [currentStyle, setCurrentStyle] = useState(null);
   var [productPhotos, setProductPhotos] = useState(null);
 

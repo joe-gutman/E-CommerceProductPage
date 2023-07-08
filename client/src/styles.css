@@ -566,3 +566,20 @@ td {
 .default-price{
   padding: 23px;
 }
+
+#add-outfit-button-image {
+  margin: 10px auto;
+}
+
+#add-outfit-button {
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#add-outfit-button-text {
+  width: 100%;
+  text-align: center;
+  margin: 5px auto;
+}
