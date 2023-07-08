@@ -43,7 +43,7 @@ const AnswerListEntry = ({ answer, userData, getAnswerData }) => {
 
   return (
     <>
-      <div className='answer-list-entry'>
+      <div id ='answer-list-entry' className='answer-list-entry'>
         <div className='flex-container'>
           <div className='bold-font answer-list-entry-sidebar'>
             A:&nbsp;

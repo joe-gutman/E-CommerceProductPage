@@ -81,12 +81,13 @@ const QuestionList = ({ currentProduct, query }) => {
             }
           </span>
           <span>
-            <button className='bold-font button add-question-btn' onClick={handleClick}>
+            <button data-testid='add-question-btn' className='bold-font button add-question-btn' onClick={handleClick}>
               ADD A QUESTION +
             </button>
           </span>
 
           <div className='add-question-modal'>
+            {/* {isQuestionModalO} */}
             {
               isQuestionModalOpen &&
               <QuestionModal
