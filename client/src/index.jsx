@@ -36,12 +36,13 @@ const App = () => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/?count=20000`, axiosHeaders)
     .then ((response) => {
       setProducts(response.data);
-      setCurrentProduct(response.data[1]);
+      setCurrentProduct(response.data[0]);
 
+      // recommened reviews + not recommended reviews (1 request to reviews API)
       var endpoints = [
-        `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/${response.data[1].id}/styles`,
-        `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/reviews/meta?product_id=${response.data[1].id}`,
-        `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/${response.data[1].id}/related`,
+        `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/${response.data[0].id}/styles`,
+        `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/reviews/meta?product_id=${response.data[0].id}`,
+        `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/${response.data[0].id}/related`,
       ];
 
       return axios.all(endpoints.map((endpoint) => axios.get(endpoint, axiosHeaders)));
@@ -55,7 +56,6 @@ const App = () => {
       throw error;
     });
   }, []);
-
 
   const handleProductCardClick = (productId) => {
     var axiosHeaders = { headers: { "Authorization": process.env.AUTH_SECRET } };
@@ -95,8 +95,7 @@ const App = () => {
       });
   };
 
-
-////UNCOMMENT WHEN TESTING****
+  ////UNCOMMENT WHEN TESTING
   // return (
   //   <div role = "product-page">
   //   <Overview />
@@ -107,22 +106,31 @@ const App = () => {
   //   </div>
   // );
 
-/////COMMENT WHEN TESTING ******
+  /////COMMENT WHEN TESTING **
   if(currentRelatedProducts.length === 0) {
     return (
-      <div> Is loading... </div>
+      <div id="loading-text"> LOADING... </div>
     )
   } else {
-    return (
-      <div role = "product-page">
-        <Overview />
-        <RelatedItems currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating}
-        currentProduct = {currentProduct} currentProductStyles = {currentProductStyles} currentProductAvgRating = {currentProductAvgRating} handleProductCardClick={handleProductCardClick}  />
-        <QuestionsAndAnswers currentProduct={currentProduct}/>
-        <RatingsAndReviews />
-       </div>
-     );
-   }
+   return (
+     <div role = "product-page">
+      <Overview currentProduct={currentProduct} currentProductStyles={currentProductStyles}/>
+      <br></br>
+      <br></br>
+      <RelatedItems currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating} currentProduct = {currentProduct} currentProductStyles = {currentProductStyles} currentProductAvgRating = {currentProductAvgRating} handleProductCardClick={handleProductCardClick}  />
+      <br></br>
+      <br></br>
+      <hr></hr>
+      <br></br>
+      <QuestionsAndAnswers currentProduct={currentProduct} getAvgRating={getAvgRating}/>
+      <br></br>
+      <hr></hr>
+      <br></br>
+      <br></br>
+      <RatingsAndReviews />
+      </div>
+    );
+  }
 }
 
 window.addEventListener("DOMContentLoaded", function (e) {
