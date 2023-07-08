@@ -22,6 +22,9 @@ Related Products & Outfit Creation: (Darien Poon)
 - TODO: Should re-render after new item is selected, currently needs 2 clicks.
 
 Questions and Answers: (Yichen Lin)
+- TODO: An user should be able to attach photos when adding an answer
+- TODO: Display photos on every answer
+- TODO: When using the search bar to filter questions, every questions should be filtered. (currently only the questions displayed on webpage will be filtered)
 
 Ratings and Reviews: (Jack Pape)
 - TODO: All review data used in my section is DUMMY DATA that I wrote so I could edit it freely myself! There are no API/axios calls implemented.
@@ -37,6 +40,9 @@ Ratings and Reviews: (Jack Pape)
 
 Project Repo Link: https://github.com/FEC-Saturn/FEC-Saturn
 
+Joe Gutman Github: https://github.com/jddg5wa
 Darien Poon Github: https://github.com/darienpoon
+Yichen Lin Github: https://github.com/echenlin
+Jack Pape Github: https://github.com/RaccoonGem
 
 
