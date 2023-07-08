@@ -14,7 +14,7 @@ HOW TO RUN:
 - In a new terminal, run npm run client-dev
 After running it this way the first time, only the last two steps should be necessary to run it in the future.
 
---------------------------------------------- Outstanding Items ----------------------------------------------------------------------------------------
+--------------------------------------------- Roadmap -----------------------------------------------------------------------------------------------
 Overview: (Joe Gutman)
 
 Related Products & Outfit Creation: (Darien Poon)
