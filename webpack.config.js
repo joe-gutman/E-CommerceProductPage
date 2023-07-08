@@ -5,7 +5,7 @@ require('dotenv').config();
 
 console.log()
 module.exports = {
-  mode: "development",
+  mode: "production",
   entry: [path.join(__dirname, "client/src", "index.jsx"), "./client/src/styles.css"],
   output: {
     path: path.resolve(__dirname, "client/dist"),

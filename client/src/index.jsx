@@ -33,7 +33,7 @@ const App = () => {
     var axiosHeaders = {headers:{"Authorization" : process.env.AUTH_SECRET}};
     console.log(`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/`)
     //get all products to get initial product ID for current product
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/?count=20000`, axiosHeaders)
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/?count=10000`, axiosHeaders)
     .then ((response) => {
       setProducts(response.data);
       setCurrentProduct(response.data[0]);
@@ -60,7 +60,7 @@ const App = () => {
   const handleProductCardClick = (productId) => {
     var axiosHeaders = { headers: { "Authorization": process.env.AUTH_SECRET } };
 
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/?count=20000`, axiosHeaders)
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS}/products/?count=10000`, axiosHeaders)
       .then((response) => {
 
         const selectedProduct = response.data.find((product) => product.id === productId);
@@ -121,12 +121,12 @@ const App = () => {
       <br></br>
       <br></br>
       <hr></hr>
-      <br></br>
+
       <QuestionsAndAnswers currentProduct={currentProduct} getAvgRating={getAvgRating}/>
       <br></br>
       <hr></hr>
       <br></br>
-      <br></br>
+
       <RatingsAndReviews />
       </div>
     );

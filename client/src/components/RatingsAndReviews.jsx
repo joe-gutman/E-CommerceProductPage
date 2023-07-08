@@ -146,7 +146,7 @@ const RatingsAndReviews = () => {
   const [maxReviews, setMaxReviews] = useState(2);
 
   return (<div id='ratings-and-reviews' role='review-section'>
-    <h3>Ratings And Reviews</h3>
+    <h2>RATINGS AND REVIEWS</h2>
 
     <ReviewBreakdown
       avg={getAvgRating(reviewMeta.ratings)}
