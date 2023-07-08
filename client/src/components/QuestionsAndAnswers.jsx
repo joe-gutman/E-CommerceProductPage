@@ -6,7 +6,7 @@ const QuestionsAndAnswers = ({ currentProduct }) => {
   const [query, setQuery] = useState('');
   return (
     <div className='main-questions-and-answers'>
-      <h2 className='title'>QUESTIONS & ANSWERS</h2>
+      <h2 className='title' className = "sub-titles" >QUESTIONS & ANSWERS</h2>
       <SearchBar query={query} setQuery={setQuery} />
       <QuestionList currentProduct={currentProduct} query={query} />
     </div>

@@ -9,11 +9,11 @@ const RelatedItems = ({currentRelatedProducts, getAvgRating, currentProduct, cur
     <div role = "should-show-related-products-and-outfit-list">
 
     <hr></hr>
-    <div> <h2> RELATED PRODUCTS </h2> </div>
+    <div className = "sub-titles"> <h2> RELATED PRODUCTS </h2> </div>
     <RelatedProductsList  currentRelatedProducts = {currentRelatedProducts} getAvgRating = {getAvgRating} currentProduct = {currentProduct} handleProductCardClick={handleProductCardClick}  />
-
+    <br></br>
     <hr></hr>
-    <div><h2> YOUR OUTFIT </h2> </div>
+    <div className = "sub-titles"><h2> MY OUTFITS </h2> </div>
     <YourOutfitList getAvgRating = {getAvgRating} currentProduct = {currentProduct} currentProductStyles = {currentProductStyles} currentProductAvgRating = {currentProductAvgRating} handleProductCardClick={handleProductCardClick}  />
 
     </div>

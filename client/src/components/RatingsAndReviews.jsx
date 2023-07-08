@@ -146,7 +146,7 @@ const RatingsAndReviews = () => {
   const [maxReviews, setMaxReviews] = useState(2);
 
   return (<div id='ratings-and-reviews' role='review-section'>
-    <h2>RATINGS AND REVIEWS</h2>
+   <div className = "sub-titles" > <h2>RATINGS & REVIEWS</h2> </div>
 
     <ReviewBreakdown
       avg={getAvgRating(reviewMeta.ratings)}
@@ -157,12 +157,14 @@ const RatingsAndReviews = () => {
       reviews={reviews}
       maxReviews={maxReviews} />
 
-    <button onClick={() => setMaxReviews(maxReviews + 2)}>
-      Load more reviews
-    </button>
+    <div className='load-more-reviews'>
+      <button id='load-more-reviews-btn' className='bold-font button' onClick={() => setMaxReviews(maxReviews + 2)}>
+        LOAD MORE REVIEWS
+      </button>
+    </div>
     <div className="add-review" role='add-review'>
-      <button onClick={() => setModalOpen(!modalOpen)}>
-        Leave a review!
+      <button id='add-review-btn' className='bold-font button' onClick={() => setModalOpen(!modalOpen)}>
+        LEAVE A REVIEW!
       </button>
       {
         modalOpen &&
