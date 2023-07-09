@@ -98,21 +98,21 @@ const QuestionListEntry = ({ currentProduct, question, userData, getQuestionData
               className='button smaller-font question-helpful-btn'
               onClick={handleHelpfulClick}
               disabled={isHelpfulClicked}>
-              <u>{'Yes'}</u> ({question.question_helpfulness})
+              {'Yes'} ({question.question_helpfulness})
             </button>
           </span>
           <span>
             <button
               className='button smaller-font question-add-answer-btn'
               onClick={() => setIsAnswerModalOpen(!isAnswerModalOpen)}>
-              <u>Add Answer</u>
+              Add Answer
             </button>
           </span>
           <span>
             <button
               className='smaller-font button question-report-btn'
               onClick={handleReportClick}>
-              <u>Report</u>
+              Report
             </button>
           </span>
         </div>

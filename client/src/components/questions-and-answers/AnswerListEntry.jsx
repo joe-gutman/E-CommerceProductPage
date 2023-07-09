@@ -65,7 +65,7 @@ const AnswerListEntry = ({ answer, userData, getAnswerData }) => {
                   className='smaller-font button answer-helpful-btn'
                   onClick={handleHelpfulClick}
                   disabled={isHelpfulClicked}>
-                  <u>Yes</u> ({answer.helpfulness})
+                  Yes ({answer.helpfulness})
                 </button>
               </span>
               <span>&nbsp;</span>
@@ -73,7 +73,7 @@ const AnswerListEntry = ({ answer, userData, getAnswerData }) => {
                 <button
                   className='smaller-font button answer-report-btn'
                   onClick={handleReportClick}>
-                  <u>Report</u>
+                  Report
                 </button>
               </span>
             </div>
