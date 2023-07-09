@@ -4,6 +4,7 @@ import Overview from './components/Overview.jsx';
 import RatingsAndReviews from './components/RatingsAndReviews.jsx';
 import QuestionsAndAnswers from './components/QuestionsAndAnswers.jsx';
 import RelatedItems from './components/RelatedItems.jsx';
+import SiteLogo from './assets/saturn-logo.jpg';
 
 const axios = require('axios');
 
@@ -115,7 +116,12 @@ const App = () => {
   } else {
    return (
     <>
-    <div id = "site-header"> <h1> 🪐 SATURN STORE 🪐 </h1></div>
+      <div id="site-header">
+        <div id="site-logo">
+          <img src={SiteLogo}></img>
+          <h1 id="site-title">Saturn Store </h1>
+        </div>
+      </div>
       <div role = "product-page">
       <br></br>
       <br></br>
