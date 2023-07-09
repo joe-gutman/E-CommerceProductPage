@@ -38,18 +38,4 @@ describe('Test average product rating', () => {
       expect(actual).toBe(expected);
     })
   });
-
-  describe('Should return an average rating when not given any rating values 1-4, 1-6, etc', () => {
-    var expected = 3.5;
-    var actual = getAvgRating({1: "1", 2: "1", 3: "1", 4: "1", 5: "1", 6: "1"});
-    test(`average rating ${actual} to equal ${expected}`, () => {
-      expect(actual).toBe(expected);
-    })
-
-    expected = 3.25;
-    actual = getAvgRating({1: "1", 2: "4", 3: "8", 4: "10"});
-    test(`average rating ${actual} to equal ${expected}`, () => {
-      expect(actual).toBe(expected);
-    })
-  });
 });

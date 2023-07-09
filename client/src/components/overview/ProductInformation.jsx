@@ -41,7 +41,7 @@ var ProductInformation = ({currentProduct, currentProductStyles, currentStyle, s
       setProductSalePrice(currentStyle.sale_price);
     }
     // console.log('sale price:', currentStyle.sale_price)
-    console.log('style:',currentStyle);
+    // console.log('style:',currentStyle);
   }, [currentStyle]);
 
   return (
@@ -50,14 +50,14 @@ var ProductInformation = ({currentProduct, currentProductStyles, currentStyle, s
         <span id="product-title">
           <h2 id="product-name" role="product-name">{productTitle}</h2>
           <span id="product-category-rating">
-            <h4 id="product-category"  role="product-category">Category:{productCategory}</h4>
-            <StarDisplay name="product-stars" size={25} rating={currentAvgRating}/>
+            <h3 id="product-category"  role="product-category">Category:{productCategory}</h3>
+            <StarDisplay name="product-stars" size={50} rating={currentAvgRating}/>
             <h4 id="amount-of-reviews">{amountOfReviews}</h4>
           </span>
         </span>
-        <span id="product-price" role="product-price">
+        <span id="product-price-container" role="product-price">
           {!productSalePrice ? (<h1 id="product-price"> ${productPrice}</h1>) : (
-            <><h1 id="product-price" style={{textDecoration: "line-through"}}>${productPrice}</h1>
+            <><h1 id="product-price" style={{textDecoration: "line-through", color:"rgba(0, 0, 0, 0.3)"}}>${productPrice}</h1>
             <h1 id="product-sale-price"> ${productSalePrice}</h1></>)}
         </span>
       </div>

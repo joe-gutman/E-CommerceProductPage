@@ -3,7 +3,7 @@ import ActionButtonRelated from './ActionButtonRelated.jsx'
 const axios = require('axios');
 import StarDisplay from '../shared-components/StarDisplay.jsx';
 
-const RelatedCard = ({index, product, id, name, category, price, avgRating, features, image, currentProduct, handleProductCardClick, currentProductFeatures, setCurrentProductFeatures }) => {
+const RelatedCard = ({index, product, id, name, category, price, avgRating, features, image, currentProduct, handleProductCardClick, currentProductFeatures, setCurrentProductFeatures, setScrollPosition}) => {
   const isSalePrice = product.results[0].sale_price !== null;
 
   var width = 300;
@@ -19,7 +19,7 @@ const RelatedCard = ({index, product, id, name, category, price, avgRating, feat
 
             {isSalePrice ? (
               <>
-              <small className = {`card-text original-price`}> ${price} </small>
+              <small className = {`card-text original-price-strike`}> ${price} </small>
               <small className = {`card-text sale-price-red-text`}> ${product.results[0].sale_price} </small>
               </>
             ) : (
@@ -29,7 +29,7 @@ const RelatedCard = ({index, product, id, name, category, price, avgRating, feat
               </>
             )}
 
-            <StarDisplay className = 'card-text'  name = {name} id = {id} rating={avgRating} size={50}/>
+            <StarDisplay className = 'card-text card-stars'  name = {name} id = {id} rating={avgRating} size={50}/>
             <small className = 'card-text'>{avgRating} *</small>
           </div>
       </div>

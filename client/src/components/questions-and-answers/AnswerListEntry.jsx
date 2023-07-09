@@ -60,7 +60,7 @@ const AnswerListEntry = ({ answer, userData, getAnswerData }) => {
                 <b>Seller</b> : answer.answerer_name[0].toUpperCase() + answer.answerer_name.slice(1)}, {`${month} ${date}, ${year}`}
               </span>
               <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-              <span> Helpful?
+              <span> Helpful? &nbsp;&nbsp;
                 <button
                   className='smaller-font button answer-helpful-btn'
                   onClick={handleHelpfulClick}
@@ -68,7 +68,7 @@ const AnswerListEntry = ({ answer, userData, getAnswerData }) => {
                   <u>Yes</u> ({answer.helpfulness})
                 </button>
               </span>
-              <span>&nbsp;|</span>
+              <span>&nbsp;</span>
               <span>
                 <button
                   className='smaller-font button answer-report-btn'
