@@ -500,7 +500,7 @@ label {
   display: flex;
   flex-direction: column;
   min-height: 500px;
-  border: 2px solid rgb(189, 189, 189);
+  border: 2px solid rgb(234, 233, 233);
   margin: 40px;
   overflow: hidden;
   box-shadow: 10px 5px 8px 5px rgb(197, 197, 197);
@@ -512,10 +512,6 @@ label {
   height: 20px;
   width: 100px;
 }
-
-/* .card-stars {
-
-} */
 
 .inner-box {
   display: flex;
@@ -546,8 +542,10 @@ label {
 }
 
 .card {
-  border: 2px solid rgb(189, 189, 189);
+  /* border: 1px solid rgb(221, 220, 220); */
+  background-color: #f4f4f4;
   padding: 5px;
+  margin: 10px;
   text-align: center;
 }
 
