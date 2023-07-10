@@ -56,7 +56,8 @@ const AnswerModal = ({ currentProduct, question, isAnswerModalOpen, setIsAnswerM
 
   return (
     <>
-      <div id='answer-modal' className='question-and-answer-modal'>
+      <div
+        id='answer-modal'  className='question-and-answer-modal'>
         <div className='modal-content'>
           <button className='close-modal' onClick={() => setIsAnswerModalOpen(!isAnswerModalOpen)}>
             X
