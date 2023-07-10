@@ -12,7 +12,8 @@ const RelatedCard = ({index, product, id, name, category, price, avgRating, feat
     <>
       <div className = "card" role = {`show-details-of-related-product-${index}`} style = {{width:`${width.toString()}px`}} >
         <ActionButtonRelated index = {index} name = {name} features = {features} currentProduct = {currentProduct} currentProductFeatures = {currentProductFeatures} /> <br></br>
-          <img src={image} width="300" height="375" alt="product image" className = "product-image" onClick = {() => { handleProductCardClick(id)}}/> <br></br>
+          {/* <img src={image} width="300" height="375" alt="product image" className = "product-image" onClick = {() => { handleProductCardClick(id)}}/> <br></br> */}
+          <div style = {{backgroundImage: `url(${image})`}} alt="product image" className = "product-image" onClick = {() => { setScrollPosition(0); handleProductCardClick(id)}}> </div> <br></br>
           <div className = 'card-details' onClick = {() => { handleProductCardClick(id)}}>
             <small className = 'card-text'>{category} </small>
             <span className = 'card-text'> {name} </span>
@@ -29,8 +30,8 @@ const RelatedCard = ({index, product, id, name, category, price, avgRating, feat
               </>
             )}
 
-            <StarDisplay className = 'card-text card-stars'  name = {name} id = {id} rating={avgRating} size={50}/>
-            <small className = 'card-text'>{avgRating} *</small>
+            <StarDisplay className = 'card-text'  name = {`card-stars-${id}`} id = {id} rating={avgRating} size={40} backgroundColor = {'rgb(244,244,244)'} />
+            {/* <small className = 'card-text'>{avgRating} *</small> */}
           </div>
       </div>
     </>

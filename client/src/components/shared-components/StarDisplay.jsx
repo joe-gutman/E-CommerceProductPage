@@ -31,7 +31,7 @@ const StarDisplay = (props) => {
     }
 
     //Masking code (to make it a star shape)
-    ctx.fillStyle = 'white';
+    ctx.fillStyle = props.backgroundColor || 'white';
     for (let f = 0; f < Math.ceil(props.rating); f++) {
       ctx.beginPath();
       ctx.moveTo(((f + 0.5) * s), 5);

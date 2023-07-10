@@ -513,16 +513,18 @@ label {
   display: flex;
   flex-direction: column;
   min-height: 500px;
-  border: 2px solid rgb(189, 189, 189);
+  /* border: 2px solid rgb(234, 233, 233); */
   margin: 40px;
   overflow: hidden;
   /* box-shadow: 10px 5px 8px 5px rgb(197, 197, 197); */
   border-radius: 7px;
 }
 
-/* .card-stars {
-  width: 25px;
-} */
+[id^="card-stars"] {
+  margin:auto;
+  height: 20px;
+  width: 100px;
+}
 
 .inner-box {
   display: flex;
@@ -552,9 +554,24 @@ label {
   color: rgb(93, 92, 92);
 }
 
+#no-related-products{
+  display: flex;
+  background-color: #f4f4f4;
+  width: auto;
+  height: 500px;
+  font-weight: bold;
+}
+
+#no-product-text{
+  margin: auto;
+}
+
 .card {
-  border: 2px solid rgb(189, 189, 189);
+  /* border: 1px solid rgb(221, 220, 220); */
+  background-color: #f4f4f4;
   padding: 5px;
+  margin: 10px;
+  border-radius: 6px;
   text-align: center;
 }
 
@@ -582,6 +599,10 @@ label {
 
 .product-image {
   cursor: pointer;
+  width: 300px;
+  height: 375px;
+  background-size: cover;
+  background-position: center;
 }
 
 .comparison-modal {
@@ -619,6 +640,7 @@ td {
 
 .original-price-strike {
   text-decoration: line-through;
+  color: rgb(108, 107, 107);
 }
 
 .default-price{
@@ -634,6 +656,8 @@ td {
   cursor: pointer;
   flex-direction: column;
   justify-content: center;
+  border: 2px solid rgb(202, 202, 202);
+  border-radius: 12px;
   /* box-shadow: 10px 5px 8px 5px rgb(197, 197, 197); */
 }
 
