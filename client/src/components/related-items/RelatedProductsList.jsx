@@ -131,9 +131,9 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating, currentProdu
             <></>
           )}
 
-          <animated.div className="inner-box" style={{ ...springs }}>
-            {relatedProducts.length > 0 ? (
-              relatedProducts.map((product, index) => (
+          {relatedProducts.length > 0 ? (
+            <animated.div className="inner-box" style={{ ...springs }}>
+              {relatedProducts.map((product, index) => (
                 <RelatedCard
                   key={index}
                   index={index}
@@ -150,12 +150,11 @@ const RelatedProductsList = ({currentRelatedProducts, getAvgRating, currentProdu
                   currentProductFeatures={currentProductFeatures}
                   setCurrentProductFeatures={setCurrentProductFeatures}
                   setScrollPosition= {setScrollPosition}
-                />
-              ))
-            ) : (
-              <> </>
-            )}
-          </animated.div>
+                /> ))}
+            </animated.div> )
+         : (
+          <div id = "no-related-products" > <h2 id = "no-product-text"> Sorry, no related items!</h2> </div>
+        )}
 
           {Math.abs(scrollPosition) >= scrollPositionLimit ? (
             <></>
