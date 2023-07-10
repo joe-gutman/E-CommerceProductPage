@@ -507,8 +507,14 @@ label {
   border-radius: 7px;
 }
 
+[id^="card-stars"] {
+  margin:auto;
+  height: 20px;
+  width: 100px;
+}
+
 /* .card-stars {
-  width: 25px;
+
 } */
 
 .inner-box {
@@ -606,6 +612,7 @@ td {
 
 .original-price-strike {
   text-decoration: line-through;
+  color: rgb(108, 107, 107);
 }
 
 .default-price{

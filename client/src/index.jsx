@@ -119,7 +119,7 @@ const App = () => {
       <div id="site-header">
         <div id="site-logo">
           <img src={SiteLogo}></img>
-          <h1 id="site-title">Saturn Store </h1>
+          <h1 id="site-title">HYPERION </h1>
         </div>
       </div>
       <div role = "product-page">

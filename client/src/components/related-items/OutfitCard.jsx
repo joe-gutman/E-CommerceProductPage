@@ -25,8 +25,8 @@ const OutfitCard = ({index, product, id, name, category, price, avgRating,image,
               <small className = "card-text default-price" > ${price} </small>
               </>
             )}
-            <StarDisplay className = 'card-text card-stars' name = {name} id = {id} rating={avgRating} size={50}/>
-            <small className = 'card-text'>{avgRating} *</small>
+            <StarDisplay className = 'card-text' name = {`card-stars-${id}`} id = {id} rating={avgRating} size={40}/>
+            {/* <small className = 'card-text'>{avgRating} *</small> */}
           </div>
       </div>
     </>
