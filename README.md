@@ -1,6 +1,6 @@
 ## Store Product Page 🛍️
 
-A streamlined product page that showcases detailed product information, user-driven Q&A, reviews, and outfit organization tools.
+A streamlined product page that showcases detailed product information, product photos, user-driven Q&A, reviews, similar product comparisons, and outfit organization tools.
 
 **Features ✨**
 - **Product Details:** Showcase descriptions, stock availability, pricing, multiple images, and a zoom-in popup.
