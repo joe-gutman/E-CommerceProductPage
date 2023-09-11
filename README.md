@@ -1,6 +1,6 @@
 ## Store Product Page 🛍️
 
-Built by a dedicated team of four. The Store Product Page offers a streamlined presentation of detailed product information, product photos, user-driven Q&A, reviews, similar product comparisons, and outfit organization tools.
+Built by a dedicated team of four. The Store Product Page offers a streamlined presentation of detailed product information, product photos, user-driven Q&A, reviews, related product comparisons, and outfit organization tools.
 
 **Features ✨**
 - **Product Details:** Showcase descriptions, stock availability, pricing, multiple images, and a zoom-in popup.
